@@ -71,6 +71,14 @@
 
     <profiles>
         <profile>
+            <id>skip-tests</id>
+            <properties>
+                <jacoco.skip>true</jacoco.skip>
+                <skipTests>true</skipTests>
+                <skipSurefireReport>true</skipSurefireReport>
+            </properties>
+        </profile>
+        <profile>
             <id>release-sign-artifacts</id>
             <activation>
                 <property>
