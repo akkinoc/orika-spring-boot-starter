@@ -10,8 +10,8 @@ public interface OrikaMapperFactoryBuilderConfigurer {
     /**
      * Configures the {@link DefaultMapperFactory.Builder}.
      *
-     * @param mapperFactory the {@link DefaultMapperFactory.Builder} to be configured.
+     * @param mapperFactoryBuilder the {@link DefaultMapperFactory.Builder} to be configured.
      */
-    void configure(DefaultMapperFactory.Builder mapperFactory);
+    void configure(DefaultMapperFactory.Builder mapperFactoryBuilder);
 
 }
