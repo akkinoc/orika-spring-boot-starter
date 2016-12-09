@@ -14,7 +14,7 @@ test:
     - |
       mvn --batch-mode test site
     - |
-      mvn --batch-mode --file sample clean install
+      mvn --batch-mode --file sample/simple clean install
   post:
     - |
       cd target && \

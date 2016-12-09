@@ -1,4 +1,4 @@
-package net.rakugakibox.spring.boot.orika.sample;
+package net.rakugakibox.spring.boot.orika.sample.simple;
 
 import ma.glasnost.orika.MapperFactory;
 import net.rakugakibox.spring.boot.orika.OrikaMapperFactoryConfigurer;

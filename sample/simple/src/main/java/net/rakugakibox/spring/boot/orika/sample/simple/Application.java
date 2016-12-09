@@ -1,4 +1,4 @@
-package net.rakugakibox.spring.boot.orika.sample;
+package net.rakugakibox.spring.boot.orika.sample.simple;
 
 import lombok.RequiredArgsConstructor;
 import ma.glasnost.orika.MapperFacade;
