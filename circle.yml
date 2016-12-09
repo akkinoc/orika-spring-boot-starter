@@ -13,6 +13,8 @@ test:
   override:
     - |
       mvn --batch-mode test site
+    - |
+      mvn --batch-mode --file sample clean install
   post:
     - |
       cd target && \
