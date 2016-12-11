@@ -85,6 +85,29 @@ public class PersonMapping implements OrikaMapperFactoryConfigurer {
 [Declarative Mapping Configuration]: http://orika-mapper.github.io/orika-docs/mappings-via-classmapbuilder.html
 [Advanced Mapping Configurations]: http://orika-mapper.github.io/orika-docs/advanced-mappings.html
 
+### Customizing `MapperFactoryBuilder`
+
+If you need to customize the `MapperFactoryBuilder`,  
+create an instance of `OrikaMapperFactoryBuilderConfigurer` within the application context.  
+
+For example:  
+
+```java
+@Component
+public class CustomOrikaMapperFactoryBuilderConfigurer implements OrikaMapperFactoryBuilderConfigurer {
+    @Override
+    public void configure(MapperFactoryBuilder<?, ?> mapperFactoryBuilder) {
+        // Your customization code.
+    }
+}
+```
+
+#### See Also: Orika User Guide
+
+* [MapperFactory Configuration]
+
+[MapperFactory Configuration]: http://orika-mapper.github.io/orika-docs/mapper-factory.html
+
 ## License
 
 Licensed under the [Apache License, Version 2.0].  
