@@ -33,7 +33,7 @@ If you are using maven, add the following dependency.
 <dependency>
     <groupId>net.rakugakibox.spring.boot</groupId>
     <artifactId>orika-spring-boot-starter</artifactId>
-    <version>0.1.0</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
