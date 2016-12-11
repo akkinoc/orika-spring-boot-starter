@@ -33,7 +33,7 @@ If you are using maven, add the following dependency.
 The `MapperFacade` (Orika's mapper interface) is managed by the application context.  
 Inject the `MapperFacade` into your code.  
 
-For example:
+For example:  
 
 ```java
 @Autowired
@@ -44,7 +44,7 @@ private MapperFacade mapperFacade;
 
 Map your beans using `MapperFacade`.  
 
-For example:
+For example:  
 
 ```java
 PersonSource source = new PersonSource();
@@ -53,6 +53,37 @@ source.setLastName("Smith");
 source.setAge(23);
 PersonDestination destination = mapperFacade.map(source, PersonDestination.class);
 ```
+
+## Customizing
+
+### Customizing `MapperFactory`
+
+If you need to customize the `MapperFactory`,  
+create an instance of `OrikaMapperFactoryConfigurer` within the application context.  
+
+For example:  
+
+```java
+@Component
+public class PersonMapping implements OrikaMapperFactoryConfigurer {
+    @Override
+    public void configure(MapperFactory mapperFactory) {
+        mapperFactory.classMap(PersonSource.class, PersonDestination.class)
+                .field("firstName", "givenName")
+                .field("lastName", "sirName")
+                .byDefault()
+                .register();
+    }
+}
+```
+
+#### See Also: Orika User Guide
+
+* [Declarative Mapping Configuration]
+* [Advanced Mapping Configurations]
+
+[Declarative Mapping Configuration]: http://orika-mapper.github.io/orika-docs/mappings-via-classmapbuilder.html
+[Advanced Mapping Configurations]: http://orika-mapper.github.io/orika-docs/advanced-mappings.html
 
 ## License
 
