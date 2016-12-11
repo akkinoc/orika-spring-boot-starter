@@ -8,7 +8,10 @@
 [CircleCI Badge]: https://circleci.com/gh/akihyro/orika-spring-boot-starter.svg?style=shield
 [CircleCI]: https://circleci.com/gh/akihyro/orika-spring-boot-starter
 
-work in progress...  
+Auto-configures [Orika (Java Bean mapping framework)] to your [Spring Boot] application.  
+
+[Orika (Java Bean mapping framework)]: http://orika-mapper.github.io/orika-docs/
+[Spring Boot]: https://projects.spring.io/spring-boot/
 
 ## License
 
