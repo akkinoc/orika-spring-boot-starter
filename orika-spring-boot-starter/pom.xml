@@ -156,6 +156,7 @@
                 <groupId>pl.project13.maven</groupId>
                 <artifactId>git-commit-id-plugin</artifactId>
                 <configuration>
+                    <dotGitDirectory>../.git</dotGitDirectory>
                     <generateGitPropertiesFilename>
                         ${project.build.outputDirectory}/net/rakugakibox/spring/boot/orika/git.properties
                     </generateGitPropertiesFilename>

@@ -5,27 +5,27 @@ machine:
 dependencies:
   override:
     - |
-      mvn --batch-mode clean install --activate-profiles skip-tests
+      mvn --batch-mode --file orika-spring-boot-starter clean install --activate-profiles skip-tests
   cache_directories:
     - "~/.m2"
 
 test:
   override:
     - |
-      mvn --batch-mode test site
+      mvn --batch-mode --file orika-spring-boot-starter test site
     - |
-      mvn --batch-mode --file sample/simple clean install
+      mvn --batch-mode --file orika-spring-boot-starter-sample clean install
   post:
     - |
-      cd target && \
+      cd orika-spring-boot-starter/target && \
         find -maxdepth 1 -type f -name \*.jar -exec cp --parents {} ${CIRCLE_ARTIFACTS} \; \
         ||:
     - |
-      cd target/site && \
+      cd orika-spring-boot-starter/target/site && \
         mkdir ${CIRCLE_ARTIFACTS}/site && \
         find -type f -exec cp --parents {} ${CIRCLE_ARTIFACTS}/site \; \
         ||:
     - |
-      cd target/surefire-reports && \
+      cd orika-spring-boot-starter/target/surefire-reports && \
         find -type f -name *.xml -exec cp --parents {} ${CIRCLE_TEST_REPORTS}/junit \; \
         ||:

@@ -1,4 +1,4 @@
-package net.rakugakibox.spring.boot.orika.sample.simple;
+package net.rakugakibox.spring.boot.orika.sample;
 
 import lombok.Data;
 
