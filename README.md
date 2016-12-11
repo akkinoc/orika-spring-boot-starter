@@ -63,37 +63,6 @@ source.setAge(23);
 PersonDestination destination = mapperFacade.map(source, PersonDestination.class);
 ```
 
-## Configuration properties
-
-This artifact provides the following configuration properties.  
-These can be configured by your `application.yml` / `application.properties`.  
-
-```yaml
-orika:
-  # Whether enable auto-configuration.
-  # Defaults to true.
-  enabled: true
-  # Whether to use built-in converters.
-  # By default, follow Orika.
-  useBuiltinConverters: true
-  # Whether to use auto-mapping.
-  # By default, follow Orika.
-  useAutoMapping: true
-  # Whether to map null values.
-  # By default, follow Orika.
-  mapNulls: true
-  # Whether to dump the current state of the mapping infrastructure objects
-  # upon occurrence of an exception while mapping.
-  # By default, follow Orika.
-  dumpStateOnException: true
-  # Whether the class-map should be considered 'abstract'.
-  # By default, follow Orika.
-  favorExtension: false
-  # Whether full field context should be captured.
-  # By default, follow Orika.
-  captureFieldContext: false
-```
-
 ## Customizing
 
 ### Customizing `MapperFactory`
@@ -147,6 +116,37 @@ public class CustomOrikaMapperFactoryBuilderConfigurer implements OrikaMapperFac
 * [MapperFactory Configuration]
 
 [MapperFactory Configuration]: http://orika-mapper.github.io/orika-docs/mapper-factory.html
+
+## Configuration properties
+
+This artifact provides the following configuration properties.  
+These can be configured by your `application.yml` / `application.properties`.  
+
+```yaml
+orika:
+  # Whether enable auto-configuration.
+  # Defaults to true.
+  enabled: true
+  # Whether to use built-in converters.
+  # By default, follow Orika.
+  useBuiltinConverters: true
+  # Whether to use auto-mapping.
+  # By default, follow Orika.
+  useAutoMapping: true
+  # Whether to map null values.
+  # By default, follow Orika.
+  mapNulls: true
+  # Whether to dump the current state of the mapping infrastructure objects
+  # upon occurrence of an exception while mapping.
+  # By default, follow Orika.
+  dumpStateOnException: true
+  # Whether the class-map should be considered 'abstract'.
+  # By default, follow Orika.
+  favorExtension: false
+  # Whether full field context should be captured.
+  # By default, follow Orika.
+  captureFieldContext: false
+```
 
 ## License
 
