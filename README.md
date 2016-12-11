@@ -13,6 +13,15 @@ Auto-configures [Orika (Java Bean mapping framework)] to [Spring Boot] applicati
 [Orika (Java Bean mapping framework)]: http://orika-mapper.github.io/orika-docs/
 [Spring Boot]: https://projects.spring.io/spring-boot/
 
+## Supported versions
+
+This artifact supports the following versions.  
+Older versions may also work, but we have not tested it.  
+
+* Java 8
+* Spring Boot 1.4.0 or higher
+* Orika 1.5.0 or higher
+
 ## Usage
 
 ### Adding dependency
@@ -57,7 +66,7 @@ PersonDestination destination = mapperFacade.map(source, PersonDestination.class
 ## Configuration properties
 
 This artifact provides the following configuration properties.  
-These can be configured by your `application.properties` / `application.yml`.  
+These can be configured by your `application.yml` / `application.properties`.  
 
 ```yaml
 orika:
