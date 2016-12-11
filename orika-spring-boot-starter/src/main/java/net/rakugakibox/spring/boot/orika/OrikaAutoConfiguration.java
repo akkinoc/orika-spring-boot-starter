@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
+import ma.glasnost.orika.impl.DefaultMapperFactory.MapperFactoryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +22,7 @@ import org.springframework.context.annotation.Configuration;
 public class OrikaAutoConfiguration {
 
     /**
-     * The {@link DefaultMapperFactory.Builder}'s configurers.
+     * The {@link MapperFactoryBuilder}'s configurers.
      */
     private final List<OrikaMapperFactoryBuilderConfigurer> mapperFactoryBuilderConfigurers;
 
@@ -33,7 +34,7 @@ public class OrikaAutoConfiguration {
     /**
      * Constructs an instance.
      *
-     * @param mapperFactoryBuilderConfigurers the {@link DefaultMapperFactory.Builder}'s configurers.
+     * @param mapperFactoryBuilderConfigurers the {@link MapperFactoryBuilder}'s configurers.
      * @param mapperFactoryConfigurers the {@link MapperFactory}'s configurers.
      */
     @Autowired
@@ -50,7 +51,7 @@ public class OrikaAutoConfiguration {
     /**
      * Constructs an instance.
      *
-     * @param mapperFactoryBuilderConfigurers the {@link DefaultMapperFactory.Builder}'s configurers.
+     * @param mapperFactoryBuilderConfigurers the {@link MapperFactoryBuilder}'s configurers.
      * @param mapperFactoryConfigurers the {@link MapperFactory}'s configurers.
      */
     public OrikaAutoConfiguration(
@@ -62,29 +63,29 @@ public class OrikaAutoConfiguration {
     }
 
     /**
-     * Creates a {@link DefaultMapperFactory.Builder}.
+     * Creates a {@link MapperFactoryBuilder}.
      *
-     * @return a {@link DefaultMapperFactory.Builder}.
+     * @return a {@link MapperFactoryBuilder}.
      */
     @Bean
     @ConditionalOnMissingBean
-    public DefaultMapperFactory.Builder orikaMapperFactoryBuilder() {
-        log.debug("Creating a DefaultMapperFactory.Builder");
+    public MapperFactoryBuilder<?, ?> orikaMapperFactoryBuilder() {
+        log.debug("Creating a MapperFactoryBuilder");
         DefaultMapperFactory.Builder mapperFactoryBuilder = new DefaultMapperFactory.Builder();
         mapperFactoryBuilderConfigurers.forEach(configurer -> configurer.configure(mapperFactoryBuilder));
-        log.debug("Created a DefaultMapperFactory.Builder: [{}]", mapperFactoryBuilder);
+        log.debug("Created a MapperFactoryBuilder: [{}]", mapperFactoryBuilder);
         return mapperFactoryBuilder;
     }
 
     /**
      * Creates a {@link MapperFactory}.
      *
-     * @param mapperFactoryBuilder the {@link DefaultMapperFactory.Builder}.
+     * @param mapperFactoryBuilder the {@link MapperFactoryBuilder}.
      * @return a {@link MapperFactory}.
      */
     @Bean
     @ConditionalOnMissingBean
-    public MapperFactory orikaMapperFactory(DefaultMapperFactory.Builder mapperFactoryBuilder) {
+    public MapperFactory orikaMapperFactory(MapperFactoryBuilder mapperFactoryBuilder) {
         log.debug("Creating a MapperFactory");
         MapperFactory mapperFactory = mapperFactoryBuilder.build();
         mapperFactoryConfigurers.forEach(configurer -> configurer.configure(mapperFactory));
