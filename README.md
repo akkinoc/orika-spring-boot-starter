@@ -148,6 +148,10 @@ orika:
   captureFieldContext: false
 ```
 
+## Contributing
+
+Bug reports and pull requests are welcome :)  
+
 ## License
 
 Licensed under the [Apache License, Version 2.0].  
