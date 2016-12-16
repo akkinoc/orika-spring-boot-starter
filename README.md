@@ -148,6 +148,12 @@ orika:
   captureFieldContext: false
 ```
 
+## Release notes
+
+Please refer to the "[Releases]" page.  
+
+[Releases]: https://github.com/akihyro/orika-spring-boot-starter/releases
+
 ## Contributing
 
 Bug reports and pull requests are welcome :)  
