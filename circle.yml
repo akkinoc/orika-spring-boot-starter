@@ -4,28 +4,25 @@ machine:
 
 dependencies:
   override:
-    - |
-      mvn --batch-mode --file orika-spring-boot-starter clean install --activate-profiles skip-tests
+    - "mvn --batch-mode clean install --activate-profiles skip-tests":
+        pwd: "orika-spring-boot-starter"
   cache_directories:
     - "~/.m2"
 
 test:
   override:
-    - |
-      mvn --batch-mode --file orika-spring-boot-starter test site
-    - |
-      mvn --batch-mode --file orika-spring-boot-starter-sample clean install
+    - "mvn --batch-mode test site":
+        pwd: "orika-spring-boot-starter"
+    - "mvn --batch-mode clean install":
+        pwd: "orika-spring-boot-starter-sample"
   post:
-    - |
-      cd orika-spring-boot-starter/target && \
-        find -maxdepth 1 -type f -name \*.jar -exec cp --parents {} ${CIRCLE_ARTIFACTS} \; \
-        ||:
-    - |
-      cd orika-spring-boot-starter/target/site && \
-        mkdir ${CIRCLE_ARTIFACTS}/site && \
-        find -type f -exec cp --parents {} ${CIRCLE_ARTIFACTS}/site \; \
-        ||:
-    - |
-      cd orika-spring-boot-starter/target/surefire-reports && \
-        find -type f -name *.xml -exec cp --parents {} ${CIRCLE_TEST_REPORTS}/junit \; \
-        ||:
+    - "mkdir --parents ${CIRCLE_ARTIFACTS}/site"
+    - "mkdir --parents ${CIRCLE_TEST_REPORTS}/junit"
+    - "mkdir --parents target/{site,surefire-reports}":
+        pwd: "orika-spring-boot-starter"
+    - "find -maxdepth 1 -type f -name \\*.jar -exec cp --parents {} ${CIRCLE_ARTIFACTS} \\;":
+        pwd: "orika-spring-boot-starter/target"
+    - "find -type f -exec cp --parents {} ${CIRCLE_ARTIFACTS}/site \\;":
+        pwd: "orika-spring-boot-starter/target/site"
+    - "find -type f -name \\*.xml -exec cp --parents {} ${CIRCLE_TEST_REPORTS}/junit \\;":
+        pwd: "orika-spring-boot-starter/target/surefire-reports"
