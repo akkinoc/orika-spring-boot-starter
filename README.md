@@ -16,7 +16,7 @@ Auto-configures [Orika (Java Bean mapping framework)] to [Spring Boot] applicati
 ## Supported versions
 
 This artifact supports the following versions.  
-Older versions may also work, but we have not tested it.  
+Older versions might also work, but we have not tested it.  
 
 * Java 8
 * Spring Boot 1.4.0 or higher
