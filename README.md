@@ -22,7 +22,7 @@ This artifact supports the following versions.
 Older versions might also work, but we have not tested it.  
 
 * Java 8
-* Spring Boot 1.4.0 or higher
+* Spring Boot 1.4.3 or higher
 * Orika 1.5.0 or higher
 
 ## Usage
