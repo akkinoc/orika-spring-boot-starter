@@ -26,3 +26,4 @@ test:
         pwd: "orika-spring-boot-starter/target/site"
     - "find -type f -name \\*.xml -exec cp --parents {} ${CIRCLE_TEST_REPORTS}/junit \\;":
         pwd: "orika-spring-boot-starter/target/surefire-reports"
+    - "bash <(curl -s https://codecov.io/bash)"
