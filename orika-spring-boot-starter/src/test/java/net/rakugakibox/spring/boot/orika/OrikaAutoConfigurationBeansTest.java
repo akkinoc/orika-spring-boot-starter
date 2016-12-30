@@ -15,11 +15,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * The {@link OrikaAutoConfiguration}'s general test cases.
+ * The {@link OrikaAutoConfiguration}'s beans test cases.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class OrikaAutoConfigurationGeneralTest {
+public class OrikaAutoConfigurationBeansTest {
 
     /**
      * The auto-configuration properties for Orika.
