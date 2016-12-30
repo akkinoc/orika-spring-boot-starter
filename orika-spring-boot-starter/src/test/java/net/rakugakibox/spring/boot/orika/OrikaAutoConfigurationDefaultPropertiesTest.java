@@ -24,7 +24,7 @@ public class OrikaAutoConfigurationDefaultPropertiesTest {
      * The {@link MapperFactoryBuilder}.
      */
     @Autowired
-    protected MapperFactoryBuilder<?, ?> orikaMapperFactoryBuilder;
+    protected MapperFactoryBuilder<?, ?> mapperFactoryBuilder;
 
     /**
      * Initializes Orika's default properties.
@@ -57,7 +57,7 @@ public class OrikaAutoConfigurationDefaultPropertiesTest {
      */
     @Test
     public void orikaMapperFactoryBuilder_propertiesShouldBeDefaultValues() {
-        assertThat(orikaMapperFactoryBuilder)
+        assertThat(mapperFactoryBuilder)
                 .hasFieldOrPropertyWithValue("useBuiltinConverters", true)
                 .hasFieldOrPropertyWithValue("useAutoMapping", true)
                 .hasFieldOrPropertyWithValue("mapNulls", true)

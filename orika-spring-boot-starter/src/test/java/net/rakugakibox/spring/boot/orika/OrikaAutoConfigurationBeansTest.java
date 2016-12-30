@@ -31,19 +31,19 @@ public class OrikaAutoConfigurationBeansTest {
      * The {@link MapperFactoryBuilder}.
      */
     @Autowired
-    protected Optional<MapperFactoryBuilder<?, ?>> orikaMapperFactoryBuilder;
+    protected Optional<MapperFactoryBuilder<?, ?>> mapperFactoryBuilder;
 
     /**
      * The {@link MapperFactory}.
      */
     @Autowired
-    protected Optional<MapperFactory> orikaMapperFactory;
+    protected Optional<MapperFactory> mapperFactory;
 
     /**
      * The {@link MapperFacade}.
      */
     @Autowired
-    protected Optional<MapperFacade> orikaMapperFacade;
+    protected Optional<MapperFacade> mapperFacade;
 
     /**
      * Tests the {@link OrikaAutoConfiguration}'s configuration properties.
@@ -58,7 +58,7 @@ public class OrikaAutoConfigurationBeansTest {
      */
     @Test
     public void orikaMapperFactoryBuilder_shouldBeCreated() {
-        assertThat(orikaMapperFactoryBuilder).isPresent();
+        assertThat(mapperFactoryBuilder).isPresent();
     }
 
     /**
@@ -66,7 +66,7 @@ public class OrikaAutoConfigurationBeansTest {
      */
     @Test
     public void orikaMapperFactory_shouldBeCreated() {
-        assertThat(orikaMapperFactory).isPresent();
+        assertThat(mapperFactory).isPresent();
     }
 
     /**
@@ -74,7 +74,7 @@ public class OrikaAutoConfigurationBeansTest {
      */
     @Test
     public void orikaMapperFacade_shouldBeCreated() {
-        assertThat(orikaMapperFacade).isPresent();
+        assertThat(mapperFacade).isPresent();
     }
 
     /**

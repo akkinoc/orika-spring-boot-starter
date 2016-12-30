@@ -31,22 +31,23 @@ public class OrikaAutoConfigurationMapperFactoryCustomizingTest {
      */
     @Autowired
     @Qualifier("orikaMapperFactoryConfiguration1")
-    protected OrikaMapperFactoryConfiguration orikaMapperFactoryConfiguration1;
+    protected MapperFactoryConfiguration mapperFactoryConfiguration1;
 
     /**
      * The {@link MapperFactory}'s configuration 1.
      */
     @Autowired
     @Qualifier("orikaMapperFactoryConfiguration2")
-    protected OrikaMapperFactoryConfiguration orikaMapperFactoryConfiguration2;
+    protected MapperFactoryConfiguration mapperFactoryConfiguration2;
 
     /**
      * Tests the {@link OrikaAutoConfiguration#orikaMapperFactory(MapperFactoryBuilder)}.
      */
     @Test
     public void orikaMapperFactory_configurerShouldBeCalled() {
-        assertThat(orikaMapperFactoryConfiguration1.mapperFactory).isSameAs(orikaMapperFactory);
-        assertThat(orikaMapperFactoryConfiguration1.mapperFactory).isSameAs(orikaMapperFactory);
+        assertThat(orikaMapperFactory)
+                .isSameAs(mapperFactoryConfiguration1.mapperFactory)
+                .isSameAs(mapperFactoryConfiguration2.mapperFactory);
     }
 
     /**
@@ -62,8 +63,8 @@ public class OrikaAutoConfigurationMapperFactoryCustomizingTest {
          * @return a {@link MapperFactory}'s configuration 1.
          */
         @Bean
-        public OrikaMapperFactoryConfiguration orikaMapperFactoryConfiguration1() {
-            return new OrikaMapperFactoryConfiguration();
+        public MapperFactoryConfiguration orikaMapperFactoryConfiguration1() {
+            return new MapperFactoryConfiguration();
         }
 
         /**
@@ -72,8 +73,8 @@ public class OrikaAutoConfigurationMapperFactoryCustomizingTest {
          * @return a {@link MapperFactory}'s configuration 2.
          */
         @Bean
-        public OrikaMapperFactoryConfiguration orikaMapperFactoryConfiguration2() {
-            return new OrikaMapperFactoryConfiguration();
+        public MapperFactoryConfiguration orikaMapperFactoryConfiguration2() {
+            return new MapperFactoryConfiguration();
         }
 
     }
@@ -81,10 +82,10 @@ public class OrikaAutoConfigurationMapperFactoryCustomizingTest {
     /**
      * The {@link MapperFactory}'s configuration.
      */
-    public static class OrikaMapperFactoryConfiguration implements OrikaMapperFactoryConfigurer {
+    public static class MapperFactoryConfiguration implements OrikaMapperFactoryConfigurer {
 
         /**
-         * The {@link MapperFactory}.
+         * The passed {@link MapperFactory}.
          */
         private MapperFactory mapperFactory;
 
