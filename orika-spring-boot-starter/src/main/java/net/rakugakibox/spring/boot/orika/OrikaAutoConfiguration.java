@@ -106,7 +106,7 @@ public class OrikaAutoConfiguration {
      */
     @Bean
     @ConditionalOnMissingBean
-    public MapperFactory orikaMapperFactory(MapperFactoryBuilder mapperFactoryBuilder) {
+    public MapperFactory orikaMapperFactory(MapperFactoryBuilder<?, ?> mapperFactoryBuilder) {
         log.debug("Creating a MapperFactory");
         MapperFactory mapperFactory = mapperFactoryBuilder.build();
         mapperFactoryConfigurers.forEach(configurer -> configurer.configure(mapperFactory));
