@@ -1,8 +1,10 @@
 package net.rakugakibox.spring.boot.orika;
 
+import java.util.Optional;
+
 import lombok.Data;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import ma.glasnost.orika.impl.DefaultMapperFactory.MapperFactoryBuilder;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * The auto-configuration properties for Orika.
@@ -23,7 +25,7 @@ public class OrikaProperties {
      *
      * @see MapperFactoryBuilder#useBuiltinConverters(boolean)
      */
-    private Boolean useBuiltinConverters;
+    private Optional<Boolean> useBuiltinConverters = Optional.empty();
 
     /**
      * Whether to use auto-mapping.
@@ -31,7 +33,7 @@ public class OrikaProperties {
      *
      * @see MapperFactoryBuilder#useAutoMapping(boolean)
      */
-    private Boolean useAutoMapping;
+    private Optional<Boolean> useAutoMapping = Optional.empty();
 
     /**
      * Whether to map null values.
@@ -39,7 +41,7 @@ public class OrikaProperties {
      *
      * @see MapperFactoryBuilder#mapNulls(boolean)
      */
-    private Boolean mapNulls;
+    private Optional<Boolean> mapNulls = Optional.empty();
 
     /**
      * Whether to dump the current state of the mapping infrastructure objects
@@ -48,7 +50,7 @@ public class OrikaProperties {
      *
      * @see MapperFactoryBuilder#dumpStateOnException(boolean)
      */
-    private Boolean dumpStateOnException;
+    private Optional<Boolean> dumpStateOnException = Optional.empty();
 
     /**
      * Whether the class-map should be considered 'abstract'.
@@ -56,7 +58,7 @@ public class OrikaProperties {
      *
      * @see MapperFactoryBuilder#favorExtension(boolean)
      */
-    private Boolean favorExtension;
+    private Optional<Boolean> favorExtension = Optional.empty();
 
     /**
      * Whether full field context should be captured.
@@ -64,6 +66,6 @@ public class OrikaProperties {
      *
      * @see MapperFactoryBuilder#captureFieldContext(boolean)
      */
-    private Boolean captureFieldContext;
+    private Optional<Boolean> captureFieldContext = Optional.empty();
 
 }

@@ -87,24 +87,12 @@ public class OrikaAutoConfiguration {
     public MapperFactoryBuilder<?, ?> orikaMapperFactoryBuilder() {
         log.debug("Creating a MapperFactoryBuilder");
         DefaultMapperFactory.Builder mapperFactoryBuilder = new DefaultMapperFactory.Builder();
-        if (orikaProperties.getUseBuiltinConverters() != null) {
-            mapperFactoryBuilder.useBuiltinConverters(orikaProperties.getUseBuiltinConverters());
-        }
-        if (orikaProperties.getUseAutoMapping() != null) {
-            mapperFactoryBuilder.useAutoMapping(orikaProperties.getUseAutoMapping());
-        }
-        if (orikaProperties.getMapNulls() != null) {
-            mapperFactoryBuilder.mapNulls(orikaProperties.getMapNulls());
-        }
-        if (orikaProperties.getDumpStateOnException() != null) {
-            mapperFactoryBuilder.dumpStateOnException(orikaProperties.getDumpStateOnException());
-        }
-        if (orikaProperties.getFavorExtension() != null) {
-            mapperFactoryBuilder.favorExtension(orikaProperties.getFavorExtension());
-        }
-        if (orikaProperties.getCaptureFieldContext() != null) {
-            mapperFactoryBuilder.captureFieldContext(orikaProperties.getCaptureFieldContext());
-        }
+        orikaProperties.getUseBuiltinConverters().ifPresent(mapperFactoryBuilder::useBuiltinConverters);
+        orikaProperties.getUseAutoMapping().ifPresent(mapperFactoryBuilder::useAutoMapping);
+        orikaProperties.getMapNulls().ifPresent(mapperFactoryBuilder::mapNulls);
+        orikaProperties.getDumpStateOnException().ifPresent(mapperFactoryBuilder::dumpStateOnException);
+        orikaProperties.getFavorExtension().ifPresent(mapperFactoryBuilder::favorExtension);
+        orikaProperties.getCaptureFieldContext().ifPresent(mapperFactoryBuilder::captureFieldContext);
         mapperFactoryBuilderConfigurers.forEach(configurer -> configurer.configure(mapperFactoryBuilder));
         log.debug("Created a MapperFactoryBuilder: [{}]", mapperFactoryBuilder);
         return mapperFactoryBuilder;
