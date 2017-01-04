@@ -1,4 +1,4 @@
-# Spring Boot Starter for Orika
+# orika-spring-boot-starter
 
 [![Maven Central][Maven Central Badge]][Maven Central]
 [![CircleCI][CircleCI Badge]][CircleCI]
@@ -11,7 +11,7 @@
 [Codecov Badge]: https://codecov.io/gh/akihyro/orika-spring-boot-starter/branch/master/graph/badge.svg
 [Codecov]: https://codecov.io/gh/akihyro/orika-spring-boot-starter
 
-Auto-configures [Orika (Java Bean mapping framework)] to [Spring Boot] application context.  
+[Spring Boot] Starter for [Orika (Java Bean mapping framework)].  
 
 [Orika (Java Bean mapping framework)]: http://orika-mapper.github.io/orika-docs/
 [Spring Boot]: https://projects.spring.io/spring-boot/
