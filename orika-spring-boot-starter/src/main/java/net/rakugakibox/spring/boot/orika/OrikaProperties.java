@@ -21,7 +21,7 @@ public class OrikaProperties {
 
     /**
      * Whether to use built-in converters.
-     * By default, follow Orika.
+     * By default, follows Orika.
      *
      * @see MapperFactoryBuilder#useBuiltinConverters(boolean)
      */
@@ -29,7 +29,7 @@ public class OrikaProperties {
 
     /**
      * Whether to use auto-mapping.
-     * By default, follow Orika.
+     * By default, follows Orika.
      *
      * @see MapperFactoryBuilder#useAutoMapping(boolean)
      */
@@ -37,7 +37,7 @@ public class OrikaProperties {
 
     /**
      * Whether to map null values.
-     * By default, follow Orika.
+     * By default, follows Orika.
      *
      * @see MapperFactoryBuilder#mapNulls(boolean)
      */
@@ -46,7 +46,7 @@ public class OrikaProperties {
     /**
      * Whether to dump the current state of the mapping infrastructure objects
      * upon occurrence of an exception while mapping.
-     * By default, follow Orika.
+     * By default, follows Orika.
      *
      * @see MapperFactoryBuilder#dumpStateOnException(boolean)
      */
@@ -54,7 +54,7 @@ public class OrikaProperties {
 
     /**
      * Whether the class-map should be considered 'abstract'.
-     * By default, follow Orika.
+     * By default, follows Orika.
      *
      * @see MapperFactoryBuilder#favorExtension(boolean)
      */
@@ -62,7 +62,7 @@ public class OrikaProperties {
 
     /**
      * Whether full field context should be captured.
-     * By default, follow Orika.
+     * By default, follows Orika.
      *
      * @see MapperFactoryBuilder#captureFieldContext(boolean)
      */
