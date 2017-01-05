@@ -127,7 +127,7 @@ These can be configured by your `application.yml` / `application.properties`.
 
 ```yaml
 orika:
-  # Whether enable auto-configuration.
+  # Whether to enable auto-configuration.
   # Defaults to true.
   enabled: true
   # Whether to use built-in converters.

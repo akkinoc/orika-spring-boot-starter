@@ -14,7 +14,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class OrikaProperties {
 
     /**
-     * Whether enable auto-configuration.
+     * Whether to enable auto-configuration.
      * Defaults to {@code true}.
      */
     private Boolean enabled = true;
