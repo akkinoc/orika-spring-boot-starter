@@ -80,13 +80,7 @@
             </properties>
         </profile>
         <profile>
-            <id>release-sign-artifacts</id>
-            <activation>
-                <property>
-                    <name>performRelease</name>
-                    <value>true</value>
-                </property>
-            </activation>
+            <id>release</id>
             <build>
                 <plugins>
                     <plugin>
@@ -94,7 +88,6 @@
                         <version>1.6</version>
                         <executions>
                             <execution>
-                                <id>sign</id>
                                 <goals>
                                     <goal>sign</goal>
                                 </goals>

@@ -4,7 +4,7 @@ machine:
 
 dependencies:
   override:
-    - "mvn --batch-mode clean install --activate-profiles skip-tests":
+    - "mvn --batch-mode --activate-profiles skip-tests clean install":
         pwd: "orika-spring-boot-starter"
   cache_directories:
     - "~/.m2"
