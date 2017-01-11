@@ -72,14 +72,6 @@
 
     <profiles>
         <profile>
-            <id>skip-tests</id>
-            <properties>
-                <jacoco.skip>true</jacoco.skip>
-                <skipTests>true</skipTests>
-                <skipSurefireReport>true</skipSurefireReport>
-            </properties>
-        </profile>
-        <profile>
             <id>release</id>
             <build>
                 <plugins>
@@ -128,6 +120,9 @@
 
     <build>
         <plugins>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
             </plugin>
@@ -211,21 +206,20 @@
                 </configuration>
             </plugin>
             <plugin>
-                <artifactId>maven-install-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <artifactId>maven-deploy-plugin</artifactId>
-            </plugin>
-            <plugin>
                 <artifactId>maven-site-plugin</artifactId>
                 <executions>
                     <execution>
-                        <phase>site</phase>
                         <goals>
                             <goal>jar</goal>
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-install-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
