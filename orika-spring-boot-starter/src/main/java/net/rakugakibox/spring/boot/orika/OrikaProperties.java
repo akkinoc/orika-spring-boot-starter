@@ -3,7 +3,7 @@ package net.rakugakibox.spring.boot.orika;
 import java.util.Optional;
 
 import lombok.Data;
-import ma.glasnost.orika.impl.DefaultMapperFactory.MapperFactoryBuilder;
+import ma.glasnost.orika.impl.DefaultMapperFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
@@ -23,7 +23,7 @@ public class OrikaProperties {
      * Whether to use built-in converters.
      * By default, follows Orika.
      *
-     * @see MapperFactoryBuilder#useBuiltinConverters(boolean)
+     * @see DefaultMapperFactory.MapperFactoryBuilder#useBuiltinConverters(boolean)
      */
     private Optional<Boolean> useBuiltinConverters = Optional.empty();
 
@@ -31,7 +31,7 @@ public class OrikaProperties {
      * Whether to use auto-mapping.
      * By default, follows Orika.
      *
-     * @see MapperFactoryBuilder#useAutoMapping(boolean)
+     * @see DefaultMapperFactory.MapperFactoryBuilder#useAutoMapping(boolean)
      */
     private Optional<Boolean> useAutoMapping = Optional.empty();
 
@@ -39,7 +39,7 @@ public class OrikaProperties {
      * Whether to map null values.
      * By default, follows Orika.
      *
-     * @see MapperFactoryBuilder#mapNulls(boolean)
+     * @see DefaultMapperFactory.MapperFactoryBuilder#mapNulls(boolean)
      */
     private Optional<Boolean> mapNulls = Optional.empty();
 
@@ -48,7 +48,7 @@ public class OrikaProperties {
      * upon occurrence of an exception while mapping.
      * By default, follows Orika.
      *
-     * @see MapperFactoryBuilder#dumpStateOnException(boolean)
+     * @see DefaultMapperFactory.MapperFactoryBuilder#dumpStateOnException(boolean)
      */
     private Optional<Boolean> dumpStateOnException = Optional.empty();
 
@@ -56,7 +56,7 @@ public class OrikaProperties {
      * Whether the class-map should be considered 'abstract'.
      * By default, follows Orika.
      *
-     * @see MapperFactoryBuilder#favorExtension(boolean)
+     * @see DefaultMapperFactory.MapperFactoryBuilder#favorExtension(boolean)
      */
     private Optional<Boolean> favorExtension = Optional.empty();
 
@@ -64,7 +64,7 @@ public class OrikaProperties {
      * Whether full field context should be captured.
      * By default, follows Orika.
      *
-     * @see MapperFactoryBuilder#captureFieldContext(boolean)
+     * @see DefaultMapperFactory.MapperFactoryBuilder#captureFieldContext(boolean)
      */
     private Optional<Boolean> captureFieldContext = Optional.empty();
 

@@ -1,7 +1,7 @@
 package net.rakugakibox.spring.boot.orika;
 
 import ma.glasnost.orika.OrikaSystemProperties;
-import ma.glasnost.orika.impl.DefaultMapperFactory.MapperFactoryBuilder;
+import ma.glasnost.orika.impl.DefaultMapperFactory;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -28,10 +28,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class OrikaAutoConfigurationCustomPropertiesTest {
 
     /**
-     * The {@link MapperFactoryBuilder}.
+     * The {@link DefaultMapperFactory.MapperFactoryBuilder}.
      */
     @Autowired
-    protected MapperFactoryBuilder<?, ?> mapperFactoryBuilder;
+    protected DefaultMapperFactory.MapperFactoryBuilder<?, ?> mapperFactoryBuilder;
 
     /**
      * Initializes Orika's default properties.

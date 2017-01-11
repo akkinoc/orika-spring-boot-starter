@@ -1,6 +1,6 @@
 package net.rakugakibox.spring.boot.orika;
 
-import ma.glasnost.orika.impl.DefaultMapperFactory.MapperFactoryBuilder;
+import ma.glasnost.orika.impl.DefaultMapperFactory;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,27 +13,27 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * The {@link OrikaAutoConfiguration}'s test cases when customize {@link MapperFactoryBuilder}.
+ * The {@link OrikaAutoConfiguration}'s test cases when customize {@link DefaultMapperFactory.MapperFactoryBuilder}.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class OrikaAutoConfigurationMapperFactoryBuilderCustomizingTest {
 
     /**
-     * The {@link MapperFactoryBuilder}.
+     * The {@link DefaultMapperFactory.MapperFactoryBuilder}.
      */
     @Autowired
-    protected MapperFactoryBuilder<?, ?> mapperFactoryBuilder;
+    protected DefaultMapperFactory.MapperFactoryBuilder<?, ?> mapperFactoryBuilder;
 
     /**
-     * The {@link MapperFactoryBuilder}'s configuration 1.
+     * The {@link DefaultMapperFactory.MapperFactoryBuilder}'s configuration 1.
      */
     @Autowired
     @Qualifier("orikaMapperFactoryBuilderConfiguration1")
     protected MapperFactoryBuilderConfiguration mapperFactoryBuilderConfiguration1;
 
     /**
-     * The {@link MapperFactoryBuilder}'s configuration 2.
+     * The {@link DefaultMapperFactory.MapperFactoryBuilder}'s configuration 2.
      */
     @Autowired
     @Qualifier("orikaMapperFactoryBuilderConfiguration2")
@@ -57,9 +57,9 @@ public class OrikaAutoConfigurationMapperFactoryBuilderCustomizingTest {
     public static class ContextConfiguration {
 
         /**
-         * Creates a {@link MapperFactoryBuilder}'s configuration 1.
+         * Creates a {@link DefaultMapperFactory.MapperFactoryBuilder}'s configuration 1.
          *
-         * @return a {@link MapperFactoryBuilder}'s configuration 1.
+         * @return a {@link DefaultMapperFactory.MapperFactoryBuilder}'s configuration 1.
          */
         @Bean
         public MapperFactoryBuilderConfiguration orikaMapperFactoryBuilderConfiguration1() {
@@ -67,9 +67,9 @@ public class OrikaAutoConfigurationMapperFactoryBuilderCustomizingTest {
         }
 
         /**
-         * Creates a {@link MapperFactoryBuilder}'s configuration 2.
+         * Creates a {@link DefaultMapperFactory.MapperFactoryBuilder}'s configuration 2.
          *
-         * @return a {@link MapperFactoryBuilder}'s configuration 2.
+         * @return a {@link DefaultMapperFactory.MapperFactoryBuilder}'s configuration 2.
          */
         @Bean
         public MapperFactoryBuilderConfiguration orikaMapperFactoryBuilderConfiguration2() {
@@ -79,18 +79,18 @@ public class OrikaAutoConfigurationMapperFactoryBuilderCustomizingTest {
     }
 
     /**
-     * The {@link MapperFactoryBuilder}'s configuration.
+     * The {@link DefaultMapperFactory.MapperFactoryBuilder}'s configuration.
      */
     public static class MapperFactoryBuilderConfiguration implements OrikaMapperFactoryBuilderConfigurer {
 
         /**
-         * The passed {@link MapperFactoryBuilder}.
+         * The passed {@link DefaultMapperFactory.MapperFactoryBuilder}.
          */
-        private MapperFactoryBuilder<?, ?> mapperFactoryBuilder;
+        private DefaultMapperFactory.MapperFactoryBuilder<?, ?> mapperFactoryBuilder;
 
         /** {@inheritDoc} */
         @Override
-        public void configure(MapperFactoryBuilder<?, ?> mapperFactoryBuilder) {
+        public void configure(DefaultMapperFactory.MapperFactoryBuilder<?, ?> mapperFactoryBuilder) {
             this.mapperFactoryBuilder = mapperFactoryBuilder;
         }
 

@@ -1,7 +1,7 @@
 package net.rakugakibox.spring.boot.orika;
 
 import ma.glasnost.orika.MapperFactory;
-import ma.glasnost.orika.impl.DefaultMapperFactory.MapperFactoryBuilder;
+import ma.glasnost.orika.impl.DefaultMapperFactory;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,7 +41,7 @@ public class OrikaAutoConfigurationMapperFactoryCustomizingTest {
     protected MapperFactoryConfiguration mapperFactoryConfiguration2;
 
     /**
-     * Tests the {@link OrikaAutoConfiguration#orikaMapperFactory(MapperFactoryBuilder)}.
+     * Tests the {@link OrikaAutoConfiguration#orikaMapperFactory(DefaultMapperFactory.MapperFactoryBuilder)}.
      */
     @Test
     public void orikaMapperFactory_configurerShouldBeCalled() {

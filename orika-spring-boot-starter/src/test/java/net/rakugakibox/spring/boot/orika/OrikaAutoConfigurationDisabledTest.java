@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
-import ma.glasnost.orika.impl.DefaultMapperFactory.MapperFactoryBuilder;
+import ma.glasnost.orika.impl.DefaultMapperFactory;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,10 +28,10 @@ public class OrikaAutoConfigurationDisabledTest {
     protected Optional<OrikaProperties> orikaProperties;
 
     /**
-     * The {@link MapperFactoryBuilder}.
+     * The {@link DefaultMapperFactory.MapperFactoryBuilder}.
      */
     @Autowired
-    protected Optional<MapperFactoryBuilder<?, ?>> mapperFactoryBuilder;
+    protected Optional<DefaultMapperFactory.MapperFactoryBuilder<?, ?>> mapperFactoryBuilder;
 
     /**
      * The {@link MapperFactory}.
@@ -62,7 +62,7 @@ public class OrikaAutoConfigurationDisabledTest {
     }
 
     /**
-     * Tests the {@link OrikaAutoConfiguration#orikaMapperFactory(MapperFactoryBuilder)}.
+     * Tests the {@link OrikaAutoConfiguration#orikaMapperFactory(DefaultMapperFactory.MapperFactoryBuilder)}.
      */
     @Test
     public void orikaMapperFactory_shouldNotBeCreated() {

@@ -97,9 +97,9 @@ public class PersonMapping implements OrikaMapperFactoryConfigurer {
 [Declarative Mapping Configuration]: http://orika-mapper.github.io/orika-docs/mappings-via-classmapbuilder.html
 [Advanced Mapping Configurations]: http://orika-mapper.github.io/orika-docs/advanced-mappings.html
 
-### Customizing `MapperFactoryBuilder`
+### Customizing `DefaultMapperFactory.MapperFactoryBuilder`
 
-If you need to customize the `MapperFactoryBuilder`,  
+If you need to customize the `DefaultMapperFactory.MapperFactoryBuilder`,  
 create an instance of `OrikaMapperFactoryBuilderConfigurer` within the application context.  
 
 For example:  
@@ -108,7 +108,7 @@ For example:
 @Component
 public class CustomOrikaMapperFactoryBuilderConfigurer implements OrikaMapperFactoryBuilderConfigurer {
     @Override
-    public void configure(MapperFactoryBuilder<?, ?> mapperFactoryBuilder) {
+    public void configure(DefaultMapperFactory.MapperFactoryBuilder<?, ?> mapperFactoryBuilder) {
         // Your customization code.
     }
 }

@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
-import ma.glasnost.orika.impl.DefaultMapperFactory.MapperFactoryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -31,7 +30,7 @@ public class OrikaAutoConfiguration {
     private final OrikaProperties orikaProperties;
 
     /**
-     * The {@link MapperFactoryBuilder}'s configurers.
+     * The {@link DefaultMapperFactory.MapperFactoryBuilder}'s configurers.
      */
     private final List<OrikaMapperFactoryBuilderConfigurer> mapperFactoryBuilderConfigurers;
 
@@ -44,7 +43,7 @@ public class OrikaAutoConfiguration {
      * Constructs an instance.
      *
      * @param orikaProperties the auto-configuration properties for Orika.
-     * @param mapperFactoryBuilderConfigurers the {@link MapperFactoryBuilder}'s configurers.
+     * @param mapperFactoryBuilderConfigurers the {@link DefaultMapperFactory.MapperFactoryBuilder}'s configurers.
      * @param mapperFactoryConfigurers the {@link MapperFactory}'s configurers.
      */
     @Autowired
@@ -64,7 +63,7 @@ public class OrikaAutoConfiguration {
      * Constructs an instance.
      *
      * @param orikaProperties the auto-configuration properties for Orika.
-     * @param mapperFactoryBuilderConfigurers the {@link MapperFactoryBuilder}'s configurers.
+     * @param mapperFactoryBuilderConfigurers the {@link DefaultMapperFactory.MapperFactoryBuilder}'s configurers.
      * @param mapperFactoryConfigurers the {@link MapperFactory}'s configurers.
      */
     public OrikaAutoConfiguration(
@@ -78,14 +77,14 @@ public class OrikaAutoConfiguration {
     }
 
     /**
-     * Creates a {@link MapperFactoryBuilder}.
+     * Creates a {@link DefaultMapperFactory.MapperFactoryBuilder}.
      *
-     * @return a {@link MapperFactoryBuilder}.
+     * @return a {@link DefaultMapperFactory.MapperFactoryBuilder}.
      */
     @Bean
     @ConditionalOnMissingBean
-    public MapperFactoryBuilder<?, ?> orikaMapperFactoryBuilder() {
-        log.debug("Creating a MapperFactoryBuilder");
+    public DefaultMapperFactory.MapperFactoryBuilder<?, ?> orikaMapperFactoryBuilder() {
+        log.debug("Creating a DefaultMapperFactory.MapperFactoryBuilder");
         DefaultMapperFactory.Builder mapperFactoryBuilder = new DefaultMapperFactory.Builder();
         orikaProperties.getUseBuiltinConverters().ifPresent(mapperFactoryBuilder::useBuiltinConverters);
         orikaProperties.getUseAutoMapping().ifPresent(mapperFactoryBuilder::useAutoMapping);
@@ -94,19 +93,19 @@ public class OrikaAutoConfiguration {
         orikaProperties.getFavorExtension().ifPresent(mapperFactoryBuilder::favorExtension);
         orikaProperties.getCaptureFieldContext().ifPresent(mapperFactoryBuilder::captureFieldContext);
         mapperFactoryBuilderConfigurers.forEach(configurer -> configurer.configure(mapperFactoryBuilder));
-        log.debug("Created a MapperFactoryBuilder: [{}]", mapperFactoryBuilder);
+        log.debug("Created a DefaultMapperFactory.MapperFactoryBuilder: [{}]", mapperFactoryBuilder);
         return mapperFactoryBuilder;
     }
 
     /**
      * Creates a {@link MapperFactory}.
      *
-     * @param mapperFactoryBuilder the {@link MapperFactoryBuilder}.
+     * @param mapperFactoryBuilder the {@link DefaultMapperFactory.MapperFactoryBuilder}.
      * @return a {@link MapperFactory}.
      */
     @Bean
     @ConditionalOnMissingBean
-    public MapperFactory orikaMapperFactory(MapperFactoryBuilder<?, ?> mapperFactoryBuilder) {
+    public MapperFactory orikaMapperFactory(DefaultMapperFactory.MapperFactoryBuilder<?, ?> mapperFactoryBuilder) {
         log.debug("Creating a MapperFactory");
         MapperFactory mapperFactory = mapperFactoryBuilder.build();
         mapperFactoryConfigurers.forEach(configurer -> configurer.configure(mapperFactory));
