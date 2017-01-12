@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * The {@link OrikaAutoConfiguration}'s test cases when using custom properties.
+ * The test cases of {@link OrikaAutoConfiguration} when using custom properties.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest({

@@ -7,7 +7,7 @@ import ma.glasnost.orika.impl.DefaultMapperFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * The auto-configuration properties for Orika.
+ * The configuration properties for Orika.
  */
 @ConfigurationProperties("orika")
 @Data
@@ -21,7 +21,7 @@ public class OrikaProperties {
 
     /**
      * Whether to use built-in converters.
-     * By default, follows Orika.
+     * Follows Orika's behavior by default.
      *
      * @see DefaultMapperFactory.MapperFactoryBuilder#useBuiltinConverters(boolean)
      */
@@ -29,7 +29,7 @@ public class OrikaProperties {
 
     /**
      * Whether to use auto-mapping.
-     * By default, follows Orika.
+     * Follows Orika's behavior by default.
      *
      * @see DefaultMapperFactory.MapperFactoryBuilder#useAutoMapping(boolean)
      */
@@ -37,7 +37,7 @@ public class OrikaProperties {
 
     /**
      * Whether to map null values.
-     * By default, follows Orika.
+     * Follows Orika's behavior by default.
      *
      * @see DefaultMapperFactory.MapperFactoryBuilder#mapNulls(boolean)
      */
@@ -46,7 +46,7 @@ public class OrikaProperties {
     /**
      * Whether to dump the current state of the mapping infrastructure objects
      * upon occurrence of an exception while mapping.
-     * By default, follows Orika.
+     * Follows Orika's behavior by default.
      *
      * @see DefaultMapperFactory.MapperFactoryBuilder#dumpStateOnException(boolean)
      */
@@ -54,7 +54,7 @@ public class OrikaProperties {
 
     /**
      * Whether the class-map should be considered 'abstract'.
-     * By default, follows Orika.
+     * Follows Orika's behavior by default.
      *
      * @see DefaultMapperFactory.MapperFactoryBuilder#favorExtension(boolean)
      */
@@ -62,7 +62,7 @@ public class OrikaProperties {
 
     /**
      * Whether full field context should be captured.
-     * By default, follows Orika.
+     * Follows Orika's behavior by default.
      *
      * @see DefaultMapperFactory.MapperFactoryBuilder#captureFieldContext(boolean)
      */

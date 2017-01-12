@@ -15,14 +15,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * The {@link OrikaAutoConfiguration}'s test cases when disabled.
+ * The test cases of {@link OrikaAutoConfiguration} when disabled.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest("orika.enabled=false")
 public class OrikaAutoConfigurationDisabledTest {
 
     /**
-     * The auto-configuration properties for Orika.
+     * The configuration properties for Orika.
      */
     @Autowired
     protected Optional<OrikaProperties> orikaProperties;
@@ -46,7 +46,7 @@ public class OrikaAutoConfigurationDisabledTest {
     protected Optional<MapperFacade> mapperFacade;
 
     /**
-     * Tests the {@link OrikaAutoConfiguration}'s configuration properties.
+     * Tests the configuration properties.
      */
     @Test
     public void orikaProperties_shouldNotBeCreated() {

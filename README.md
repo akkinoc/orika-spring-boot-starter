@@ -18,7 +18,7 @@
 
 ## Supported versions
 
-This artifact supports the following versions.  
+`orika-spring-boot-starter` supports the following versions.  
 Older versions might also work, but we have not tested it.  
 
 * Java 8
@@ -29,7 +29,7 @@ Older versions might also work, but we have not tested it.
 
 ### Adding dependency
 
-This artifact is published on maven central repository.  
+`orika-spring-boot-starter` is published on maven central repository.  
 If you are using maven, add the following dependency.  
 
 ```xml
@@ -73,6 +73,9 @@ PersonDestination destination = mapperFacade.map(source, PersonDestination.class
 If you need to customize the `MapperFactory`,  
 create an instance of `OrikaMapperFactoryConfigurer` within the application context.  
 
+`OrikaMapperFactoryConfigurer` components are auto-detected  
+and the `OrikaMapperFactoryConfigurer#configure(MapperFactory)` method is called.  
+
 For example:  
 
 ```java
@@ -102,6 +105,9 @@ public class PersonMapping implements OrikaMapperFactoryConfigurer {
 If you need to customize the `DefaultMapperFactory.MapperFactoryBuilder`,  
 create an instance of `OrikaMapperFactoryBuilderConfigurer` within the application context.  
 
+`OrikaMapperFactoryBuilderConfigurer` components are auto-detected  
+and the `OrikaMapperFactoryBuilderConfigurer#configure(DefaultMapperFactory.MapperFactoryBuilder)` method is called.  
+
 For example:  
 
 ```java
@@ -122,7 +128,7 @@ public class CustomOrikaMapperFactoryBuilderConfigurer implements OrikaMapperFac
 
 ## Configuration properties
 
-This artifact provides the following configuration properties.  
+`orika-spring-boot-starter` provides the following configuration properties.  
 These can be configured by your `application.yml` / `application.properties`.  
 
 ```yaml

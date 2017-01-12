@@ -3,7 +3,7 @@ package net.rakugakibox.spring.boot.orika;
 import ma.glasnost.orika.MapperFactory;
 
 /**
- * The {@link MapperFactory}'s configurer.
+ * The configurer of {@link MapperFactory}.
  */
 public interface OrikaMapperFactoryConfigurer {
 

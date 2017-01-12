@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * The configuration of {@link PersonSource} and {@link PersonDestination} mapping.
- * {@link OrikaMapperFactoryConfigurer}'s components are auto-detected
+ * {@link OrikaMapperFactoryConfigurer} components are auto-detected
  * and the {@link OrikaMapperFactoryConfigurer#configure(MapperFactory)} method is called.
  */
 @Component

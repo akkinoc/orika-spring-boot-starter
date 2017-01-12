@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * The {@link OrikaAutoConfiguration}'s test cases when customize {@link MapperFactory}.
+ * The test cases of {@link OrikaAutoConfiguration} when customize {@link MapperFactory}.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -27,14 +27,14 @@ public class OrikaAutoConfigurationMapperFactoryCustomizingTest {
     protected MapperFactory orikaMapperFactory;
 
     /**
-     * The {@link MapperFactory}'s configuration 1.
+     * The configuration 1 of {@link MapperFactory}.
      */
     @Autowired
     @Qualifier("orikaMapperFactoryConfiguration1")
     protected MapperFactoryConfiguration mapperFactoryConfiguration1;
 
     /**
-     * The {@link MapperFactory}'s configuration 1.
+     * The configuration 2 of {@link MapperFactory}.
      */
     @Autowired
     @Qualifier("orikaMapperFactoryConfiguration2")
@@ -58,9 +58,9 @@ public class OrikaAutoConfigurationMapperFactoryCustomizingTest {
     public static class ContextConfiguration {
 
         /**
-         * Creates a {@link MapperFactory}'s configuration 1.
+         * Creates a configuration 1 of {@link MapperFactory}.
          *
-         * @return a {@link MapperFactory}'s configuration 1.
+         * @return a configuration 1 of {@link MapperFactory}.
          */
         @Bean
         public MapperFactoryConfiguration orikaMapperFactoryConfiguration1() {
@@ -68,9 +68,9 @@ public class OrikaAutoConfigurationMapperFactoryCustomizingTest {
         }
 
         /**
-         * Creates a {@link MapperFactory}'s configuration 2.
+         * Creates a configuration 2 of {@link MapperFactory}.
          *
-         * @return a {@link MapperFactory}'s configuration 2.
+         * @return a configuration 2 of {@link MapperFactory}.
          */
         @Bean
         public MapperFactoryConfiguration orikaMapperFactoryConfiguration2() {
@@ -80,9 +80,9 @@ public class OrikaAutoConfigurationMapperFactoryCustomizingTest {
     }
 
     /**
-     * The {@link MapperFactory}'s configuration.
+     * The configuration of {@link MapperFactory}.
      */
-    public static class MapperFactoryConfiguration implements OrikaMapperFactoryConfigurer {
+    protected static class MapperFactoryConfiguration implements OrikaMapperFactoryConfigurer {
 
         /**
          * The passed {@link MapperFactory}.

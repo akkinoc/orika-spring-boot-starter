@@ -25,26 +25,26 @@ import org.springframework.context.annotation.Configuration;
 public class OrikaAutoConfiguration {
 
     /**
-     * The auto-configuration properties for Orika.
+     * The configuration properties for Orika.
      */
     private final OrikaProperties orikaProperties;
 
     /**
-     * The {@link DefaultMapperFactory.MapperFactoryBuilder}'s configurers.
+     * The configurers of {@link DefaultMapperFactory.MapperFactoryBuilder}.
      */
     private final List<OrikaMapperFactoryBuilderConfigurer> mapperFactoryBuilderConfigurers;
 
     /**
-     * The {@link MapperFactory}'s configurers.
+     * The configurers of {@link MapperFactory}.
      */
     private final List<OrikaMapperFactoryConfigurer> mapperFactoryConfigurers;
 
     /**
      * Constructs an instance.
      *
-     * @param orikaProperties the auto-configuration properties for Orika.
-     * @param mapperFactoryBuilderConfigurers the {@link DefaultMapperFactory.MapperFactoryBuilder}'s configurers.
-     * @param mapperFactoryConfigurers the {@link MapperFactory}'s configurers.
+     * @param orikaProperties the configuration properties for Orika.
+     * @param mapperFactoryBuilderConfigurers the configurers of {@link DefaultMapperFactory.MapperFactoryBuilder}.
+     * @param mapperFactoryConfigurers the configurers of {@link MapperFactory}.
      */
     @Autowired
     public OrikaAutoConfiguration(
@@ -62,9 +62,9 @@ public class OrikaAutoConfiguration {
     /**
      * Constructs an instance.
      *
-     * @param orikaProperties the auto-configuration properties for Orika.
-     * @param mapperFactoryBuilderConfigurers the {@link DefaultMapperFactory.MapperFactoryBuilder}'s configurers.
-     * @param mapperFactoryConfigurers the {@link MapperFactory}'s configurers.
+     * @param orikaProperties the configuration properties for Orika.
+     * @param mapperFactoryBuilderConfigurers the configurers of {@link DefaultMapperFactory.MapperFactoryBuilder}.
+     * @param mapperFactoryConfigurers the configurers of {@link MapperFactory}.
      */
     public OrikaAutoConfiguration(
             OrikaProperties orikaProperties,
