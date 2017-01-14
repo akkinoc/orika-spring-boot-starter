@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -25,65 +24,18 @@ import org.springframework.context.annotation.Configuration;
 public class OrikaAutoConfiguration {
 
     /**
-     * The configuration properties for Orika.
-     */
-    private final OrikaProperties orikaProperties;
-
-    /**
-     * The configurers of {@link DefaultMapperFactory.MapperFactoryBuilder}.
-     */
-    private final List<OrikaMapperFactoryBuilderConfigurer> mapperFactoryBuilderConfigurers;
-
-    /**
-     * The configurers of {@link MapperFactory}.
-     */
-    private final List<OrikaMapperFactoryConfigurer> mapperFactoryConfigurers;
-
-    /**
-     * Constructs an instance.
-     *
-     * @param orikaProperties the configuration properties for Orika.
-     * @param mapperFactoryBuilderConfigurers the configurers of {@link DefaultMapperFactory.MapperFactoryBuilder}.
-     * @param mapperFactoryConfigurers the configurers of {@link MapperFactory}.
-     */
-    @Autowired
-    public OrikaAutoConfiguration(
-            OrikaProperties orikaProperties,
-            Optional<List<OrikaMapperFactoryBuilderConfigurer>> mapperFactoryBuilderConfigurers,
-            Optional<List<OrikaMapperFactoryConfigurer>> mapperFactoryConfigurers
-    ) {
-        this(
-                orikaProperties,
-                mapperFactoryBuilderConfigurers.orElseGet(Collections::emptyList),
-                mapperFactoryConfigurers.orElseGet(Collections::emptyList)
-        );
-    }
-
-    /**
-     * Constructs an instance.
-     *
-     * @param orikaProperties the configuration properties for Orika.
-     * @param mapperFactoryBuilderConfigurers the configurers of {@link DefaultMapperFactory.MapperFactoryBuilder}.
-     * @param mapperFactoryConfigurers the configurers of {@link MapperFactory}.
-     */
-    public OrikaAutoConfiguration(
-            OrikaProperties orikaProperties,
-            List<OrikaMapperFactoryBuilderConfigurer> mapperFactoryBuilderConfigurers,
-            List<OrikaMapperFactoryConfigurer> mapperFactoryConfigurers
-    ) {
-        this.orikaProperties = orikaProperties;
-        this.mapperFactoryBuilderConfigurers = mapperFactoryBuilderConfigurers;
-        this.mapperFactoryConfigurers = mapperFactoryConfigurers;
-    }
-
-    /**
      * Creates a {@link DefaultMapperFactory.MapperFactoryBuilder}.
      *
+     * @param orikaProperties the configuration properties for Orika.
+     * @param mapperFactoryBuilderConfigurers the configurers of {@link DefaultMapperFactory.MapperFactoryBuilder}.
      * @return a {@link DefaultMapperFactory.MapperFactoryBuilder}.
      */
     @Bean
     @ConditionalOnMissingBean
-    public DefaultMapperFactory.MapperFactoryBuilder<?, ?> orikaMapperFactoryBuilder() {
+    public DefaultMapperFactory.MapperFactoryBuilder<?, ?> orikaMapperFactoryBuilder(
+            OrikaProperties orikaProperties,
+            Optional<List<OrikaMapperFactoryBuilderConfigurer>> mapperFactoryBuilderConfigurers
+    ) {
         log.debug("Creating a DefaultMapperFactory.MapperFactoryBuilder");
         DefaultMapperFactory.Builder mapperFactoryBuilder = new DefaultMapperFactory.Builder();
         orikaProperties.getUseBuiltinConverters().ifPresent(mapperFactoryBuilder::useBuiltinConverters);
@@ -92,7 +44,9 @@ public class OrikaAutoConfiguration {
         orikaProperties.getDumpStateOnException().ifPresent(mapperFactoryBuilder::dumpStateOnException);
         orikaProperties.getFavorExtension().ifPresent(mapperFactoryBuilder::favorExtension);
         orikaProperties.getCaptureFieldContext().ifPresent(mapperFactoryBuilder::captureFieldContext);
-        mapperFactoryBuilderConfigurers.forEach(configurer -> configurer.configure(mapperFactoryBuilder));
+        mapperFactoryBuilderConfigurers
+                .orElseGet(Collections::emptyList)
+                .forEach(configurer -> configurer.configure(mapperFactoryBuilder));
         log.debug("Created a DefaultMapperFactory.MapperFactoryBuilder: [{}]", mapperFactoryBuilder);
         return mapperFactoryBuilder;
     }
@@ -101,14 +55,20 @@ public class OrikaAutoConfiguration {
      * Creates a {@link MapperFactory}.
      *
      * @param mapperFactoryBuilder the {@link DefaultMapperFactory.MapperFactoryBuilder}.
+     * @param mapperFactoryConfigurers the configurers of {@link MapperFactory}.
      * @return a {@link MapperFactory}.
      */
     @Bean
     @ConditionalOnMissingBean
-    public MapperFactory orikaMapperFactory(DefaultMapperFactory.MapperFactoryBuilder<?, ?> mapperFactoryBuilder) {
+    public MapperFactory orikaMapperFactory(
+            DefaultMapperFactory.MapperFactoryBuilder<?, ?> mapperFactoryBuilder,
+            Optional<List<OrikaMapperFactoryConfigurer>> mapperFactoryConfigurers
+    ) {
         log.debug("Creating a MapperFactory");
         MapperFactory mapperFactory = mapperFactoryBuilder.build();
-        mapperFactoryConfigurers.forEach(configurer -> configurer.configure(mapperFactory));
+        mapperFactoryConfigurers
+                .orElseGet(Collections::emptyList)
+                .forEach(configurer -> configurer.configure(mapperFactory));
         log.debug("Created a MapperFactory: [{}]", mapperFactory);
         return mapperFactory;
     }

@@ -54,7 +54,7 @@ public class OrikaAutoConfigurationBeansTest {
     }
 
     /**
-     * Tests the {@link OrikaAutoConfiguration#orikaMapperFactoryBuilder()}.
+     * Tests the {@link OrikaAutoConfiguration#orikaMapperFactoryBuilder(OrikaProperties, Optional)}.
      */
     @Test
     public void orikaMapperFactoryBuilder_shouldBeCreated() {
@@ -62,7 +62,7 @@ public class OrikaAutoConfigurationBeansTest {
     }
 
     /**
-     * Tests the {@link OrikaAutoConfiguration#orikaMapperFactory(DefaultMapperFactory.MapperFactoryBuilder)}.
+     * Tests the {@link OrikaAutoConfiguration#orikaMapperFactory(DefaultMapperFactory.MapperFactoryBuilder, Optional)}.
      */
     @Test
     public void orikaMapperFactory_shouldBeCreated() {
