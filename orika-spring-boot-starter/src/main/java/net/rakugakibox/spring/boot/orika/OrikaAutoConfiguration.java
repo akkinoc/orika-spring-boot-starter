@@ -36,7 +36,6 @@ public class OrikaAutoConfiguration {
             OrikaProperties orikaProperties,
             Optional<List<OrikaMapperFactoryBuilderConfigurer>> mapperFactoryBuilderConfigurers
     ) {
-        log.debug("Creating a DefaultMapperFactory.MapperFactoryBuilder");
         DefaultMapperFactory.Builder mapperFactoryBuilder = new DefaultMapperFactory.Builder();
         orikaProperties.getUseBuiltinConverters().ifPresent(mapperFactoryBuilder::useBuiltinConverters);
         orikaProperties.getUseAutoMapping().ifPresent(mapperFactoryBuilder::useAutoMapping);
@@ -64,7 +63,6 @@ public class OrikaAutoConfiguration {
             DefaultMapperFactory.MapperFactoryBuilder<?, ?> mapperFactoryBuilder,
             Optional<List<OrikaMapperFactoryConfigurer>> mapperFactoryConfigurers
     ) {
-        log.debug("Creating a MapperFactory");
         MapperFactory mapperFactory = mapperFactoryBuilder.build();
         mapperFactoryConfigurers
                 .orElseGet(Collections::emptyList)
@@ -82,7 +80,6 @@ public class OrikaAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean
     public MapperFacade orikaMapperFacade(MapperFactory mapperFactory) {
-        log.debug("Creating a MapperFactory");
         MapperFacade mapperFacade = mapperFactory.getMapperFacade();
         log.debug("Created a MapperFacade: [{}]", mapperFacade);
         return mapperFacade;
