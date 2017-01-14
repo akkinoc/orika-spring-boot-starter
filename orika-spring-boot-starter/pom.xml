@@ -202,6 +202,7 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <locale>en</locale>
                     <quiet>true</quiet>
                 </configuration>
             </plugin>
@@ -214,6 +215,9 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <locales>en</locales>
+                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-install-plugin</artifactId>
@@ -255,6 +259,7 @@
             <plugin>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <configuration>
+                    <locale>en</locale>
                     <quiet>true</quiet>
                 </configuration>
             </plugin>
