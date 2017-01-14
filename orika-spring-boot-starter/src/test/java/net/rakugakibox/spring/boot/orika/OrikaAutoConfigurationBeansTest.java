@@ -46,7 +46,7 @@ public class OrikaAutoConfigurationBeansTest {
     protected Optional<MapperFacade> mapperFacade;
 
     /**
-     * Tests the configuration properties.
+     * Tests the configuration properties for Orika.
      */
     @Test
     public void orikaProperties_shouldBeCreated() {

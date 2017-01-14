@@ -8,7 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * The sample application of Spring Boot Starter for Orika.
+ * The sample application of "orika-spring-boot-starter".
  * Maps {@link PersonSource} to {@link PersonDestination}.
  */
 @SpringBootApplication
