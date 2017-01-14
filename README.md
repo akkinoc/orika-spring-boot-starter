@@ -1,11 +1,14 @@
 # orika-spring-boot-starter
 
 [![Maven Central][Maven Central Badge]][Maven Central]
+[![javadoc.io][javadoc.io Badge]][javadoc.io]
 [![CircleCI][CircleCI Badge]][CircleCI]
 [![Codecov][Codecov Badge]][Codecov]
 
 [Maven Central Badge]: https://maven-badges.herokuapp.com/maven-central/net.rakugakibox.spring.boot/orika-spring-boot-starter/badge.svg
 [Maven Central]: https://maven-badges.herokuapp.com/maven-central/net.rakugakibox.spring.boot/orika-spring-boot-starter
+[javadoc.io]: https://www.javadoc.io/doc/net.rakugakibox.spring.boot/orika-spring-boot-starter
+[javadoc.io Badge]: https://www.javadoc.io/badge/net.rakugakibox.spring.boot/orika-spring-boot-starter.svg
 [CircleCI Badge]: https://circleci.com/gh/akihyro/orika-spring-boot-starter.svg?style=shield
 [CircleCI]: https://circleci.com/gh/akihyro/orika-spring-boot-starter
 [Codecov Badge]: https://codecov.io/gh/akihyro/orika-spring-boot-starter/branch/master/graph/badge.svg
