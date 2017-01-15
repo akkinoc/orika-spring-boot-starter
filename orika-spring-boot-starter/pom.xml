@@ -278,6 +278,13 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.7.8</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
                 <configuration>
                     <excludes>
                         <exclude>net/rakugakibox/spring/boot/orika/OrikaProperties.class</exclude>
