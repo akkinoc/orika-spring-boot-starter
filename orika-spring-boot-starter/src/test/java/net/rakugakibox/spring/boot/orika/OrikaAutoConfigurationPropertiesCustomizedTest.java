@@ -1,9 +1,7 @@
 package net.rakugakibox.spring.boot.orika;
 
-import java.util.Optional;
-
 import ma.glasnost.orika.OrikaSystemProperties;
-import ma.glasnost.orika.impl.DefaultMapperFactory;
+import ma.glasnost.orika.impl.DefaultMapperFactory.MapperFactoryBuilder;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -16,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * The test cases of {@link OrikaAutoConfiguration} when using custom properties.
+ * The test of {@link OrikaAutoConfiguration} when properties are customized.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest({
@@ -27,13 +25,13 @@ import org.springframework.test.context.junit4.SpringRunner;
         "orika.favorExtension=true",
         "orika.captureFieldContext=true"
 })
-public class OrikaAutoConfigurationCustomPropertiesTest {
+public class OrikaAutoConfigurationPropertiesCustomizedTest {
 
     /**
-     * The {@link DefaultMapperFactory.MapperFactoryBuilder}.
+     * The {@link MapperFactoryBuilder}.
      */
     @Autowired
-    protected DefaultMapperFactory.MapperFactoryBuilder<?, ?> mapperFactoryBuilder;
+    protected MapperFactoryBuilder<?, ?> orikaMapperFactoryBuilder;
 
     /**
      * Initializes Orika's default properties.
@@ -62,11 +60,11 @@ public class OrikaAutoConfigurationCustomPropertiesTest {
     }
 
     /**
-     * Tests the {@link OrikaAutoConfiguration#orikaMapperFactoryBuilder(OrikaProperties, Optional)}.
+     * Tests the {@link MapperFactoryBuilder}.
      */
     @Test
-    public void orikaMapperFactoryBuilder_propertiesShouldBeCustomValues() {
-        assertThat(mapperFactoryBuilder)
+    public void orikaMapperFactoryBuilder() {
+        assertThat(orikaMapperFactoryBuilder)
                 .hasFieldOrPropertyWithValue("useBuiltinConverters", false)
                 .hasFieldOrPropertyWithValue("useAutoMapping", false)
                 .hasFieldOrPropertyWithValue("mapNulls", false)

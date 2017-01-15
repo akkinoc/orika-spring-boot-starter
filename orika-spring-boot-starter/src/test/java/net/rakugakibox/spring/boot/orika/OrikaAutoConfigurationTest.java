@@ -2,8 +2,10 @@ package net.rakugakibox.spring.boot.orika;
 
 import java.util.Optional;
 
+import ma.glasnost.orika.MapperFacade;
+import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.OrikaSystemProperties;
-import ma.glasnost.orika.impl.DefaultMapperFactory;
+import ma.glasnost.orika.impl.DefaultMapperFactory.MapperFactoryBuilder;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -16,17 +18,35 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * The test cases of {@link OrikaAutoConfiguration} when using default properties.
+ * The test of {@link OrikaAutoConfiguration}.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class OrikaAutoConfigurationDefaultPropertiesTest {
+public class OrikaAutoConfigurationTest {
 
     /**
-     * The {@link DefaultMapperFactory.MapperFactoryBuilder}.
+     * The configuration properties for Orika.
      */
     @Autowired
-    protected DefaultMapperFactory.MapperFactoryBuilder<?, ?> mapperFactoryBuilder;
+    protected Optional<OrikaProperties> orikaProperties;
+
+    /**
+     * The {@link MapperFactoryBuilder}.
+     */
+    @Autowired
+    protected Optional<MapperFactoryBuilder<?, ?>> orikaMapperFactoryBuilder;
+
+    /**
+     * The {@link MapperFactory}.
+     */
+    @Autowired
+    protected Optional<MapperFactory> orikaMapperFactory;
+
+    /**
+     * The {@link MapperFacade}.
+     */
+    @Autowired
+    protected Optional<MapperFacade> orikaMapperFacade;
 
     /**
      * Initializes Orika's default properties.
@@ -55,17 +75,44 @@ public class OrikaAutoConfigurationDefaultPropertiesTest {
     }
 
     /**
-     * Tests the {@link OrikaAutoConfiguration#orikaMapperFactoryBuilder(OrikaProperties, Optional)}.
+     * Tests the configuration properties for Orika.
      */
     @Test
-    public void orikaMapperFactoryBuilder_propertiesShouldBeDefaultValues() {
-        assertThat(mapperFactoryBuilder)
-                .hasFieldOrPropertyWithValue("useBuiltinConverters", true)
-                .hasFieldOrPropertyWithValue("useAutoMapping", true)
-                .hasFieldOrPropertyWithValue("mapNulls", true)
-                .hasFieldOrPropertyWithValue("dumpStateOnException", false)
-                .hasFieldOrPropertyWithValue("favorExtension", false)
-                .hasFieldOrPropertyWithValue("captureFieldContext", false);
+    public void orikaProperties() {
+        assertThat(orikaProperties).isPresent();
+    }
+
+    /**
+     * Tests the {@link MapperFactoryBuilder}.
+     */
+    @Test
+    public void orikaMapperFactoryBuilder() {
+        assertThat(orikaMapperFactoryBuilder).isPresent()
+                .hasValueSatisfying(orikaMapperFactoryBuilder ->
+                    assertThat(orikaMapperFactoryBuilder)
+                            .hasFieldOrPropertyWithValue("useBuiltinConverters", true)
+                            .hasFieldOrPropertyWithValue("useAutoMapping", true)
+                            .hasFieldOrPropertyWithValue("mapNulls", true)
+                            .hasFieldOrPropertyWithValue("dumpStateOnException", false)
+                            .hasFieldOrPropertyWithValue("favorExtension", false)
+                            .hasFieldOrPropertyWithValue("captureFieldContext", false)
+                );
+    }
+
+    /**
+     * Tests the {@link MapperFactory}.
+     */
+    @Test
+    public void orikaMapperFactory() {
+        assertThat(orikaMapperFactory).isPresent();
+    }
+
+    /**
+     * Tests the {@link MapperFacade}.
+     */
+    @Test
+    public void orikaMapperFacade() {
+        assertThat(orikaMapperFacade).isPresent();
     }
 
     /**

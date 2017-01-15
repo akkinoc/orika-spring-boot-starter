@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
+import ma.glasnost.orika.impl.DefaultMapperFactory.MapperFactoryBuilder;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -24,65 +25,65 @@ import org.springframework.context.annotation.Configuration;
 public class OrikaAutoConfiguration {
 
     /**
-     * Creates a {@link DefaultMapperFactory.MapperFactoryBuilder}.
+     * Creates a {@link MapperFactoryBuilder}.
      *
      * @param orikaProperties the configuration properties for Orika.
-     * @param mapperFactoryBuilderConfigurers the configurers of {@link DefaultMapperFactory.MapperFactoryBuilder}.
-     * @return a {@link DefaultMapperFactory.MapperFactoryBuilder}.
+     * @param orikaMapperFactoryBuilderConfigurers the configurers of {@link MapperFactoryBuilder}.
+     * @return a {@link MapperFactoryBuilder}.
      */
     @Bean
     @ConditionalOnMissingBean
-    public DefaultMapperFactory.MapperFactoryBuilder<?, ?> orikaMapperFactoryBuilder(
+    public MapperFactoryBuilder<?, ?> orikaMapperFactoryBuilder(
             OrikaProperties orikaProperties,
-            Optional<List<OrikaMapperFactoryBuilderConfigurer>> mapperFactoryBuilderConfigurers
+            Optional<List<OrikaMapperFactoryBuilderConfigurer>> orikaMapperFactoryBuilderConfigurers
     ) {
-        DefaultMapperFactory.Builder mapperFactoryBuilder = new DefaultMapperFactory.Builder();
-        orikaProperties.getUseBuiltinConverters().ifPresent(mapperFactoryBuilder::useBuiltinConverters);
-        orikaProperties.getUseAutoMapping().ifPresent(mapperFactoryBuilder::useAutoMapping);
-        orikaProperties.getMapNulls().ifPresent(mapperFactoryBuilder::mapNulls);
-        orikaProperties.getDumpStateOnException().ifPresent(mapperFactoryBuilder::dumpStateOnException);
-        orikaProperties.getFavorExtension().ifPresent(mapperFactoryBuilder::favorExtension);
-        orikaProperties.getCaptureFieldContext().ifPresent(mapperFactoryBuilder::captureFieldContext);
-        mapperFactoryBuilderConfigurers
+        DefaultMapperFactory.Builder orikaMapperFactoryBuilder = new DefaultMapperFactory.Builder();
+        orikaProperties.getUseBuiltinConverters().ifPresent(orikaMapperFactoryBuilder::useBuiltinConverters);
+        orikaProperties.getUseAutoMapping().ifPresent(orikaMapperFactoryBuilder::useAutoMapping);
+        orikaProperties.getMapNulls().ifPresent(orikaMapperFactoryBuilder::mapNulls);
+        orikaProperties.getDumpStateOnException().ifPresent(orikaMapperFactoryBuilder::dumpStateOnException);
+        orikaProperties.getFavorExtension().ifPresent(orikaMapperFactoryBuilder::favorExtension);
+        orikaProperties.getCaptureFieldContext().ifPresent(orikaMapperFactoryBuilder::captureFieldContext);
+        orikaMapperFactoryBuilderConfigurers
                 .orElseGet(Collections::emptyList)
-                .forEach(configurer -> configurer.configure(mapperFactoryBuilder));
-        log.debug("Created a DefaultMapperFactory.MapperFactoryBuilder: [{}]", mapperFactoryBuilder);
-        return mapperFactoryBuilder;
+                .forEach(configurer -> configurer.configure(orikaMapperFactoryBuilder));
+        log.debug("Created a MapperFactoryBuilder: [{}]", orikaMapperFactoryBuilder);
+        return orikaMapperFactoryBuilder;
     }
 
     /**
      * Creates a {@link MapperFactory}.
      *
-     * @param mapperFactoryBuilder the {@link DefaultMapperFactory.MapperFactoryBuilder}.
-     * @param mapperFactoryConfigurers the configurers of {@link MapperFactory}.
+     * @param orikaMapperFactoryBuilder the {@link MapperFactoryBuilder}.
+     * @param orikaMapperFactoryConfigurers the configurers of {@link MapperFactory}.
      * @return a {@link MapperFactory}.
      */
     @Bean
     @ConditionalOnMissingBean
     public MapperFactory orikaMapperFactory(
-            DefaultMapperFactory.MapperFactoryBuilder<?, ?> mapperFactoryBuilder,
-            Optional<List<OrikaMapperFactoryConfigurer>> mapperFactoryConfigurers
+            MapperFactoryBuilder<?, ?> orikaMapperFactoryBuilder,
+            Optional<List<OrikaMapperFactoryConfigurer>> orikaMapperFactoryConfigurers
     ) {
-        MapperFactory mapperFactory = mapperFactoryBuilder.build();
-        mapperFactoryConfigurers
+        MapperFactory orikaMapperFactory = orikaMapperFactoryBuilder.build();
+        orikaMapperFactoryConfigurers
                 .orElseGet(Collections::emptyList)
-                .forEach(configurer -> configurer.configure(mapperFactory));
-        log.debug("Created a MapperFactory: [{}]", mapperFactory);
-        return mapperFactory;
+                .forEach(configurer -> configurer.configure(orikaMapperFactory));
+        log.debug("Created a MapperFactory: [{}]", orikaMapperFactory);
+        return orikaMapperFactory;
     }
 
     /**
      * Creates a {@link MapperFacade}.
      *
-     * @param mapperFactory the {@link MapperFactory}.
+     * @param orikaMapperFactory the {@link MapperFactory}.
      * @return a {@link MapperFacade}.
      */
     @Bean
     @ConditionalOnMissingBean
-    public MapperFacade orikaMapperFacade(MapperFactory mapperFactory) {
-        MapperFacade mapperFacade = mapperFactory.getMapperFacade();
-        log.debug("Created a MapperFacade: [{}]", mapperFacade);
-        return mapperFacade;
+    public MapperFacade orikaMapperFacade(MapperFactory orikaMapperFactory) {
+        MapperFacade orikaMapperFacade = orikaMapperFactory.getMapperFacade();
+        log.debug("Created a MapperFacade: [{}]", orikaMapperFacade);
+        return orikaMapperFacade;
     }
 
 }

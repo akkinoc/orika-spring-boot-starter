@@ -1,17 +1,17 @@
 package net.rakugakibox.spring.boot.orika;
 
-import ma.glasnost.orika.impl.DefaultMapperFactory;
+import ma.glasnost.orika.impl.DefaultMapperFactory.MapperFactoryBuilder;
 
 /**
- * The configurer of {@link DefaultMapperFactory.MapperFactoryBuilder}.
+ * The configurer of {@link MapperFactoryBuilder}.
  */
 public interface OrikaMapperFactoryBuilderConfigurer {
 
     /**
-     * Configures the {@link DefaultMapperFactory.MapperFactoryBuilder}.
+     * Configures the {@link MapperFactoryBuilder}.
      *
-     * @param mapperFactoryBuilder the {@link DefaultMapperFactory.MapperFactoryBuilder} to be configured.
+     * @param orikaMapperFactoryBuilder the {@link MapperFactoryBuilder}.
      */
-    void configure(DefaultMapperFactory.MapperFactoryBuilder<?, ?> mapperFactoryBuilder);
+    void configure(MapperFactoryBuilder<?, ?> orikaMapperFactoryBuilder);
 
 }

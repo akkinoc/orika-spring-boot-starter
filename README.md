@@ -55,7 +55,7 @@ For example:
 
 ```java
 @Autowired
-private MapperFacade mapperFacade;
+private MapperFacade orikaMapperFacade;
 ```
 
 ### Mapping your beans
@@ -69,7 +69,7 @@ PersonSource source = new PersonSource();
 source.setFirstName("John");
 source.setLastName("Smith");
 source.setAge(23);
-PersonDestination destination = mapperFacade.map(source, PersonDestination.class);
+PersonDestination destination = orikaMapperFacade.map(source, PersonDestination.class);
 ```
 
 ## Customizing
@@ -88,8 +88,8 @@ For example:
 @Component
 public class PersonMapping implements OrikaMapperFactoryConfigurer {
     @Override
-    public void configure(MapperFactory mapperFactory) {
-        mapperFactory.classMap(PersonSource.class, PersonDestination.class)
+    public void configure(MapperFactory orikaMapperFactory) {
+        orikaMapperFactory.classMap(PersonSource.class, PersonDestination.class)
                 .field("firstName", "givenName")
                 .field("lastName", "sirName")
                 .byDefault()
@@ -106,13 +106,13 @@ public class PersonMapping implements OrikaMapperFactoryConfigurer {
 [Declarative Mapping Configuration]: http://orika-mapper.github.io/orika-docs/mappings-via-classmapbuilder.html
 [Advanced Mapping Configurations]: http://orika-mapper.github.io/orika-docs/advanced-mappings.html
 
-### Customizing the `DefaultMapperFactory.MapperFactoryBuilder`
+### Customizing the `MapperFactoryBuilder`
 
-If you need to customize the `DefaultMapperFactory.MapperFactoryBuilder`,  
+If you need to customize the `MapperFactoryBuilder`,  
 create an instance of `OrikaMapperFactoryBuilderConfigurer` within the application context.  
 
 `OrikaMapperFactoryBuilderConfigurer` components are auto-detected  
-and the `OrikaMapperFactoryBuilderConfigurer#configure(DefaultMapperFactory.MapperFactoryBuilder)` method is called.  
+and the `OrikaMapperFactoryBuilderConfigurer#configure(MapperFactoryBuilder)` method is called.  
 
 For example:  
 
@@ -120,7 +120,7 @@ For example:
 @Component
 public class CustomOrikaMapperFactoryBuilderConfigurer implements OrikaMapperFactoryBuilderConfigurer {
     @Override
-    public void configure(DefaultMapperFactory.MapperFactoryBuilder<?, ?> mapperFactoryBuilder) {
+    public void configure(MapperFactoryBuilder<?, ?> orikaMapperFactoryBuilder) {
         // Your customization code.
     }
 }

@@ -19,7 +19,7 @@ public class Application implements ApplicationRunner {
      * The Orika's mapper interface.
      * This object is managed by the application context.
      */
-    private final MapperFacade mapperFacade;
+    private final MapperFacade orikaMapperFacade;
 
     /** {@inheritDoc} */
     @Override
@@ -31,7 +31,7 @@ public class Application implements ApplicationRunner {
         source.setAge(23);
 
         System.out.println(source);  // => "PersonSource(firstName=John, lastName=Smith, age=23)"
-        PersonDestination destination = mapperFacade.map(source, PersonDestination.class);
+        PersonDestination destination = orikaMapperFacade.map(source, PersonDestination.class);
         System.out.println(destination);  // => "PersonDestination(givenName=John, sirName=Smith, age=23)"
 
     }

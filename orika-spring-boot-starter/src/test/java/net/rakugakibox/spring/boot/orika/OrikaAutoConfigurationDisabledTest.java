@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
-import ma.glasnost.orika.impl.DefaultMapperFactory;
+import ma.glasnost.orika.impl.DefaultMapperFactory.MapperFactoryBuilder;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * The test cases of {@link OrikaAutoConfiguration} when disabled.
+ * The test of {@link OrikaAutoConfiguration} when disabled.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest("orika.enabled=false")
@@ -28,53 +28,53 @@ public class OrikaAutoConfigurationDisabledTest {
     protected Optional<OrikaProperties> orikaProperties;
 
     /**
-     * The {@link DefaultMapperFactory.MapperFactoryBuilder}.
+     * The {@link MapperFactoryBuilder}.
      */
     @Autowired
-    protected Optional<DefaultMapperFactory.MapperFactoryBuilder<?, ?>> mapperFactoryBuilder;
+    protected Optional<MapperFactoryBuilder<?, ?>> orikaMapperFactoryBuilder;
 
     /**
      * The {@link MapperFactory}.
      */
     @Autowired
-    protected Optional<MapperFactory> mapperFactory;
+    protected Optional<MapperFactory> orikaMapperFactory;
 
     /**
      * The {@link MapperFacade}.
      */
     @Autowired
-    protected Optional<MapperFacade> mapperFacade;
+    protected Optional<MapperFacade> orikaMapperFacade;
 
     /**
      * Tests the configuration properties for Orika.
      */
     @Test
-    public void orikaProperties_shouldNotBeCreated() {
+    public void orikaProperties() {
         assertThat(orikaProperties).isNotPresent();
     }
 
     /**
-     * Tests the {@link OrikaAutoConfiguration#orikaMapperFactoryBuilder(OrikaProperties, Optional)}.
+     * Tests the {@link MapperFactoryBuilder}.
      */
     @Test
-    public void orikaMapperFactoryBuilder_shouldNotBeCreated() {
-        assertThat(mapperFactoryBuilder).isNotPresent();
+    public void orikaMapperFactoryBuilder() {
+        assertThat(orikaMapperFactoryBuilder).isNotPresent();
     }
 
     /**
-     * Tests the {@link OrikaAutoConfiguration#orikaMapperFactory(DefaultMapperFactory.MapperFactoryBuilder, Optional)}.
+     * Tests the {@link MapperFactory}.
      */
     @Test
-    public void orikaMapperFactory_shouldNotBeCreated() {
-        assertThat(mapperFactory).isNotPresent();
+    public void orikaMapperFactory() {
+        assertThat(orikaMapperFactory).isNotPresent();
     }
 
     /**
-     * Tests the {@link OrikaAutoConfiguration#orikaMapperFacade(MapperFactory)}.
+     * Tests the {@link MapperFacade}.
      */
     @Test
-    public void orikaMapperFacade_shouldNotBeCreated() {
-        assertThat(mapperFacade).isNotPresent();
+    public void orikaMapperFacade() {
+        assertThat(orikaMapperFacade).isNotPresent();
     }
 
     /**

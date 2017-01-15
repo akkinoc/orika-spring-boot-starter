@@ -14,8 +14,8 @@ public class PersonMapping implements OrikaMapperFactoryConfigurer {
 
     /** {@inheritDoc} */
     @Override
-    public void configure(MapperFactory mapperFactory) {
-        mapperFactory.classMap(PersonSource.class, PersonDestination.class)
+    public void configure(MapperFactory orikaMapperFactory) {
+        orikaMapperFactory.classMap(PersonSource.class, PersonDestination.class)
                 .field("firstName", "givenName")
                 .field("lastName", "sirName")
                 .byDefault()
