@@ -33,7 +33,7 @@ Older versions might also work, but we have not tested it.
 
 ## Usage
 
-### Adding dependency
+### Adding the dependency
 
 `orika-spring-boot-starter` is published on maven central repository.  
 If you are using maven, add the following dependency.  
@@ -46,7 +46,7 @@ If you are using maven, add the following dependency.
 </dependency>
 ```
 
-### Injecting `MapperFacade`
+### Injecting the `MapperFacade`
 
 The `MapperFacade` (Orika's mapper interface) is managed by the application context.  
 Inject the `MapperFacade` into your code.  
@@ -74,7 +74,7 @@ PersonDestination destination = mapperFacade.map(source, PersonDestination.class
 
 ## Customizing
 
-### Customizing `MapperFactory`
+### Customizing the `MapperFactory`
 
 If you need to customize the `MapperFactory`,  
 create an instance of `OrikaMapperFactoryConfigurer` within the application context.  
@@ -106,7 +106,7 @@ public class PersonMapping implements OrikaMapperFactoryConfigurer {
 [Declarative Mapping Configuration]: http://orika-mapper.github.io/orika-docs/mappings-via-classmapbuilder.html
 [Advanced Mapping Configurations]: http://orika-mapper.github.io/orika-docs/advanced-mappings.html
 
-### Customizing `DefaultMapperFactory.MapperFactoryBuilder`
+### Customizing the `DefaultMapperFactory.MapperFactoryBuilder`
 
 If you need to customize the `DefaultMapperFactory.MapperFactoryBuilder`,  
 create an instance of `OrikaMapperFactoryBuilderConfigurer` within the application context.  
