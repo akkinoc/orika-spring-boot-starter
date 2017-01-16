@@ -143,23 +143,23 @@ orika:
   # Defaults to true.
   enabled: true
   # Whether to use built-in converters.
-  # By default, follows Orika.
+  # Follows Orika's behavior by default.
   useBuiltinConverters: true
   # Whether to use auto-mapping.
-  # By default, follows Orika.
+  # Follows Orika's behavior by default.
   useAutoMapping: true
   # Whether to map null values.
-  # By default, follows Orika.
+  # Follows Orika's behavior by default.
   mapNulls: true
   # Whether to dump the current state of the mapping infrastructure objects
   # upon occurrence of an exception while mapping.
-  # By default, follows Orika.
+  # Follows Orika's behavior by default.
   dumpStateOnException: false
   # Whether the class-map should be considered 'abstract'.
-  # By default, follows Orika.
+  # Follows Orika's behavior by default.
   favorExtension: false
   # Whether full field context should be captured.
-  # By default, follows Orika.
+  # Follows Orika's behavior by default.
   captureFieldContext: false
 ```
 
