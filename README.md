@@ -28,7 +28,7 @@
 Older versions might also work, but we have not tested it.  
 
 * Java 8
-* Spring Boot 1.4.3 or higher
+* Spring Boot 1.5.2 or higher
 * Orika 1.5.0 or higher
 
 ## Usage
@@ -76,11 +76,10 @@ PersonDestination destination = orikaMapperFacade.map(source, PersonDestination.
 
 ### Customizing the `MapperFactory`
 
-If you need to customize the `MapperFactory`,  
+If you need to customize the `MapperFactory`,
 create an instance of `OrikaMapperFactoryConfigurer` within the application context.  
-
-`OrikaMapperFactoryConfigurer` components are auto-detected  
-and the `OrikaMapperFactoryConfigurer#configure(MapperFactory)` method is called.  
+`OrikaMapperFactoryConfigurer` components are auto-detected
+and the `configure(MapperFactory)` method is called.  
 
 For example:  
 
@@ -98,7 +97,7 @@ public class PersonMapping implements OrikaMapperFactoryConfigurer {
 }
 ```
 
-#### See Also: Orika User Guide
+See also the Orika official documents:  
 
 * [Declarative Mapping Configuration]
 * [Advanced Mapping Configurations]
@@ -108,11 +107,10 @@ public class PersonMapping implements OrikaMapperFactoryConfigurer {
 
 ### Customizing the `MapperFactoryBuilder`
 
-If you need to customize the `MapperFactoryBuilder`,  
+If you need to customize the `MapperFactoryBuilder`,
 create an instance of `OrikaMapperFactoryBuilderConfigurer` within the application context.  
-
-`OrikaMapperFactoryBuilderConfigurer` components are auto-detected  
-and the `OrikaMapperFactoryBuilderConfigurer#configure(MapperFactoryBuilder)` method is called.  
+`OrikaMapperFactoryBuilderConfigurer` components are auto-detected
+and the `configure(MapperFactoryBuilder)` method is called.  
 
 For example:  
 
@@ -126,7 +124,7 @@ public class CustomOrikaMapperFactoryBuilderConfigurer implements OrikaMapperFac
 }
 ```
 
-#### See Also: Orika User Guide
+See also the Orika official documents:  
 
 * [MapperFactory Configuration]
 
@@ -135,7 +133,7 @@ public class CustomOrikaMapperFactoryBuilderConfigurer implements OrikaMapperFac
 ## Configuration properties
 
 "orika-spring-boot-starter" provides the following configuration properties.  
-These can be configured by your `application.yml` / `application.properties`.  
+These can configure by your "application.yml" / "application.properties".  
 
 ```yaml
 orika:
