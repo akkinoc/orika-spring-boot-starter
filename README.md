@@ -24,7 +24,7 @@
 
 ## Supported versions
 
-`orika-spring-boot-starter` supports the following versions.  
+"orika-spring-boot-starter" supports the following versions.  
 Older versions might also work, but we have not tested it.  
 
 * Java 8
@@ -35,7 +35,7 @@ Older versions might also work, but we have not tested it.
 
 ### Adding the dependency
 
-`orika-spring-boot-starter` is published on maven central repository.  
+"orika-spring-boot-starter" is published on maven central repository.  
 If you are using maven, add the following dependency.  
 
 ```xml
@@ -134,7 +134,7 @@ public class CustomOrikaMapperFactoryBuilderConfigurer implements OrikaMapperFac
 
 ## Configuration properties
 
-`orika-spring-boot-starter` provides the following configuration properties.  
+"orika-spring-boot-starter" provides the following configuration properties.  
 These can be configured by your `application.yml` / `application.properties`.  
 
 ```yaml
