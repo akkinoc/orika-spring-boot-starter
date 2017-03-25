@@ -19,8 +19,8 @@
 
 [Spring Boot] Starter for [Orika (Java Bean mapping framework)].  
 
-[Orika (Java Bean mapping framework)]: http://orika-mapper.github.io/orika-docs/
 [Spring Boot]: https://projects.spring.io/spring-boot/
+[Orika (Java Bean mapping framework)]: http://orika-mapper.github.io/orika-docs/
 
 ## Supported versions
 
