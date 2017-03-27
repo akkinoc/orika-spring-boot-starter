@@ -6,7 +6,6 @@ import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.OrikaSystemProperties;
 import ma.glasnost.orika.impl.DefaultMapperFactory.MapperFactoryBuilder;
-import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -16,6 +15,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit4.SpringRunner;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * The test of {@link OrikaAutoConfiguration}.
