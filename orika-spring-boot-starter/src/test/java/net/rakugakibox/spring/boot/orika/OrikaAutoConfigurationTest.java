@@ -4,10 +4,7 @@ import java.util.Optional;
 
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
-import ma.glasnost.orika.OrikaSystemProperties;
 import ma.glasnost.orika.impl.DefaultMapperFactory.MapperFactoryBuilder;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,32 +44,6 @@ public class OrikaAutoConfigurationTest {
      */
     @Autowired
     protected Optional<MapperFacade> orikaMapperFacade;
-
-    /**
-     * Initializes Orika's default properties.
-     */
-    @BeforeClass
-    public static void initializeOrikaDefaultProperties() {
-        System.setProperty(OrikaSystemProperties.USE_BUILTIN_CONVERTERS, "true");
-        System.setProperty(OrikaSystemProperties.USE_AUTO_MAPPING, "true");
-        System.setProperty(OrikaSystemProperties.MAP_NULLS, "true");
-        System.setProperty(OrikaSystemProperties.DUMP_STATE_ON_EXCEPTION, "false");
-        System.setProperty(OrikaSystemProperties.FAVOR_EXTENSION, "false");
-        System.setProperty(OrikaSystemProperties.CAPTURE_FIELD_CONTEXT, "false");
-    }
-
-    /**
-     * Clears Orika's default properties.
-     */
-    @AfterClass
-    public static void clearOrikaDefaultProperties() {
-        System.clearProperty(OrikaSystemProperties.USE_BUILTIN_CONVERTERS);
-        System.clearProperty(OrikaSystemProperties.USE_AUTO_MAPPING);
-        System.clearProperty(OrikaSystemProperties.MAP_NULLS);
-        System.clearProperty(OrikaSystemProperties.DUMP_STATE_ON_EXCEPTION);
-        System.clearProperty(OrikaSystemProperties.FAVOR_EXTENSION);
-        System.clearProperty(OrikaSystemProperties.CAPTURE_FIELD_CONTEXT);
-    }
 
     /**
      * Tests the configuration properties for Orika.

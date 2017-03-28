@@ -13,11 +13,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * The test of {@link OrikaAutoConfiguration} when {@link MapperFactory} is customized.
+ * The test to configure {@link MapperFactory}.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class OrikaAutoConfigurationMapperFactoryCustomizedTest {
+public class OrikaMapperFactoryConfiguringTest {
 
     /**
      * The {@link MapperFactory}.

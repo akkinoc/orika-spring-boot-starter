@@ -15,11 +15,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * The test of {@link OrikaAutoConfiguration} when disabled.
+ * The test to disable {@link OrikaAutoConfiguration}.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest("orika.enabled=false")
-public class OrikaAutoConfigurationDisabledTest {
+public class OrikaAutoConfigurationDisablingTest {
 
     /**
      * The configuration properties for Orika.
