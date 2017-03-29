@@ -133,7 +133,7 @@ See also the Orika official documents:
 ## Configuration properties
 
 "orika-spring-boot-starter" provides the following configuration properties.  
-These can configure by your "application.yml" / "application.properties".  
+These can be configure by your "application.yml" / "application.properties".  
 
 ```yaml
 orika:
