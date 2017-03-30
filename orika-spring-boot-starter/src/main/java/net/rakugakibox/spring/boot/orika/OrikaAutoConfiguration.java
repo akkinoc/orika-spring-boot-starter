@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
@@ -21,22 +22,33 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConditionalOnProperty(name = "orika.enabled", matchIfMissing = true)
 @EnableConfigurationProperties(OrikaProperties.class)
+@RequiredArgsConstructor
 @Slf4j
 public class OrikaAutoConfiguration {
 
     /**
+     * The configuration properties for Orika.
+     */
+    private final OrikaProperties orikaProperties;
+
+    /**
+     * The configurers for {@link MapperFactoryBuilder}.
+     */
+    private final Optional<List<OrikaMapperFactoryBuilderConfigurer>> orikaMapperFactoryBuilderConfigurers;
+
+    /**
+     * The configurers for {@link MapperFactory}.
+     */
+    private final Optional<List<OrikaMapperFactoryConfigurer>> orikaMapperFactoryConfigurers;
+
+    /**
      * Creates a {@link MapperFactoryBuilder}.
      *
-     * @param orikaProperties the configuration properties for Orika.
-     * @param orikaMapperFactoryBuilderConfigurers the configurers of {@link MapperFactoryBuilder}.
      * @return a {@link MapperFactoryBuilder}.
      */
     @Bean
     @ConditionalOnMissingBean
-    public MapperFactoryBuilder<?, ?> orikaMapperFactoryBuilder(
-            OrikaProperties orikaProperties,
-            Optional<List<OrikaMapperFactoryBuilderConfigurer>> orikaMapperFactoryBuilderConfigurers
-    ) {
+    public MapperFactoryBuilder<?, ?> orikaMapperFactoryBuilder() {
         DefaultMapperFactory.Builder orikaMapperFactoryBuilder = new DefaultMapperFactory.Builder();
         orikaProperties.getUseBuiltinConverters().ifPresent(orikaMapperFactoryBuilder::useBuiltinConverters);
         orikaProperties.getUseAutoMapping().ifPresent(orikaMapperFactoryBuilder::useAutoMapping);
@@ -55,15 +67,11 @@ public class OrikaAutoConfiguration {
      * Creates a {@link MapperFactory}.
      *
      * @param orikaMapperFactoryBuilder the {@link MapperFactoryBuilder}.
-     * @param orikaMapperFactoryConfigurers the configurers of {@link MapperFactory}.
      * @return a {@link MapperFactory}.
      */
     @Bean
     @ConditionalOnMissingBean
-    public MapperFactory orikaMapperFactory(
-            MapperFactoryBuilder<?, ?> orikaMapperFactoryBuilder,
-            Optional<List<OrikaMapperFactoryConfigurer>> orikaMapperFactoryConfigurers
-    ) {
+    public MapperFactory orikaMapperFactory(MapperFactoryBuilder<?, ?> orikaMapperFactoryBuilder) {
         MapperFactory orikaMapperFactory = orikaMapperFactoryBuilder.build();
         orikaMapperFactoryConfigurers
                 .orElseGet(Collections::emptyList)

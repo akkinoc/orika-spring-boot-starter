@@ -5,7 +5,7 @@ import net.rakugakibox.spring.boot.orika.OrikaMapperFactoryConfigurer;
 import org.springframework.stereotype.Component;
 
 /**
- * The configuration of {@link PersonSource} and {@link PersonDestination} mapping.
+ * The configuration of mapping between {@link PersonSource} and {@link PersonDestination}.
  */
 @Component
 public class PersonMapping implements OrikaMapperFactoryConfigurer {

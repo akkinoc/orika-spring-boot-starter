@@ -60,7 +60,7 @@ private MapperFacade orikaMapperFacade;
 
 ### Mapping your beans
 
-Map your beans using `MapperFacade`.  
+Map your beans using the `MapperFacade`.  
 
 For example:  
 

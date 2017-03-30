@@ -17,7 +17,6 @@ public class Application implements ApplicationRunner {
 
     /**
      * The Orika's mapper interface.
-     * This object is managed by the application context.
      */
     private final MapperFacade orikaMapperFacade;
 

@@ -58,9 +58,10 @@ public class OrikaAutoConfigurationTest {
      */
     @Test
     public void orikaMapperFactoryBuilder() {
-        assertThat(orikaMapperFactoryBuilder).isPresent()
-                .hasValueSatisfying(orikaMapperFactoryBuilder ->
-                    assertThat(orikaMapperFactoryBuilder)
+        assertThat(orikaMapperFactoryBuilder)
+                .isPresent()
+                .hasValueSatisfying(value ->
+                    assertThat(value)
                             .hasFieldOrPropertyWithValue("useBuiltinConverters", true)
                             .hasFieldOrPropertyWithValue("useAutoMapping", true)
                             .hasFieldOrPropertyWithValue("mapNulls", true)

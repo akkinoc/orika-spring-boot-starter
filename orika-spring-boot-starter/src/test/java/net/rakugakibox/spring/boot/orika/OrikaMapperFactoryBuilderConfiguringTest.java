@@ -82,7 +82,7 @@ public class OrikaMapperFactoryBuilderConfiguringTest {
     /**
      * The configuration of {@link MapperFactoryBuilder}.
      */
-    protected static class OrikaMapperFactoryBuilderConfiguration implements OrikaMapperFactoryBuilderConfigurer {
+    public static class OrikaMapperFactoryBuilderConfiguration implements OrikaMapperFactoryBuilderConfigurer {
 
         /**
          * The passed {@link MapperFactoryBuilder}.
