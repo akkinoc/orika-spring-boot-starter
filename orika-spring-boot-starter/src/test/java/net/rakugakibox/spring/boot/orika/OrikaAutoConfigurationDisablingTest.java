@@ -50,7 +50,7 @@ public class OrikaAutoConfigurationDisablingTest {
      */
     @Test
     public void orikaProperties() {
-        assertThat(orikaProperties).isNotPresent();
+        assertThat(orikaProperties).isEmpty();
     }
 
     /**
@@ -58,7 +58,7 @@ public class OrikaAutoConfigurationDisablingTest {
      */
     @Test
     public void orikaMapperFactoryBuilder() {
-        assertThat(orikaMapperFactoryBuilder).isNotPresent();
+        assertThat(orikaMapperFactoryBuilder).isEmpty();
     }
 
     /**
@@ -66,7 +66,7 @@ public class OrikaAutoConfigurationDisablingTest {
      */
     @Test
     public void orikaMapperFactory() {
-        assertThat(orikaMapperFactory).isNotPresent();
+        assertThat(orikaMapperFactory).isEmpty();
     }
 
     /**
@@ -74,7 +74,7 @@ public class OrikaAutoConfigurationDisablingTest {
      */
     @Test
     public void orikaMapperFacade() {
-        assertThat(orikaMapperFacade).isNotPresent();
+        assertThat(orikaMapperFacade).isEmpty();
     }
 
     /**
