@@ -25,11 +25,11 @@
 ## Supported versions
 
 "orika-spring-boot-starter" supports the following versions.  
-Older versions might also work, but we have not tested it.  
+Other versions might also work, but we have not tested it.  
 
 * Java 8
-* Spring Boot 1.5.2 or higher
-* Orika 1.5.0 or higher
+* Spring Boot 1.5.2
+* Orika 1.5.0
 
 ## Usage
 
