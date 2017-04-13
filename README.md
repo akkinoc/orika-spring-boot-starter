@@ -29,7 +29,7 @@ Other versions might also work, but we have not tested it.
 
 * Java 8
 * Spring Boot 1.5.2
-* Orika 1.5.0
+* Orika 1.5.1
 
 ## Usage
 
@@ -42,7 +42,7 @@ If you are using maven, add the following dependency.
 <dependency>
     <groupId>net.rakugakibox.spring.boot</groupId>
     <artifactId>orika-spring-boot-starter</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
