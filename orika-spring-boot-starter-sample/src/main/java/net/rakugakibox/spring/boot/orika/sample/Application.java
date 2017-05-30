@@ -11,8 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * The sample application of "orika-spring-boot-starter".
  * Maps {@link PersonSource} to {@link PersonDestination}.
  */
-@SpringBootApplication
 @RequiredArgsConstructor
+@SpringBootApplication
 public class Application implements ApplicationRunner {
 
     /**

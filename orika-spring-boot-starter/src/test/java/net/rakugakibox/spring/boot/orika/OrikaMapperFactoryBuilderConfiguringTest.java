@@ -53,8 +53,8 @@ public class OrikaMapperFactoryBuilderConfiguringTest {
     /**
      * The context configuration.
      */
-    @Configuration
     @EnableAutoConfiguration
+    @Configuration
     public static class ContextConfiguration {
 
         /**

@@ -9,8 +9,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * The configuration properties for Orika.
  */
-@ConfigurationProperties("orika")
 @Data
+@ConfigurationProperties("orika")
 public class OrikaProperties {
 
     /**

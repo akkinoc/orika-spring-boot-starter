@@ -90,8 +90,8 @@ public class OrikaAutoConfigurationTest {
     /**
      * The context configuration.
      */
-    @Configuration
     @EnableAutoConfiguration
+    @Configuration
     public static class ContextConfiguration {
     }
 

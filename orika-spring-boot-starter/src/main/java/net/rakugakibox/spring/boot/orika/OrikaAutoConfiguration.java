@@ -19,11 +19,11 @@ import org.springframework.context.annotation.Configuration;
 /**
  * The auto-configuration for Orika.
  */
-@Configuration
-@ConditionalOnProperty(name = "orika.enabled", matchIfMissing = true)
-@EnableConfigurationProperties(OrikaProperties.class)
 @RequiredArgsConstructor
 @Slf4j
+@ConditionalOnProperty(name = "orika.enabled", matchIfMissing = true)
+@EnableConfigurationProperties(OrikaProperties.class)
+@Configuration
 public class OrikaAutoConfiguration {
 
     /**
@@ -46,8 +46,8 @@ public class OrikaAutoConfiguration {
      *
      * @return a {@link MapperFactoryBuilder}.
      */
-    @Bean
     @ConditionalOnMissingBean
+    @Bean
     public MapperFactoryBuilder<?, ?> orikaMapperFactoryBuilder() {
         DefaultMapperFactory.Builder orikaMapperFactoryBuilder = new DefaultMapperFactory.Builder();
         orikaProperties.getUseBuiltinConverters().ifPresent(orikaMapperFactoryBuilder::useBuiltinConverters);
@@ -69,8 +69,8 @@ public class OrikaAutoConfiguration {
      * @param orikaMapperFactoryBuilder the {@link MapperFactoryBuilder}.
      * @return a {@link MapperFactory}.
      */
-    @Bean
     @ConditionalOnMissingBean
+    @Bean
     public MapperFactory orikaMapperFactory(MapperFactoryBuilder<?, ?> orikaMapperFactoryBuilder) {
         MapperFactory orikaMapperFactory = orikaMapperFactoryBuilder.build();
         orikaMapperFactoryConfigurers
@@ -86,8 +86,8 @@ public class OrikaAutoConfiguration {
      * @param orikaMapperFactory the {@link MapperFactory}.
      * @return a {@link MapperFacade}.
      */
-    @Bean
     @ConditionalOnMissingBean
+    @Bean
     public MapperFacade orikaMapperFacade(MapperFactory orikaMapperFactory) {
         MapperFacade orikaMapperFacade = orikaMapperFactory.getMapperFacade();
         log.debug("Created a MapperFacade: [{}]", orikaMapperFacade);

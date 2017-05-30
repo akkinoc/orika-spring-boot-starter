@@ -47,8 +47,8 @@ public class OrikaPropertiesConfiguringTest {
     /**
      * The context configuration.
      */
-    @Configuration
     @EnableAutoConfiguration
+    @Configuration
     public static class ContextConfiguration {
     }
 
