@@ -135,7 +135,7 @@ See also the Orika official documents:
 "orika-spring-boot-starter" provides the following configuration properties.  
 These can be configure by your "application.yml" / "application.properties".  
 
-```yaml
+```yml
 orika:
   # Whether to enable auto-configuration.
   # Defaults to true.
@@ -170,6 +170,15 @@ Please refer to the "[Releases]" page.
 ## Contributing
 
 Bug reports and pull requests are welcome :)  
+
+## Building and testing
+
+To build and test, you can run:  
+
+```sh
+$ cd orika-spring-boot-starter
+$ ./mvnw clean install
+```
 
 ## License
 
