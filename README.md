@@ -22,6 +22,13 @@
 [Spring Boot]: https://projects.spring.io/spring-boot/
 [Orika (Java Bean mapping framework)]: http://orika-mapper.github.io/orika-docs/
 
+## Features
+
+* Manages the `MapperFacade` (Orika's mapper interface) in the application context
+  and makes it injectable into your code.
+* Provides interface to customize the `MapperFactory`.
+* Provides interface to customize the `MapperFactoryBuilder`.
+
 ## Supported versions
 
 "orika-spring-boot-starter" supports the following versions.  
