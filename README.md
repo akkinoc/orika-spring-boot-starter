@@ -35,8 +35,8 @@ Other versions might also work, but we have not tested it.
 
 ### Adding the dependency
 
-"orika-spring-boot-starter" is published on maven central repository.  
-If you are using maven, add the following dependency.  
+"orika-spring-boot-starter" is published on Maven Central Repository.  
+If you are using Maven, add the following dependency.  
 
 ```xml
 <dependency>
