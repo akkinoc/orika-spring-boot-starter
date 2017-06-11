@@ -147,23 +147,23 @@ orika:
   # Whether to enable auto-configuration.
   # Defaults to true.
   enabled: true
-  # Whether to use built-in converters.
+  # Whether to use built-in converters (MapperFactoryBuilder#useBuiltinConverters(boolean)).
   # Follows Orika's behavior by default.
   useBuiltinConverters: true
-  # Whether to use auto-mapping.
+  # Whether to use auto-mapping (MapperFactoryBuilder#useAutoMapping(boolean)).
   # Follows Orika's behavior by default.
   useAutoMapping: true
-  # Whether to map null values.
+  # Whether to map null values (MapperFactoryBuilder#mapNulls(boolean)).
   # Follows Orika's behavior by default.
   mapNulls: true
   # Whether to dump the current state of the mapping infrastructure objects
-  # upon occurrence of an exception while mapping.
+  # upon occurrence of an exception while mapping (MapperFactoryBuilder#dumpStateOnException(boolean)).
   # Follows Orika's behavior by default.
   dumpStateOnException: false
-  # Whether the class-map should be considered 'abstract'.
+  # Whether the class-map should be considered 'abstract' (MapperFactoryBuilder#favorExtension(boolean)).
   # Follows Orika's behavior by default.
   favorExtension: false
-  # Whether full field context should be captured.
+  # Whether full field context should be captured (MapperFactoryBuilder#captureFieldContext(boolean)).
   # Follows Orika's behavior by default.
   captureFieldContext: false
 ```

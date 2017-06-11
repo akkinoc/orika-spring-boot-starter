@@ -50,12 +50,24 @@ public class OrikaAutoConfiguration {
     @Bean
     public MapperFactoryBuilder<?, ?> orikaMapperFactoryBuilder() {
         DefaultMapperFactory.Builder orikaMapperFactoryBuilder = new DefaultMapperFactory.Builder();
-        orikaProperties.getUseBuiltinConverters().ifPresent(orikaMapperFactoryBuilder::useBuiltinConverters);
-        orikaProperties.getUseAutoMapping().ifPresent(orikaMapperFactoryBuilder::useAutoMapping);
-        orikaProperties.getMapNulls().ifPresent(orikaMapperFactoryBuilder::mapNulls);
-        orikaProperties.getDumpStateOnException().ifPresent(orikaMapperFactoryBuilder::dumpStateOnException);
-        orikaProperties.getFavorExtension().ifPresent(orikaMapperFactoryBuilder::favorExtension);
-        orikaProperties.getCaptureFieldContext().ifPresent(orikaMapperFactoryBuilder::captureFieldContext);
+        if (orikaProperties.getUseBuiltinConverters() != null) {
+            orikaMapperFactoryBuilder.useBuiltinConverters(orikaProperties.getUseBuiltinConverters());
+        }
+        if (orikaProperties.getUseAutoMapping() != null) {
+            orikaMapperFactoryBuilder.useAutoMapping(orikaProperties.getUseAutoMapping());
+        }
+        if (orikaProperties.getMapNulls() != null) {
+            orikaMapperFactoryBuilder.mapNulls(orikaProperties.getMapNulls());
+        }
+        if (orikaProperties.getDumpStateOnException() != null) {
+            orikaMapperFactoryBuilder.dumpStateOnException(orikaProperties.getDumpStateOnException());
+        }
+        if (orikaProperties.getFavorExtension() != null) {
+            orikaMapperFactoryBuilder.favorExtension(orikaProperties.getFavorExtension());
+        }
+        if (orikaProperties.getCaptureFieldContext() != null) {
+            orikaMapperFactoryBuilder.captureFieldContext(orikaProperties.getCaptureFieldContext());
+        }
         orikaMapperFactoryBuilderConfigurers
                 .orElseGet(Collections::emptyList)
                 .forEach(configurer -> configurer.configure(orikaMapperFactoryBuilder));
