@@ -22,16 +22,16 @@ jobs:
       - store_test_results:
           path: "orika-spring-boot-starter/target/surefire-reports"
       - run:
+          name: "Upload Codecov reports"
+          command: "curl --silent https://codecov.io/bash | bash"
+      - run:
           name: "Collecting orika-spring-boot-starter artifacts"
           command: |
             mkdir --parents /tmp/orika-spring-boot-starter-artifacts
-            cp --preserve target/*.jar /tmp/orika-spring-boot-starter-artifacts ||:
-            cp --preserve --recursive target/site /tmp/orika-spring-boot-starter-artifacts ||:
-          working_directory: "orika-spring-boot-starter"
+            cp --preserve *.jar /tmp/orika-spring-boot-starter-artifacts ||:
+            cp --preserve --recursive site /tmp/orika-spring-boot-starter-artifacts ||:
+          working_directory: "orika-spring-boot-starter/target"
           when: "always"
       - store_artifacts:
           path: "/tmp/orika-spring-boot-starter-artifacts"
           destination: "/"
-      - run:
-          name: "Upload Codecov reports"
-          command: "curl --silent https://codecov.io/bash | bash"
