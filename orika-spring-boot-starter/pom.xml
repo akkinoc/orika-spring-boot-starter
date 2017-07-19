@@ -122,9 +122,6 @@
     <build>
         <plugins>
             <plugin>
-                <artifactId>maven-dependency-plugin</artifactId>
-            </plugin>
-            <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
             </plugin>
             <plugin>
