@@ -32,3 +32,6 @@ jobs:
       - store_artifacts:
           path: "/tmp/orika-spring-boot-starter-artifacts"
           destination: "/"
+      - run:
+          name: "Upload Codecov reports"
+          command: "curl --silent https://codecov.io/bash | bash"
