@@ -1,37 +1,64 @@
 version: 2
 jobs:
-  build:
+  build-and-test-orika-spring-boot-starter:
     docker:
       - image: "circleci/openjdk:8"
+    environment:
+        _JAVA_OPTIONS: "-Xmx1g"
+    working_directory: "~/orika-spring-boot-starter/orika-spring-boot-starter"
     steps:
-      - checkout
+      - checkout:
+          path: "~/orika-spring-boot-starter"
       - restore_cache:
-          key: 'dependencies-{{ checksum "orika-spring-boot-starter/pom.xml" }}'
+          key: 'orika-spring-boot-starter-dependencies-{{ checksum "pom.xml" }}'
       - run:
-          name: "Building orika-spring-boot-starter"
+          name: "Building and testing"
           command: "./mvnw --batch-mode clean install"
-          working_directory: "orika-spring-boot-starter"
-      - run:
-          name: "Building orika-spring-boot-starter-sample"
-          command: "./mvnw --batch-mode clean install"
-          working_directory: "orika-spring-boot-starter-sample"
       - save_cache:
-          key: 'dependencies-{{ checksum "orika-spring-boot-starter/pom.xml" }}'
+          key: 'orika-spring-boot-starter-dependencies-{{ checksum "pom.xml" }}'
           paths:
             - "~/.m2"
       - store_test_results:
-          path: "orika-spring-boot-starter/target/surefire-reports"
+          path: "target/surefire-reports"
       - run:
           name: "Upload Codecov reports"
           command: "curl --silent https://codecov.io/bash | bash"
-      - run:
-          name: "Collecting orika-spring-boot-starter artifacts"
-          command: |
-            mkdir --parents /tmp/orika-spring-boot-starter-artifacts
-            cp --preserve *.jar /tmp/orika-spring-boot-starter-artifacts ||:
-            cp --preserve --recursive site /tmp/orika-spring-boot-starter-artifacts ||:
-          working_directory: "orika-spring-boot-starter/target"
-          when: "always"
       - store_artifacts:
-          path: "/tmp/orika-spring-boot-starter-artifacts"
-          destination: "/"
+          path: "~/.m2/repository/net/rakugakibox/spring/boot/orika-spring-boot-starter"
+          destination: "/artifacts"
+      - store_artifacts:
+          path: "target/site"
+          destination: "/site"
+      - persist_to_workspace:
+          root: "~/.m2/repository/net/rakugakibox/spring/boot/orika-spring-boot-starter"
+          paths:
+            - "*"
+            - "*/*"
+  build-orika-spring-boot-starter-sample:
+    docker:
+      - image: "circleci/openjdk:8"
+    environment:
+        _JAVA_OPTIONS: "-Xmx1g"
+    working_directory: "~/orika-spring-boot-starter/orika-spring-boot-starter-sample"
+    steps:
+      - checkout:
+          path: "~/orika-spring-boot-starter"
+      - restore_cache:
+          key: 'orika-spring-boot-starter-sample-dependencies-{{ checksum "pom.xml" }}'
+      - attach_workspace:
+          at: "~/.m2/repository/net/rakugakibox/spring/boot/orika-spring-boot-starter"
+      - run:
+          name: "Building"
+          command: "./mvnw --batch-mode clean install"
+      - save_cache:
+          key: 'orika-spring-boot-starter-sample-dependencies-{{ checksum "pom.xml" }}'
+          paths:
+            - "~/.m2"
+workflows:
+  version: 2
+  build-and-test:
+    jobs:
+      - build-and-test-orika-spring-boot-starter
+      - build-orika-spring-boot-starter-sample:
+          requires:
+            - build-and-test-orika-spring-boot-starter
