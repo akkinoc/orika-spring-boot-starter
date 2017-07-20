@@ -3,8 +3,8 @@ jobs:
   build-and-test-orika-spring-boot-starter:
     docker:
       - image: "circleci/openjdk:8"
-    environment:
-        _JAVA_OPTIONS: "-Xmx1536m"
+        environment:
+          _JAVA_OPTIONS: "-Xmx1536m"
     working_directory: "~/orika-spring-boot-starter/orika-spring-boot-starter"
     steps:
       - checkout:
@@ -34,8 +34,8 @@ jobs:
   build-orika-spring-boot-starter-sample:
     docker:
       - image: "circleci/openjdk:8"
-    environment:
-        _JAVA_OPTIONS: "-Xmx1536m"
+        environment:
+          _JAVA_OPTIONS: "-Xmx1536m"
     working_directory: "~/orika-spring-boot-starter/orika-spring-boot-starter-sample"
     steps:
       - checkout:
