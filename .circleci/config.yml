@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: "circleci/openjdk:8"
     environment:
-        _JAVA_OPTIONS: "-Xmx1g"
+        _JAVA_OPTIONS: "-Xmx1536m"
     working_directory: "~/orika-spring-boot-starter/orika-spring-boot-starter"
     steps:
       - checkout:
@@ -38,7 +38,7 @@ jobs:
     docker:
       - image: "circleci/openjdk:8"
     environment:
-        _JAVA_OPTIONS: "-Xmx1g"
+        _JAVA_OPTIONS: "-Xmx1536m"
     working_directory: "~/orika-spring-boot-starter/orika-spring-boot-starter-sample"
     steps:
       - checkout:
