@@ -4,9 +4,6 @@ aliases:
     image: "circleci/openjdk:8"
     environment:
       _JAVA_OPTIONS: "-Xmx1536m"
-  - &checkout
-    checkout:
-      path: "~/orika-spring-boot-starter"
   - &orika_spring_boot_starter_dependencies_cache_key >-
     orika-spring-boot-starter-dependencies
     {{ checksum "pom.xml" }}
@@ -15,8 +12,16 @@ aliases:
     orika-spring-boot-starter-sample-dependencies
     {{ checksum "pom.xml" }}
     {{ checksum ".mvn/wrapper/maven-wrapper.properties" }}
-  - &orika_spring_boot_starter_workspace_root >-
-    ~/.m2/repository/net/rakugakibox/spring/boot/orika-spring-boot-starter
+  - &checkout
+    checkout:
+      path: "~/orika-spring-boot-starter"
+  - &attach_workspace
+    attach_workspace:
+      at: "~/orika-spring-boot-starter-workspace"
+  - &restore_from_workspace
+    run:
+      name: "Restoring from workspace"
+      command: "cp --archive --verbose ~/orika-spring-boot-starter-workspace/. ~"
 jobs:
   build_and_test_orika_spring_boot_starter:
     docker:
@@ -34,7 +39,7 @@ jobs:
           paths:
             - "~/.m2"
       - run:
-          name: "Upload Codecov reports"
+          name: "Uploading Codecov reports"
           command: "curl --silent https://codecov.io/bash | bash"
       - store_test_results:
           path: "target/surefire-reports"
@@ -42,20 +47,19 @@ jobs:
           path: "target"
           destination: "/"
       - persist_to_workspace:
-          root: *orika_spring_boot_starter_workspace_root
+          root: "~"
           paths:
-            - "*"
-            - "*/*"
+            - ".m2/repository/net/rakugakibox/spring/boot/orika-spring-boot-starter"
   build_orika_spring_boot_starter_sample:
     docker:
       - *java_container
     working_directory: "~/orika-spring-boot-starter/orika-spring-boot-starter-sample"
     steps:
       - *checkout
+      - *attach_workspace
+      - *restore_from_workspace
       - restore_cache:
           key: *orika_spring_boot_starter_sample_dependencies_cache_key
-      - attach_workspace:
-          at: *orika_spring_boot_starter_workspace_root
       - run:
           name: "Building"
           command: "./mvnw --batch-mode clean install"
