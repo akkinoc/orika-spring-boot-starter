@@ -1,19 +1,31 @@
 version: 2
+aliases:
+  - &java_container
+    image: "circleci/openjdk:8"
+    environment:
+      _JAVA_OPTIONS: "-Xmx1536m"
+  - &checkout
+    checkout:
+      path: "~/orika-spring-boot-starter"
+  - &orika_spring_boot_starter_dependencies_cache_key >-
+    orika-spring-boot-starter-dependencies
+    {{ checksum "pom.xml" }}
+    {{ checksum ".mvn/wrapper/maven-wrapper.properties" }}
+  - &orika_spring_boot_starter_sample_dependencies_cache_key >-
+    orika-spring-boot-starter-sample-dependencies
+    {{ checksum "pom.xml" }}
+    {{ checksum ".mvn/wrapper/maven-wrapper.properties" }}
+  - &orika_spring_boot_starter_workspace_root >-
+    ~/.m2/repository/net/rakugakibox/spring/boot/orika-spring-boot-starter
 jobs:
   build_and_test_orika_spring_boot_starter:
     docker:
-      - image: "circleci/openjdk:8"
-        environment:
-          _JAVA_OPTIONS: "-Xmx1536m"
+      - *java_container
     working_directory: "~/orika-spring-boot-starter/orika-spring-boot-starter"
     steps:
-      - checkout:
-          path: "~/orika-spring-boot-starter"
+      - *checkout
       - restore_cache:
-          key: &orika_spring_boot_starter_dependencies_cache_key >-
-            orika-spring-boot-starter-dependencies
-            {{ checksum "pom.xml" }}
-            {{ checksum ".mvn/wrapper/maven-wrapper.properties" }}
+          key: *orika_spring_boot_starter_dependencies_cache_key
       - run:
           name: "Building and testing"
           command: "./mvnw --batch-mode clean install"
@@ -30,25 +42,18 @@ jobs:
           path: "target"
           destination: "/"
       - persist_to_workspace:
-          root: &orika_spring_boot_starter_workspace_root >-
-            ~/.m2/repository/net/rakugakibox/spring/boot/orika-spring-boot-starter
+          root: *orika_spring_boot_starter_workspace_root
           paths:
             - "*"
             - "*/*"
   build_orika_spring_boot_starter_sample:
     docker:
-      - image: "circleci/openjdk:8"
-        environment:
-          _JAVA_OPTIONS: "-Xmx1536m"
+      - *java_container
     working_directory: "~/orika-spring-boot-starter/orika-spring-boot-starter-sample"
     steps:
-      - checkout:
-          path: "~/orika-spring-boot-starter"
+      - *checkout
       - restore_cache:
-          key: &orika_spring_boot_starter_sample_dependencies_cache_key >-
-            orika-spring-boot-starter-sample-dependencies
-            {{ checksum "pom.xml" }}
-            {{ checksum ".mvn/wrapper/maven-wrapper.properties" }}
+          key: *orika_spring_boot_starter_sample_dependencies_cache_key
       - attach_workspace:
           at: *orika_spring_boot_starter_workspace_root
       - run:
