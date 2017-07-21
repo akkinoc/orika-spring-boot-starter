@@ -10,7 +10,7 @@ jobs:
       - checkout:
           path: "~/orika-spring-boot-starter"
       - restore_cache:
-          key: &orika-spring-boot-starter-dependencies-cache-key >
+          key: &orika_spring_boot_starter_dependencies_cache_key >-
             orika-spring-boot-starter-dependencies
             {{ checksum "pom.xml" }}
             {{ checksum ".mvn/wrapper/maven-wrapper.properties" }}
@@ -18,7 +18,7 @@ jobs:
           name: "Building and testing"
           command: "./mvnw --batch-mode clean install"
       - save_cache:
-          key: *orika-spring-boot-starter-dependencies-cache-key
+          key: *orika_spring_boot_starter_dependencies_cache_key
           paths:
             - "~/.m2"
       - run:
@@ -30,7 +30,8 @@ jobs:
           path: "target"
           destination: "/"
       - persist_to_workspace:
-          root: "~/.m2/repository/net/rakugakibox/spring/boot/orika-spring-boot-starter"
+          root: &orika_spring_boot_starter_workspace_root >-
+            ~/.m2/repository/net/rakugakibox/spring/boot/orika-spring-boot-starter
           paths:
             - "*"
             - "*/*"
@@ -44,17 +45,17 @@ jobs:
       - checkout:
           path: "~/orika-spring-boot-starter"
       - restore_cache:
-          key: &orika-spring-boot-starter-sample-dependencies-cache-key >
+          key: &orika_spring_boot_starter_sample_dependencies_cache_key >-
             orika-spring-boot-starter-sample-dependencies
             {{ checksum "pom.xml" }}
             {{ checksum ".mvn/wrapper/maven-wrapper.properties" }}
       - attach_workspace:
-          at: "~/.m2/repository/net/rakugakibox/spring/boot/orika-spring-boot-starter"
+          at: *orika_spring_boot_starter_workspace_root
       - run:
           name: "Building"
           command: "./mvnw --batch-mode clean install"
       - save_cache:
-          key: *orika-spring-boot-starter-sample-dependencies-cache-key
+          key: *orika_spring_boot_starter_sample_dependencies_cache_key
           paths:
             - "~/.m2"
 workflows:
