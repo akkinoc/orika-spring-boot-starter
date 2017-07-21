@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build-and-test-orika-spring-boot-starter:
+  build_and_test_orika_spring_boot_starter:
     docker:
       - image: "circleci/openjdk:8"
         environment:
@@ -35,7 +35,7 @@ jobs:
           paths:
             - "*"
             - "*/*"
-  build-orika-spring-boot-starter-sample:
+  build_orika_spring_boot_starter_sample:
     docker:
       - image: "circleci/openjdk:8"
         environment:
@@ -60,9 +60,9 @@ jobs:
             - "~/.m2"
 workflows:
   version: 2
-  build-and-test:
+  build_and_test:
     jobs:
-      - build-and-test-orika-spring-boot-starter
-      - build-orika-spring-boot-starter-sample:
+      - build_and_test_orika_spring_boot_starter
+      - build_orika_spring_boot_starter_sample:
           requires:
-            - build-and-test-orika-spring-boot-starter
+            - build_and_test_orika_spring_boot_starter
