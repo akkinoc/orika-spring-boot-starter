@@ -10,12 +10,15 @@ jobs:
       - checkout:
           path: "~/orika-spring-boot-starter"
       - restore_cache:
-          key: 'orika-spring-boot-starter-dependencies-{{ checksum "pom.xml" }}'
+          key: &orika-spring-boot-starter-dependencies-cache-key >
+            orika-spring-boot-starter-dependencies
+            {{ checksum "pom.xml" }}
+            {{ checksum ".mvn/wrapper/maven-wrapper.properties" }}
       - run:
           name: "Building and testing"
           command: "./mvnw --batch-mode clean install"
       - save_cache:
-          key: 'orika-spring-boot-starter-dependencies-{{ checksum "pom.xml" }}'
+          key: *orika-spring-boot-starter-dependencies-cache-key
           paths:
             - "~/.m2"
       - run:
@@ -41,14 +44,17 @@ jobs:
       - checkout:
           path: "~/orika-spring-boot-starter"
       - restore_cache:
-          key: 'orika-spring-boot-starter-sample-dependencies-{{ checksum "pom.xml" }}'
+          key: &orika-spring-boot-starter-sample-dependencies-cache-key >
+            orika-spring-boot-starter-sample-dependencies
+            {{ checksum "pom.xml" }}
+            {{ checksum ".mvn/wrapper/maven-wrapper.properties" }}
       - attach_workspace:
           at: "~/.m2/repository/net/rakugakibox/spring/boot/orika-spring-boot-starter"
       - run:
           name: "Building"
           command: "./mvnw --batch-mode clean install"
       - save_cache:
-          key: 'orika-spring-boot-starter-sample-dependencies-{{ checksum "pom.xml" }}'
+          key: *orika-spring-boot-starter-sample-dependencies-cache-key
           paths:
             - "~/.m2"
 workflows:
