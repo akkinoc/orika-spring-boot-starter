@@ -23,7 +23,7 @@ aliases:
       name: "Restoring from workspace"
       command: "cp --archive --verbose ~/orika-spring-boot-starter-workspace/. ~"
 jobs:
-  build_and_test_orika_spring_boot_starter:
+  build_orika_spring_boot_starter:
     docker:
       - *java_container
     working_directory: "~/orika-spring-boot-starter/orika-spring-boot-starter"
@@ -69,9 +69,9 @@ jobs:
             - "~/.m2"
 workflows:
   version: 2
-  build_and_test:
+  build:
     jobs:
-      - build_and_test_orika_spring_boot_starter
+      - build_orika_spring_boot_starter
       - build_orika_spring_boot_starter_sample:
           requires:
-            - build_and_test_orika_spring_boot_starter
+            - build_orika_spring_boot_starter
