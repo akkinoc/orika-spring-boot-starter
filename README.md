@@ -35,8 +35,8 @@
 Other versions might also work, but we have not tested it.  
 
 * Java 8
-* Spring Boot 1.5.7
-* Orika 1.5.1
+* Spring Boot 1.5.10
+* Orika 1.5.2
 
 ## Usage
 
