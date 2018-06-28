@@ -1,77 +1,85 @@
 version: 2
 aliases:
   - &java_container
-    image: "circleci/openjdk:8"
+    image: circleci/openjdk:8
     environment:
-      _JAVA_OPTIONS: "-Xmx1536m"
-  - &orika_spring_boot_starter_dependencies_cache_key >-
-    orika-spring-boot-starter-dependencies
-    {{ checksum "pom.xml" }}
-    {{ checksum ".mvn/wrapper/maven-wrapper.properties" }}
-  - &orika_spring_boot_starter_sample_dependencies_cache_key >-
-    orika-spring-boot-starter-sample-dependencies
-    {{ checksum "pom.xml" }}
-    {{ checksum ".mvn/wrapper/maven-wrapper.properties" }}
+      _JAVA_OPTIONS: -Xmx1536m
   - &checkout
     checkout:
-      path: "~/orika-spring-boot-starter"
+      path: ~/orika-spring-boot-starter
   - &attach_workspace
     attach_workspace:
-      at: "~/orika-spring-boot-starter-workspace"
+      at: ~/orika-spring-boot-starter-workspace
+  - &restore_cache
+    restore_cache:
+      key: >-
+        maven
+        {{ .Environment.CIRCLE_JOB }}
+        {{ checksum "pom.xml" }}
+        {{ checksum ".mvn/wrapper/maven-wrapper.properties" }}
   - &restore_from_workspace
     run:
-      name: "Restoring from workspace"
-      command: "cp --archive --verbose ~/orika-spring-boot-starter-workspace/. ~"
+      name: Restoring from workspace
+      command: cp -av ~/orika-spring-boot-starter-workspace/. ~
+  - &build_and_test
+    run:
+      name: Building and testing
+      command: ./mvnw -B clean install
+  - &persist_to_workspace
+    persist_to_workspace:
+      root: "~"
+      paths:
+        - .m2/repository/net/rakugakibox/spring/boot/orika-spring-boot-starter
+  - &save_cache
+    save_cache:
+      key: >-
+        maven
+        {{ .Environment.CIRCLE_JOB }}
+        {{ checksum "pom.xml" }}
+        {{ checksum ".mvn/wrapper/maven-wrapper.properties" }}
+      paths:
+        - ~/.m2
+  - &store_test_results
+    store_test_results:
+      path: target/surefire-reports
+  - &store_artifacts
+    store_artifacts:
+      path: target
+      destination: /
+  - &upload_codecov_reports
+    run:
+      name: Uploading Codecov reports
+      command: curl -s https://codecov.io/bash | bash
 jobs:
-  build_orika_spring_boot_starter:
+  ci_orika_spring_boot_starter:
     docker:
       - *java_container
-    working_directory: "~/orika-spring-boot-starter/orika-spring-boot-starter"
+    working_directory: ~/orika-spring-boot-starter/orika-spring-boot-starter
     steps:
       - *checkout
-      - restore_cache:
-          key: *orika_spring_boot_starter_dependencies_cache_key
-      - run:
-          name: "Building and testing"
-          command: "./mvnw --batch-mode clean install"
-      - save_cache:
-          key: *orika_spring_boot_starter_dependencies_cache_key
-          paths:
-            - "~/.m2"
-      - run:
-          name: "Uploading Codecov reports"
-          command: "curl --silent https://codecov.io/bash | bash"
-      - store_test_results:
-          path: "target/surefire-reports"
-      - store_artifacts:
-          path: "target"
-          destination: "/"
-      - persist_to_workspace:
-          root: "~"
-          paths:
-            - ".m2/repository/net/rakugakibox/spring/boot/orika-spring-boot-starter"
-  build_orika_spring_boot_starter_sample:
+      - *restore_cache
+      - *build_and_test
+      - *persist_to_workspace
+      - *save_cache
+      - *store_test_results
+      - *store_artifacts
+      - *upload_codecov_reports
+  ci_orika_spring_boot_starter_sample:
     docker:
       - *java_container
-    working_directory: "~/orika-spring-boot-starter/orika-spring-boot-starter-sample"
+    working_directory: ~/orika-spring-boot-starter/orika-spring-boot-starter-sample
     steps:
       - *checkout
       - *attach_workspace
+      - *restore_cache
       - *restore_from_workspace
-      - restore_cache:
-          key: *orika_spring_boot_starter_sample_dependencies_cache_key
-      - run:
-          name: "Building"
-          command: "./mvnw --batch-mode clean install"
-      - save_cache:
-          key: *orika_spring_boot_starter_sample_dependencies_cache_key
-          paths:
-            - "~/.m2"
+      - *build_and_test
+      - *save_cache
 workflows:
   version: 2
-  build:
+  ci:
     jobs:
-      - build_orika_spring_boot_starter
-      - build_orika_spring_boot_starter_sample:
+      - ci_orika_spring_boot_starter
+      - ci_orika_spring_boot_starter_sample:
           requires:
-            - build_orika_spring_boot_starter
+            - ci_orika_spring_boot_starter
