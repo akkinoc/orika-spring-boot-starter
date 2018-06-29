@@ -1,7 +1,11 @@
 version: 2
 aliases:
-  - &java_container
+  - &java8_container
     image: circleci/openjdk:8
+    environment:
+      _JAVA_OPTIONS: -Xmx1536m
+  - &java9_container
+    image: circleci/openjdk:9
     environment:
       _JAVA_OPTIONS: -Xmx1536m
   - &checkout
@@ -51,9 +55,9 @@ aliases:
       name: Uploading Codecov reports
       command: curl -s https://codecov.io/bash | bash
 jobs:
-  ci_orika_spring_boot_starter:
+  ci_orika_spring_boot_starter_on_java8:
     docker:
-      - *java_container
+      - *java8_container
     working_directory: ~/orika-spring-boot-starter/orika-spring-boot-starter
     steps:
       - *checkout
@@ -64,9 +68,33 @@ jobs:
       - *store_test_results
       - *store_artifacts
       - *upload_codecov_reports
-  ci_orika_spring_boot_starter_sample:
+  ci_orika_spring_boot_starter_on_java9:
     docker:
-      - *java_container
+      - *java9_container
+    working_directory: ~/orika-spring-boot-starter/orika-spring-boot-starter
+    steps:
+      - *checkout
+      - *restore_cache
+      - *build_and_test
+      - *persist_to_workspace
+      - *save_cache
+      - *store_test_results
+      - *store_artifacts
+      - *upload_codecov_reports
+  ci_orika_spring_boot_starter_sample_on_java8:
+    docker:
+      - *java8_container
+    working_directory: ~/orika-spring-boot-starter/orika-spring-boot-starter-sample
+    steps:
+      - *checkout
+      - *attach_workspace
+      - *restore_cache
+      - *restore_from_workspace
+      - *build_and_test
+      - *save_cache
+  ci_orika_spring_boot_starter_sample_on_java9:
+    docker:
+      - *java9_container
     working_directory: ~/orika-spring-boot-starter/orika-spring-boot-starter-sample
     steps:
       - *checkout
@@ -79,7 +107,11 @@ workflows:
   version: 2
   ci:
     jobs:
-      - ci_orika_spring_boot_starter
-      - ci_orika_spring_boot_starter_sample:
+      - ci_orika_spring_boot_starter_on_java8
+      - ci_orika_spring_boot_starter_on_java9
+      - ci_orika_spring_boot_starter_sample_on_java8:
           requires:
-            - ci_orika_spring_boot_starter
+            - ci_orika_spring_boot_starter_on_java8
+      - ci_orika_spring_boot_starter_sample_on_java9:
+          requires:
+            - ci_orika_spring_boot_starter_on_java9
