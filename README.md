@@ -22,6 +22,10 @@
 [Spring Boot]: https://spring.io/projects/spring-boot
 [Orika (Java Bean mapping framework)]: http://orika-mapper.github.io/orika-docs/
 
+Note: This page is for Spring Boot 2. If you use Spring Boot 1, please refer to [v1.7.x branch].  
+
+[v1.7.x branch]: https://github.com/akihyro/orika-spring-boot-starter/tree/v1.7.x
+
 ## Features
 
 * Manages the `MapperFacade` (Orika's mapper interface) in the application context
@@ -35,7 +39,7 @@
 Other versions might also work, but we have not tested it.  
 
 * Java 8, 9, 10
-* Spring Boot 1.5.14
+* Spring Boot 2.0.3
 * Orika 1.5.2
 
 ## Usage
@@ -49,7 +53,7 @@ If you are using Maven, add the following dependency.
 <dependency>
     <groupId>net.rakugakibox.spring.boot</groupId>
     <artifactId>orika-spring-boot-starter</artifactId>
-    <version>1.7.0</version>
+    <version>1.8.0</version>
 </dependency>
 ```
 
