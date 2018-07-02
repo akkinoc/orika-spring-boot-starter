@@ -19,7 +19,7 @@
 
 [Spring Boot] Starter for [Orika (Java Bean mapping framework)].  
 
-[Spring Boot]: https://projects.spring.io/spring-boot/
+[Spring Boot]: https://spring.io/projects/spring-boot
 [Orika (Java Bean mapping framework)]: http://orika-mapper.github.io/orika-docs/
 
 ## Features
@@ -34,8 +34,8 @@
 "orika-spring-boot-starter" supports the following versions.  
 Other versions might also work, but we have not tested it.  
 
-* Java 8
-* Spring Boot 1.5.10
+* Java 8, 9, 10
+* Spring Boot 1.5.14
 * Orika 1.5.2
 
 ## Usage
@@ -49,7 +49,7 @@ If you are using Maven, add the following dependency.
 <dependency>
     <groupId>net.rakugakibox.spring.boot</groupId>
     <artifactId>orika-spring-boot-starter</artifactId>
-    <version>1.6.0</version>
+    <version>1.7.0</version>
 </dependency>
 ```
 
