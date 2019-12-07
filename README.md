@@ -38,9 +38,9 @@ Note: This page is for Spring Boot 2. If you use Spring Boot 1, please refer to 
 "orika-spring-boot-starter" supports the following versions.  
 Other versions might also work, but we have not tested it.  
 
-* Java 8, 9, 10
-* Spring Boot 2.0.3
-* Orika 1.5.2
+* Java 8, 9, 10, 11
+* Spring Boot 2.1.3
+* Orika 1.5.4
 
 ## Usage
 
@@ -53,7 +53,7 @@ If you are using Maven, add the following dependency.
 <dependency>
     <groupId>net.rakugakibox.spring.boot</groupId>
     <artifactId>orika-spring-boot-starter</artifactId>
-    <version>1.8.0</version>
+    <version>1.9.0</version>
 </dependency>
 ```
 
