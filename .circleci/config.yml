@@ -12,6 +12,10 @@ aliases:
     image: circleci/openjdk:10
     environment:
       _JAVA_OPTIONS: -Xmx1536m
+  - &java11_container
+    image: circleci/openjdk:11
+    environment:
+      _JAVA_OPTIONS: -Xmx1536m
   - &checkout
     checkout:
       path: ~/orika-spring-boot-starter
@@ -98,6 +102,19 @@ jobs:
       - *store_test_results
       - *store_artifacts
       - *upload_codecov_reports
+  ci_orika_spring_boot_starter_on_java11:
+    docker:
+      - *java11_container
+    working_directory: ~/orika-spring-boot-starter/orika-spring-boot-starter
+    steps:
+      - *checkout
+      - *restore_cache
+      - *build_and_test
+      - *persist_to_workspace
+      - *save_cache
+      - *store_test_results
+      - *store_artifacts
+      - *upload_codecov_reports
   ci_orika_spring_boot_starter_sample_on_java8:
     docker:
       - *java8_container
@@ -131,6 +148,17 @@ jobs:
       - *restore_from_workspace
       - *build_and_test
       - *save_cache
+  ci_orika_spring_boot_starter_sample_on_java11:
+    docker:
+      - *java11_container
+    working_directory: ~/orika-spring-boot-starter/orika-spring-boot-starter-sample
+    steps:
+      - *checkout
+      - *attach_workspace
+      - *restore_cache
+      - *restore_from_workspace
+      - *build_and_test
+      - *save_cache
 workflows:
   version: 2
   ci:
@@ -138,6 +166,7 @@ workflows:
       - ci_orika_spring_boot_starter_on_java8
       - ci_orika_spring_boot_starter_on_java9
       - ci_orika_spring_boot_starter_on_java10
+      - ci_orika_spring_boot_starter_on_java11
       - ci_orika_spring_boot_starter_sample_on_java8:
           requires:
             - ci_orika_spring_boot_starter_on_java8
@@ -147,3 +176,6 @@ workflows:
       - ci_orika_spring_boot_starter_sample_on_java10:
           requires:
             - ci_orika_spring_boot_starter_on_java10
+      - ci_orika_spring_boot_starter_sample_on_java11:
+          requires:
+            - ci_orika_spring_boot_starter_on_java11
