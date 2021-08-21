@@ -1,68 +1,73 @@
 # orika-spring-boot-starter
 
-[![Maven Central][Maven Central Badge]][Maven Central]
-[![javadoc.io][javadoc.io Badge]][javadoc.io]
-[![CircleCI][CircleCI Badge]][CircleCI]
-[![Codecov][Codecov Badge]][Codecov]
-[![License][License Badge]][License]
+[![maven central badge]][maven central]
+[![javadoc badge]][javadoc]
+[![release badge]][release]
+[![build badge]][build]
+[![codecov badge]][codecov]
+[![license badge]][license]
 
-[Maven Central Badge]: https://maven-badges.herokuapp.com/maven-central/net.rakugakibox.spring.boot/orika-spring-boot-starter/badge.svg
-[Maven Central]: https://maven-badges.herokuapp.com/maven-central/net.rakugakibox.spring.boot/orika-spring-boot-starter
-[javadoc.io Badge]: https://www.javadoc.io/badge/net.rakugakibox.spring.boot/orika-spring-boot-starter.svg
-[javadoc.io]: https://www.javadoc.io/doc/net.rakugakibox.spring.boot/orika-spring-boot-starter
-[CircleCI Badge]: https://circleci.com/gh/akihyro/orika-spring-boot-starter.svg?style=shield
-[CircleCI]: https://circleci.com/gh/akihyro/orika-spring-boot-starter
-[Codecov Badge]: https://codecov.io/gh/akihyro/orika-spring-boot-starter/branch/master/graph/badge.svg
-[Codecov]: https://codecov.io/gh/akihyro/orika-spring-boot-starter
-[License Badge]: https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg
-[License]: LICENSE.txt
+[maven central]: https://maven-badges.herokuapp.com/maven-central/dev.akkinoc.spring.boot/orika-spring-boot-starter
+[maven central badge]: https://maven-badges.herokuapp.com/maven-central/dev.akkinoc.spring.boot/orika-spring-boot-starter/badge.svg
+[javadoc]: https://javadoc.io/doc/dev.akkinoc.spring.boot/orika-spring-boot-starter
+[javadoc badge]: https://javadoc.io/badge2/dev.akkinoc.spring.boot/orika-spring-boot-starter/javadoc.svg
+[release]: https://github.com/akkinoc/orika-spring-boot-starter/releases
+[release badge]: https://img.shields.io/github/v/release/akkinoc/orika-spring-boot-starter?color=brightgreen&sort=semver
+[build]: https://github.com/akkinoc/orika-spring-boot-starter/actions/workflows/build.yml
+[build badge]: https://github.com/akkinoc/orika-spring-boot-starter/actions/workflows/build.yml/badge.svg
+[codecov]: https://codecov.io/gh/akkinoc/orika-spring-boot-starter
+[codecov badge]: https://codecov.io/gh/akkinoc/orika-spring-boot-starter/branch/main/graph/badge.svg
+[license]: LICENSE.txt
+[license badge]: https://img.shields.io/github/license/akkinoc/orika-spring-boot-starter?color=blue
 
-[Spring Boot] Starter for [Orika (Java Bean mapping framework)].  
+[Spring Boot] Starter for [Orika].
 
 [Spring Boot]: https://spring.io/projects/spring-boot
-[Orika (Java Bean mapping framework)]: http://orika-mapper.github.io/orika-docs/
-
-Note: This page is for Spring Boot 2. If you use Spring Boot 1, please refer to [v1.7.x branch].  
-
-[v1.7.x branch]: https://github.com/akihyro/orika-spring-boot-starter/tree/v1.7.x
+[Orika]: https://orika-mapper.github.io/orika-docs
 
 ## Features
 
-* Manages the `MapperFacade` (Orika's mapper interface) in the application context
-  and makes it injectable into your code.
-* Provides interface to customize the `MapperFactory`.
-* Provides interface to customize the `MapperFactoryBuilder`.
+* Manages MapperFacade in the application context and makes it injectable into your code.
+* Provides an interface to configure MapperFactory.
+* Provides an interface to configure MapperFactoryBuilder.
+* Provides configuration properties to configure MapperFactoryBuilder.
 
-## Supported versions
+## Dependencies
 
-"orika-spring-boot-starter" supports the following versions.  
-Other versions might also work, but we have not tested it.  
+Depends on:
 
-* Java 8, 9, 10, 11
-* Spring Boot 2.1.3
-* Orika 1.5.4
+* Java 8, 11 or 15
+* Kotlin 1.5
+* Spring Boot 2.5
+* Orika 1.5
+
+Other versions may also work, but have not been tested.
 
 ## Usage
 
 ### Adding the dependency
 
-"orika-spring-boot-starter" is published on Maven Central Repository.  
-If you are using Maven, add the following dependency.  
+The artifact is published on [Maven Central Repository][maven central].
+If you are using Maven, add the following dependency.
 
 ```xml
 <dependency>
-    <groupId>net.rakugakibox.spring.boot</groupId>
+    <groupId>dev.akkinoc.spring.boot</groupId>
     <artifactId>orika-spring-boot-starter</artifactId>
-    <version>1.9.0</version>
+    <version>${orika-spring-boot-starter.version}</version>
 </dependency>
 ```
 
-### Injecting the `MapperFacade`
+### Injecting the MapperFacade
 
-The `MapperFacade` (Orika's mapper interface) is managed by the application context.  
-Inject the `MapperFacade` into your code.  
+The MapperFacade is managed in the application context.
+Inject the MapperFacade into your code.
 
-For example:  
+For example in Java:
+
+```java
+import ma.glasnost.orika.MapperFacade;
+```
 
 ```java
 @Autowired
@@ -71,30 +76,30 @@ private MapperFacade orikaMapperFacade;
 
 ### Mapping your beans
 
-Map your beans using the `MapperFacade`.  
+Map your beans using the MapperFacade.
 
-For example:  
+For example in Java:
 
 ```java
-PersonSource source = new PersonSource();
-source.setFirstName("John");
-source.setLastName("Smith");
-source.setAge(23);
-PersonDestination destination = orikaMapperFacade.map(source, PersonDestination.class);
+// Maps from PersonSource to PersonDestination
+PersonSource src = new PersonSource("John", "Smith", 23);
+System.out.println(src);   // => "PersonSource(firstName=John, lastName=Smith, age=23)"
+PersonDestination dest = orikaMapperFacade.map(src, PersonDestination.class);
+System.out.println(dest);  // => "PersonDestination(givenName=John, sirName=Smith, age=23)"
 ```
 
-## Customizing
+## MapperFactory Configuration
 
-### Customizing the `MapperFactory`
+If you need to configure the MapperFactory,
+create an instance of OrikaMapperFactoryConfigurer in the application context.
+The OrikaMapperFactoryConfigurer components are auto-detected and the "configure" method is called.
 
-If you need to customize the `MapperFactory`,
-create an instance of `OrikaMapperFactoryConfigurer` within the application context.  
-`OrikaMapperFactoryConfigurer` components are auto-detected
-and the `configure(MapperFactory)` method is called.  
-
-For example:  
+For example in Java:
 
 ```java
+import dev.akkinoc.spring.boot.orika.OrikaMapperFactoryConfigurer;
+import ma.glasnost.orika.MapperFactory;
+
 @Component
 public class PersonMapping implements OrikaMapperFactoryConfigurer {
     @Override
@@ -108,91 +113,82 @@ public class PersonMapping implements OrikaMapperFactoryConfigurer {
 }
 ```
 
-See also the Orika official documents:  
+See also the Orika User Guide:
 
-* [Declarative Mapping Configuration]
-* [Advanced Mapping Configurations]
+* [Declarative Mapping Configuration](https://orika-mapper.github.io/orika-docs/mappings-via-classmapbuilder.html)
+* [Advanced Mapping Configurations](https://orika-mapper.github.io/orika-docs/advanced-mappings.html)
 
-[Declarative Mapping Configuration]: http://orika-mapper.github.io/orika-docs/mappings-via-classmapbuilder.html
-[Advanced Mapping Configurations]: http://orika-mapper.github.io/orika-docs/advanced-mappings.html
+## MapperFactoryBuilder Configuration
 
-### Customizing the `MapperFactoryBuilder`
+If you need to configure the MapperFactoryBuilder,
+create an instance of OrikaMapperFactoryBuilderConfigurer in the application context.
+The OrikaMapperFactoryBuilderConfigurer components are auto-detected and the "configure" method is called.
 
-If you need to customize the `MapperFactoryBuilder`,
-create an instance of `OrikaMapperFactoryBuilderConfigurer` within the application context.  
-`OrikaMapperFactoryBuilderConfigurer` components are auto-detected
-and the `configure(MapperFactoryBuilder)` method is called.  
-
-For example:  
+For example in Java:
 
 ```java
+import dev.akkinoc.spring.boot.orika.OrikaMapperFactoryBuilderConfigurer;
+import ma.glasnost.orika.impl.DefaultMapperFactory.MapperFactoryBuilder;
+
 @Component
-public class CustomOrikaMapperFactoryBuilderConfigurer implements OrikaMapperFactoryBuilderConfigurer {
+public class OrikaConfiguration implements OrikaMapperFactoryBuilderConfigurer {
     @Override
     public void configure(MapperFactoryBuilder<?, ?> orikaMapperFactoryBuilder) {
-        // Your customization code.
+        // Your configuration code.
     }
 }
 ```
 
-See also the Orika official documents:  
+See also the Orika User Guide:
 
-* [MapperFactory Configuration]
+* [MapperFactory Configuration](https://orika-mapper.github.io/orika-docs/mapper-factory.html)
 
-[MapperFactory Configuration]: http://orika-mapper.github.io/orika-docs/mapper-factory.html
+## Configuration Properties
 
-## Configuration properties
+Provides the following configuration properties.
+These can be configured by your "application.yml" / "application.properties".
 
-"orika-spring-boot-starter" provides the following configuration properties.  
-These can be configure by your "application.yml" / "application.properties".  
-
-```yml
+```yaml
+# The configuration properties for Orika.
 orika:
   # Whether to enable auto-configuration.
   # Defaults to true.
   enabled: true
-  # Whether to use built-in converters (MapperFactoryBuilder#useBuiltinConverters(boolean)).
-  # Follows Orika's behavior by default.
-  useBuiltinConverters: true
-  # Whether to use auto-mapping (MapperFactoryBuilder#useAutoMapping(boolean)).
-  # Follows Orika's behavior by default.
-  useAutoMapping: true
-  # Whether to map null values (MapperFactoryBuilder#mapNulls(boolean)).
-  # Follows Orika's behavior by default.
-  mapNulls: true
+  # Whether to use built-in converters.
+  # See also MapperFactoryBuilder.useBuiltinConverters.
+  # By default, follows Orika's behavior.
+  use-builtin-converters: true
+  # Whether to use auto-mapping.
+  # See also MapperFactoryBuilder.useAutoMapping.
+  # By default, follows Orika's behavior.
+  use-auto-mapping: true
+  # Whether to map nulls.
+  # See also MapperFactoryBuilder.mapNulls.
+  # By default, follows Orika's behavior.
+  map-nulls: true
   # Whether to dump the current state of the mapping infrastructure objects
-  # upon occurrence of an exception while mapping (MapperFactoryBuilder#dumpStateOnException(boolean)).
-  # Follows Orika's behavior by default.
-  dumpStateOnException: false
-  # Whether the class-map should be considered 'abstract' (MapperFactoryBuilder#favorExtension(boolean)).
-  # Follows Orika's behavior by default.
-  favorExtension: false
-  # Whether full field context should be captured (MapperFactoryBuilder#captureFieldContext(boolean)).
-  # Follows Orika's behavior by default.
-  captureFieldContext: false
+  # upon occurrence of an exception while mapping.
+  # See also MapperFactoryBuilder.dumpStateOnException.
+  # By default, follows Orika's behavior.
+  dump-state-on-exception: false
+  # Whether to favor extension by default in registered class-maps.
+  # See also MapperFactoryBuilder.favorExtension.
+  # By default, follows Orika's behavior.
+  favor-extension: false
+  # Whether full field context should be captured.
+  # See also MapperFactoryBuilder.captureFieldContext.
+  # By default, follows Orika's behavior.
+  capture-field-context: false
 ```
 
-## Release notes
+## API Reference
 
-Please refer to the "[Releases]" page.  
+Please refer to the [Javadoc][javadoc].
 
-[Releases]: https://github.com/akihyro/orika-spring-boot-starter/releases
+## Release Notes
 
-## Contributing
-
-Bug reports and pull requests are welcome :)  
-
-## Building and testing
-
-To build and test, you can run:  
-
-```sh
-$ cd orika-spring-boot-starter
-$ ./mvnw clean install
-```
+Please refer to the [Releases][release] page.
 
 ## License
 
-Licensed under the [Apache License, Version 2.0].  
-
-[Apache License, Version 2.0]: LICENSE.txt
+Licensed under the [Apache License, Version 2.0][license].

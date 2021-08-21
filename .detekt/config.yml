@@ -1,0 +1,19 @@
+comments:
+  UndocumentedPublicClass:
+    active: true
+  UndocumentedPublicFunction:
+    active: true
+  UndocumentedPublicProperty:
+    active: true
+formatting:
+  ImportOrdering:
+    active: true
+  NoBlankLineBeforeRbrace:
+    active: false
+  ParameterListWrapping:
+    active: false
+style:
+  ClassOrdering:
+    active: true
+  NoTabs:
+    active: true
