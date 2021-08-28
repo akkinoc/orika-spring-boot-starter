@@ -1,0 +1,57 @@
+{
+  "groups": [
+    {
+      "name": "orika",
+      "type": "dev.akkinoc.spring.boot.orika.OrikaProperties",
+      "sourceType": "dev.akkinoc.spring.boot.orika.OrikaProperties",
+      "description": "The configuration properties for Orika."
+    }
+  ],
+  "properties": [
+    {
+      "name": "orika.enabled",
+      "type": "java.lang.Boolean",
+      "sourceType": "dev.akkinoc.spring.boot.orika.OrikaProperties",
+      "description": "Whether to enable auto-configuration.",
+      "defaultValue": true
+    },
+    {
+      "name": "orika.use-builtin-converters",
+      "type": "java.lang.Boolean",
+      "sourceType": "dev.akkinoc.spring.boot.orika.OrikaProperties",
+      "description": "Whether to use built-in converters. See also MapperFactoryBuilder.useBuiltinConverters. By default, follows Orika's behavior."
+    },
+    {
+      "name": "orika.use-auto-mapping",
+      "type": "java.lang.Boolean",
+      "sourceType": "dev.akkinoc.spring.boot.orika.OrikaProperties",
+      "description": "Whether to use auto-mapping. See also MapperFactoryBuilder.useAutoMapping. By default, follows Orika's behavior."
+    },
+    {
+      "name": "orika.map-nulls",
+      "type": "java.lang.Boolean",
+      "sourceType": "dev.akkinoc.spring.boot.orika.OrikaProperties",
+      "description": "Whether to map nulls. See also MapperFactoryBuilder.mapNulls. By default, follows Orika's behavior."
+    },
+    {
+      "name": "orika.dump-state-on-exception",
+      "type": "java.lang.Boolean",
+      "sourceType": "dev.akkinoc.spring.boot.orika.OrikaProperties",
+      "description": "Whether to dump the current state of the mapping infrastructure objects upon occurrence of an exception while mapping. See also MapperFactoryBuilder.dumpStateOnException. By default, follows Orika's behavior."
+    },
+    {
+      "name": "orika.favor-extension",
+      "type": "java.lang.Boolean",
+      "sourceType": "dev.akkinoc.spring.boot.orika.OrikaProperties",
+      "description": "Whether to favor extension by default in registered class-maps. See also MapperFactoryBuilder.favorExtension. By default, follows Orika's behavior."
+    },
+    {
+      "name": "orika.capture-field-context",
+      "type": "java.lang.Boolean",
+      "sourceType": "dev.akkinoc.spring.boot.orika.OrikaProperties",
+      "description": "Whether full field context should be captured. See also MapperFactoryBuilder.captureFieldContext. By default, follows Orika's behavior."
+    }
+  ],
+  "hints": [
+  ]
+}
