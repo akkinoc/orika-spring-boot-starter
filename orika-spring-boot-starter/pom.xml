@@ -6,11 +6,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.rakugakibox.spring.boot</groupId>
     <artifactId>orika-spring-boot-starter</artifactId>
-    <version>1.10.0</version>
+    <version>1.10.1</version>
     <packaging>jar</packaging>
     <name>orika-spring-boot-starter</name>
     <description>Spring Boot Starter for Orika</description>
-    <url>https://github.com/akihyro/orika-spring-boot-starter</url>
+    <url>https://github.com/akkinoc/orika-spring-boot-starter</url>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -18,8 +18,8 @@
     </parent>
 
     <organization>
-        <name>rakugakibox.net</name>
-        <url>http://rakugakibox.net</url>
+        <name>akkinoc.dev</name>
+        <url>https://akkinoc.dev</url>
     </organization>
 
     <licenses>
@@ -30,27 +30,27 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/akihyro/orika-spring-boot-starter</url>
-        <connection>scm:git:git@github.com:akihyro/orika-spring-boot-starter.git</connection>
-        <developerConnection>scm:git:git@github.com:akihyro/orika-spring-boot-starter.git</developerConnection>
+        <url>https://github.com/akkinoc/orika-spring-boot-starter</url>
+        <connection>scm:git:git@github.com:akkinoc/orika-spring-boot-starter.git</connection>
+        <developerConnection>scm:git:git@github.com:akkinoc/orika-spring-boot-starter.git</developerConnection>
     </scm>
 
     <issueManagement>
-        <url>https://github.com/akihyro/orika-spring-boot-starter/issues</url>
         <system>GitHub Issues</system>
+        <url>https://github.com/akkinoc/orika-spring-boot-starter/issues</url>
     </issueManagement>
 
     <ciManagement>
-        <system>CircleCI</system>
-        <url>https://circleci.com/gh/akihyro/orika-spring-boot-starter</url>
+        <system>GitHub Actions</system>
+        <url>https://github.com/akkinoc/orika-spring-boot-starter/actions</url>
     </ciManagement>
 
     <developers>
         <developer>
-            <id>akihyro</id>
+            <id>akkinoc</id>
             <name>Akihiro Kondo</name>
-            <email>akihyro@gmail.com</email>
-            <url>http://rakugakibox.net</url>
+            <email>akkinoc@gmail.com</email>
+            <url>https://akkinoc.dev</url>
         </developer>
     </developers>
 
@@ -65,6 +65,7 @@
         </repository>
         <relocation>
             <groupId>dev.akkinoc.spring.boot</groupId>
+            <artifactId>orika-spring-boot-starter</artifactId>
         </relocation>
     </distributionManagement>
 
