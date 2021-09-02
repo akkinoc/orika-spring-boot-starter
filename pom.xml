@@ -247,12 +247,12 @@
                     <dependency>
                         <groupId>io.gitlab.arturbosch.detekt</groupId>
                         <artifactId>detekt-cli</artifactId>
-                        <version>1.18.1.1</version>
+                        <version>1.18.1</version>
                     </dependency>
                     <dependency>
                         <groupId>io.gitlab.arturbosch.detekt</groupId>
                         <artifactId>detekt-formatting</artifactId>
-                        <version>1.18.1.1</version>
+                        <version>1.18.1</version>
                     </dependency>
                 </dependencies>
                 <configuration>
