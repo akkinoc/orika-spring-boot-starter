@@ -225,8 +225,8 @@
                 <version>1.5.0</version>
                 <configuration>
                     <includes>
-                        <include>${project.build.sourceDirectory}/dev/akkinoc/spring/boot/orika/module.md</include>
-                        <include>${project.build.sourceDirectory}/dev/akkinoc/spring/boot/orika/package.md</include>
+                        <include>src/main/kotlin/dev/akkinoc/spring/boot/orika/module.md</include>
+                        <include>src/main/kotlin/dev/akkinoc/spring/boot/orika/package.md</include>
                     </includes>
                 </configuration>
                 <executions>
