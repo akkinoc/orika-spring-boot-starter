@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.context.annotation.Bean
 
 /**
- * Tests the case where [MapperFactoryBuilder] is configured.
+ * Tests the case where the [MapperFactoryBuilder] is configured.
  */
 @SpringBootTest
 class MapperFactoryBuilderConfigurationTest

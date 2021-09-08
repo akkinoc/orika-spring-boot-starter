@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.util.ReflectionTestUtils.getField
 
 /**
- * Tests the case where the default configuration is used.
+ * Tests the case where the configuration is the default.
  */
 @SpringBootTest
 class DefaultConfigurationTest

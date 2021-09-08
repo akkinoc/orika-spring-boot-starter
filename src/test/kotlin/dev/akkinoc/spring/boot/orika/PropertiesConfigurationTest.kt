@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.util.ReflectionTestUtils.getField
 
 /**
- * Tests the case where configuration properties are configured.
+ * Tests the case where the configuration properties are configured.
  */
 @SpringBootTest(
         properties = [
