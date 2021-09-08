@@ -12,9 +12,10 @@ class MockOrikaMapperFactoryConfigurer : OrikaMapperFactoryConfigurer {
      * The configured [MapperFactory].
      */
     var configured: MapperFactory? = null
+        private set
 
     override fun configure(orikaMapperFactory: MapperFactory) {
-        check(configured == null) { "configured=$configured" }
+        check(configured == null) { "MockOrikaMapperFactoryConfigurer is already configured: $this" }
         configured = orikaMapperFactory
     }
 

@@ -1,8 +1,0 @@
-orika:
-  enabled: true
-  use-builtin-converters: false
-  use-auto-mapping: false
-  map-nulls: false
-  dump-state-on-exception: true
-  favor-extension: true
-  capture-field-context: true
