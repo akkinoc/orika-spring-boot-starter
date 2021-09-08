@@ -15,7 +15,7 @@ import org.springframework.test.util.ReflectionTestUtils.getField
  * Tests the case where the configuration is the default.
  */
 @SpringBootTest
-class DefaultConfigurationTest
+class BasicTest
 @Autowired
 constructor(
         private val orikaProperties: OrikaProperties?,
