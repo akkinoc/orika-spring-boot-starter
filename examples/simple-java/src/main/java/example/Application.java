@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @RequiredArgsConstructor
 @SpringBootApplication
-public class App implements ApplicationRunner {
+public class Application implements ApplicationRunner {
 
     private final MapperFacade orikaMapperFacade;
 
@@ -25,7 +25,7 @@ public class App implements ApplicationRunner {
     }
 
     public static void main(String... args) {
-        SpringApplication.run(App.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
 }

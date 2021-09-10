@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class App(private val orikaMapperFacade: MapperFacade) : ApplicationRunner {
+class Application(private val orikaMapperFacade: MapperFacade) : ApplicationRunner {
 
     override fun run(args: ApplicationArguments) {
 
@@ -22,5 +22,5 @@ class App(private val orikaMapperFacade: MapperFacade) : ApplicationRunner {
 }
 
 fun main(vararg args: String) {
-    runApplication<App>(*args)
+    runApplication<Application>(*args)
 }
