@@ -1,6 +1,6 @@
 package dev.akkinoc.spring.boot.orika
 
-import dev.akkinoc.spring.boot.orika.test.MockOrikaMapperFactoryConfigurer
+import dev.akkinoc.spring.boot.orika.test.mock.MockOrikaMapperFactoryConfigurer
 import io.kotest.matchers.types.shouldBeSameInstanceAs
 import ma.glasnost.orika.MapperFactory
 import org.junit.jupiter.api.Test

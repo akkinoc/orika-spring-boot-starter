@@ -1,4 +1,4 @@
-package dev.akkinoc.spring.boot.orika.test
+package dev.akkinoc.spring.boot.orika.test.mock
 
 import dev.akkinoc.spring.boot.orika.OrikaMapperFactoryBuilderConfigurer
 import ma.glasnost.orika.impl.DefaultMapperFactory.MapperFactoryBuilder
