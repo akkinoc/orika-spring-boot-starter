@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest
  * Tests the case where auto-configuration is disabled.
  */
 @SpringBootTest(properties = ["orika.enabled=false"])
-class DisablingTest
+class DisabledTest
 @Autowired
 constructor(
         private val orikaProperties: OrikaProperties?,
