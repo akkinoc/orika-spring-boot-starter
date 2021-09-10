@@ -13,16 +13,14 @@ import org.springframework.context.annotation.Bean
  * Tests the case where the [MapperFactoryBuilder] is configured.
  */
 @SpringBootTest
-class MapperFactoryBuilderConfigurationTest
-@Autowired
-constructor(
-        private val orikaMapperFactoryBuilder: MapperFactoryBuilder<*, *>,
-        private val mockOrikaMapperFactoryBuilderConfigurer1: MockOrikaMapperFactoryBuilderConfigurer,
-        private val mockOrikaMapperFactoryBuilderConfigurer2: MockOrikaMapperFactoryBuilderConfigurer,
-) {
+class MapperFactoryBuilderConfigurationTest {
 
     @Test
-    fun `Configures the MapperFactoryBuilder`() {
+    fun `Configures the MapperFactoryBuilder`(
+            @Autowired orikaMapperFactoryBuilder: MapperFactoryBuilder<*, *>,
+            @Autowired mockOrikaMapperFactoryBuilderConfigurer1: MockOrikaMapperFactoryBuilderConfigurer,
+            @Autowired mockOrikaMapperFactoryBuilderConfigurer2: MockOrikaMapperFactoryBuilderConfigurer,
+    ) {
         mockOrikaMapperFactoryBuilderConfigurer1.configured.shouldBeSameInstanceAs(orikaMapperFactoryBuilder)
         mockOrikaMapperFactoryBuilderConfigurer2.configured.shouldBeSameInstanceAs(orikaMapperFactoryBuilder)
     }

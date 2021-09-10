@@ -5,7 +5,7 @@ import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
 import ma.glasnost.orika.MapperFacade
 import ma.glasnost.orika.MapperFactory
-import ma.glasnost.orika.impl.DefaultMapperFactory
+import ma.glasnost.orika.impl.DefaultMapperFactory.MapperFactoryBuilder
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -15,17 +15,10 @@ import org.springframework.test.util.ReflectionTestUtils.getField
  * Tests the case where the configuration is the default.
  */
 @SpringBootTest
-class BasicTest
-@Autowired
-constructor(
-        private val orikaProperties: OrikaProperties?,
-        private val orikaMapperFactoryBuilder: DefaultMapperFactory.MapperFactoryBuilder<*, *>?,
-        private val orikaMapperFactory: MapperFactory?,
-        private val orikaMapperFacade: MapperFacade?,
-) {
+class BasicTest {
 
     @Test
-    fun `Provides the configuration properties`() {
+    fun `Provides the configuration properties`(@Autowired orikaProperties: OrikaProperties?) {
         orikaProperties.shouldNotBeNull()
         orikaProperties.enabled.shouldBe(true)
         orikaProperties.useBuiltinConverters.shouldBeNull()
@@ -37,7 +30,7 @@ constructor(
     }
 
     @Test
-    fun `Provides the MapperFactoryBuilder`() {
+    fun `Provides the MapperFactoryBuilder`(@Autowired orikaMapperFactoryBuilder: MapperFactoryBuilder<*, *>?) {
         orikaMapperFactoryBuilder.shouldNotBeNull()
         getField(orikaMapperFactoryBuilder, "useBuiltinConverters").shouldBe(true)
         getField(orikaMapperFactoryBuilder, "useAutoMapping").shouldBe(true)
@@ -48,12 +41,12 @@ constructor(
     }
 
     @Test
-    fun `Provides the MapperFactory`() {
+    fun `Provides the MapperFactory`(@Autowired orikaMapperFactory: MapperFactory?) {
         orikaMapperFactory.shouldNotBeNull()
     }
 
     @Test
-    fun `Provides the MapperFacade`() {
+    fun `Provides the MapperFacade`(@Autowired orikaMapperFacade: MapperFacade?) {
         orikaMapperFacade.shouldNotBeNull()
     }
 

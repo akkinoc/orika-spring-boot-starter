@@ -21,15 +21,10 @@ import org.springframework.test.util.ReflectionTestUtils.getField
             "orika.capture-field-context=true",
         ]
 )
-class PropertiesConfigurationTest
-@Autowired
-constructor(
-        private val orikaProperties: OrikaProperties,
-        private val orikaMapperFactoryBuilder: MapperFactoryBuilder<*, *>,
-) {
+class PropertiesConfigurationTest {
 
     @Test
-    fun `Configures the configuration properties`() {
+    fun `Configures the configuration properties`(@Autowired orikaProperties: OrikaProperties) {
         orikaProperties.enabled.shouldBe(true)
         orikaProperties.useBuiltinConverters.shouldBe(false)
         orikaProperties.useAutoMapping.shouldBe(false)
@@ -40,7 +35,7 @@ constructor(
     }
 
     @Test
-    fun `Configures the MapperFactoryBuilder`() {
+    fun `Configures the MapperFactoryBuilder`(@Autowired orikaMapperFactoryBuilder: MapperFactoryBuilder<*, *>) {
         getField(orikaMapperFactoryBuilder, "useBuiltinConverters").shouldBe(false)
         getField(orikaMapperFactoryBuilder, "useAutoMapping").shouldBe(false)
         getField(orikaMapperFactoryBuilder, "mapNulls").shouldBe(false)

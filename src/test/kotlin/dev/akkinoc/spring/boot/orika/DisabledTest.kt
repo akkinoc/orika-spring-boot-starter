@@ -12,32 +12,25 @@ import org.springframework.boot.test.context.SpringBootTest
  * Tests the case where auto-configuration is disabled.
  */
 @SpringBootTest(properties = ["orika.enabled=false"])
-class DisabledTest
-@Autowired
-constructor(
-        private val orikaProperties: OrikaProperties?,
-        private val orikaMapperFactoryBuilder: MapperFactoryBuilder<*, *>?,
-        private val orikaMapperFactory: MapperFactory?,
-        private val orikaMapperFacade: MapperFacade?,
-) {
+class DisabledTest {
 
     @Test
-    fun `Does not provide the configuration properties`() {
+    fun `Does not provide the configuration properties`(@Autowired orikaProperties: OrikaProperties?) {
         orikaProperties.shouldBeNull()
     }
 
     @Test
-    fun `Does not provide the MapperFactoryBuilder`() {
+    fun `Does not provide the MapperFactoryBuilder`(@Autowired orikaMapperFactoryBuilder: MapperFactoryBuilder<*, *>?) {
         orikaMapperFactoryBuilder.shouldBeNull()
     }
 
     @Test
-    fun `Does not provide the MapperFactory`() {
+    fun `Does not provide the MapperFactory`(@Autowired orikaMapperFactory: MapperFactory?) {
         orikaMapperFactory.shouldBeNull()
     }
 
     @Test
-    fun `Does not provide the MapperFacade`() {
+    fun `Does not provide the MapperFacade`(@Autowired orikaMapperFacade: MapperFacade?) {
         orikaMapperFacade.shouldBeNull()
     }
 
