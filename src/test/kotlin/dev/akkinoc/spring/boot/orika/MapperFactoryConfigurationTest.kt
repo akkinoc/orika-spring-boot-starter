@@ -25,14 +25,27 @@ class MapperFactoryConfigurationTest {
         mockOrikaMapperFactoryConfigurer2.configured.shouldBeSameInstanceAs(orikaMapperFactory)
     }
 
+    /**
+     * The additional test context configuration.
+     */
     @TestConfiguration(proxyBeanMethods = false)
-    class MapperFactoryConfiguration {
+    class AdditionalTestContextConfiguration {
 
+        /**
+         * Provides the first [MockOrikaMapperFactoryConfigurer].
+         *
+         * @return The first [MockOrikaMapperFactoryConfigurer].
+         */
         @Bean
         fun mockOrikaMapperFactoryConfigurer1(): MockOrikaMapperFactoryConfigurer {
             return MockOrikaMapperFactoryConfigurer()
         }
 
+        /**
+         * Provides the second [MockOrikaMapperFactoryConfigurer].
+         *
+         * @return The second [MockOrikaMapperFactoryConfigurer].
+         */
         @Bean
         fun mockOrikaMapperFactoryConfigurer2(): MockOrikaMapperFactoryConfigurer {
             return MockOrikaMapperFactoryConfigurer()

@@ -8,4 +8,4 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration
  */
 @SpringBootConfiguration(proxyBeanMethods = false)
 @EnableAutoConfiguration
-class TestApplication
+class TestContextConfiguration
