@@ -16,7 +16,7 @@
 
 ## Setup
 
-To setup, run:
+To set up, run:
 
 ```console
 $ git clone git@github.com:akkinoc/orika-spring-boot-starter.git
