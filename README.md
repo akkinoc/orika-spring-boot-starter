@@ -134,7 +134,7 @@ import ma.glasnost.orika.impl.DefaultMapperFactory.MapperFactoryBuilder;
 public class OrikaConfiguration implements OrikaMapperFactoryBuilderConfigurer {
     @Override
     public void configure(MapperFactoryBuilder<?, ?> orikaMapperFactoryBuilder) {
-        // Your configuration code.
+        // Your configuration codes.
     }
 }
 ```
