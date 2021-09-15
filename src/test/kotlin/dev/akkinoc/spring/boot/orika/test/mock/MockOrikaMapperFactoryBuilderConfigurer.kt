@@ -15,7 +15,7 @@ class MockOrikaMapperFactoryBuilderConfigurer : OrikaMapperFactoryBuilderConfigu
         private set
 
     override fun configure(orikaMapperFactoryBuilder: MapperFactoryBuilder<*, *>) {
-        check(configured == null) { "MockOrikaMapperFactoryBuilderConfigurer is already configured: $this" }
+        check(configured == null) { "The MockOrikaMapperFactoryBuilderConfigurer is already configured: $this" }
         configured = orikaMapperFactoryBuilder
     }
 
