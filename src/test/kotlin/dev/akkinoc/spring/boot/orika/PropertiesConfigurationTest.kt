@@ -24,7 +24,7 @@ import org.springframework.test.util.ReflectionTestUtils.getField
 class PropertiesConfigurationTest {
 
     @Test
-    fun `Configures the configuration properties`(@Autowired orikaProperties: OrikaProperties) {
+    fun `Configures the configuration properties for Orika`(@Autowired orikaProperties: OrikaProperties) {
         orikaProperties.enabled.shouldBe(true)
         orikaProperties.useBuiltinConverters.shouldBe(false)
         orikaProperties.useAutoMapping.shouldBe(false)

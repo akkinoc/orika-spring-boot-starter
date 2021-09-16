@@ -15,7 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest
 class DisabledTest {
 
     @Test
-    fun `Does not provide the configuration properties`(@Autowired orikaProperties: OrikaProperties?) {
+    fun `Does not provide the configuration properties for Orika`(@Autowired orikaProperties: OrikaProperties?) {
         orikaProperties.shouldBeNull()
     }
 

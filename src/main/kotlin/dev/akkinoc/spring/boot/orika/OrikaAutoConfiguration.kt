@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration
 /**
  * The auto-configuration for Orika.
  *
- * @property orikaProperties The configuration properties.
+ * @property orikaProperties The configuration properties for Orika.
  * @property orikaMapperFactoryBuilderConfigurers The configurers for [MapperFactoryBuilder].
  * @property orikaMapperFactoryConfigurers The configurers for [MapperFactory].
  */

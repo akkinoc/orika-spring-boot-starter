@@ -18,7 +18,7 @@ import org.springframework.test.util.ReflectionTestUtils.getField
 class BasicTest {
 
     @Test
-    fun `Provides the configuration properties`(@Autowired orikaProperties: OrikaProperties?) {
+    fun `Provides the configuration properties for Orika`(@Autowired orikaProperties: OrikaProperties?) {
         orikaProperties.shouldNotBeNull()
         orikaProperties.enabled.shouldBe(true)
         orikaProperties.useBuiltinConverters.shouldBeNull()
