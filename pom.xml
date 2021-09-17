@@ -109,7 +109,7 @@
         <dependency>
             <groupId>io.kotest</groupId>
             <artifactId>kotest-assertions-core-jvm</artifactId>
-            <version>4.6.2</version>
+            <version>4.6.3</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
