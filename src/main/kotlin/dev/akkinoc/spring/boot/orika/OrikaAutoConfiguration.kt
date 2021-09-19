@@ -44,7 +44,7 @@ class OrikaAutoConfiguration(
         orikaProperties.favorExtension?.also { orikaMapperFactoryBuilder.favorExtension(it) }
         orikaProperties.captureFieldContext?.also { orikaMapperFactoryBuilder.captureFieldContext(it) }
         orikaMapperFactoryBuilderConfigurers.forEach { it.configure(orikaMapperFactoryBuilder) }
-        log.debug("Providing the MapperFactoryBuilder: $orikaMapperFactoryBuilder")
+        log.debug("Providing the {}: {}", MapperFactoryBuilder::class.simpleName, orikaMapperFactoryBuilder)
         return orikaMapperFactoryBuilder
     }
 
@@ -59,7 +59,7 @@ class OrikaAutoConfiguration(
     fun orikaMapperFactory(orikaMapperFactoryBuilder: MapperFactoryBuilder<*, *>): MapperFactory {
         val orikaMapperFactory = orikaMapperFactoryBuilder.build()
         orikaMapperFactoryConfigurers.forEach { it.configure(orikaMapperFactory) }
-        log.debug("Providing the MapperFactory: $orikaMapperFactory")
+        log.debug("Providing the {}: {}", MapperFactory::class.simpleName, orikaMapperFactory)
         return orikaMapperFactory
     }
 
@@ -73,7 +73,7 @@ class OrikaAutoConfiguration(
     @ConditionalOnMissingBean
     fun orikaMapperFacade(orikaMapperFactory: MapperFactory): MapperFacade {
         val orikaMapperFacade = orikaMapperFactory.mapperFacade
-        log.debug("Providing the MapperFacade: $orikaMapperFacade")
+        log.debug("Providing the {}: {}", MapperFacade::class.simpleName, orikaMapperFacade)
         return orikaMapperFacade
     }
 
