@@ -15,5 +15,7 @@ formatting:
 style:
   ClassOrdering:
     active: true
+  FunctionOnlyReturningConstant:
+    active: false
   NoTabs:
     active: true
