@@ -11,7 +11,7 @@ formatting:
   NoBlankLineBeforeRbrace:
     active: false
   ParameterListWrapping:
-    active: false
+    indentSize: 8
 style:
   ClassOrdering:
     active: true
