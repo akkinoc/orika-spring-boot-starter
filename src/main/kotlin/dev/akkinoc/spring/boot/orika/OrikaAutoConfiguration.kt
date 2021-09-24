@@ -14,28 +14,25 @@ import org.springframework.context.annotation.Configuration
 
 /**
  * The auto-configuration for Orika.
- *
- * @property orikaProperties The configuration properties for Orika.
- * @property orikaMapperFactoryBuilderConfigurers The configurers for [MapperFactoryBuilder].
- * @property orikaMapperFactoryConfigurers The configurers for [MapperFactory].
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnProperty(prefix = "orika", name = ["enabled"], havingValue = "true", matchIfMissing = true)
 @EnableConfigurationProperties(OrikaProperties::class)
-class OrikaAutoConfiguration(
-        private val orikaProperties: OrikaProperties,
-        private val orikaMapperFactoryBuilderConfigurers: List<OrikaMapperFactoryBuilderConfigurer>,
-        private val orikaMapperFactoryConfigurers: List<OrikaMapperFactoryConfigurer>,
-) {
+class OrikaAutoConfiguration {
 
     /**
      * Provides the [MapperFactoryBuilder].
      *
+     * @param orikaProperties The configuration properties for Orika.
+     * @param orikaMapperFactoryBuilderConfigurers The configurers for [MapperFactoryBuilder].
      * @return The [MapperFactoryBuilder].
      */
     @Bean
     @ConditionalOnMissingBean
-    fun orikaMapperFactoryBuilder(): MapperFactoryBuilder<*, *> {
+    fun orikaMapperFactoryBuilder(
+            orikaProperties: OrikaProperties,
+            orikaMapperFactoryBuilderConfigurers: List<OrikaMapperFactoryBuilderConfigurer>,
+    ): MapperFactoryBuilder<*, *> {
         val orikaMapperFactoryBuilder = DefaultMapperFactory.Builder()
         orikaProperties.useBuiltinConverters?.also { orikaMapperFactoryBuilder.useBuiltinConverters(it) }
         orikaProperties.useAutoMapping?.also { orikaMapperFactoryBuilder.useAutoMapping(it) }
@@ -52,11 +49,15 @@ class OrikaAutoConfiguration(
      * Provides the [MapperFactory].
      *
      * @param orikaMapperFactoryBuilder The [MapperFactoryBuilder].
+     * @param orikaMapperFactoryConfigurers The configurers for [MapperFactory].
      * @return The [MapperFactory].
      */
     @Bean
     @ConditionalOnMissingBean
-    fun orikaMapperFactory(orikaMapperFactoryBuilder: MapperFactoryBuilder<*, *>): MapperFactory {
+    fun orikaMapperFactory(
+            orikaMapperFactoryBuilder: MapperFactoryBuilder<*, *>,
+            orikaMapperFactoryConfigurers: List<OrikaMapperFactoryConfigurer>,
+    ): MapperFactory {
         val orikaMapperFactory = orikaMapperFactoryBuilder.build()
         orikaMapperFactoryConfigurers.forEach { it.configure(orikaMapperFactory) }
         log.debug("Providing the {}: {}", MapperFactory::class.simpleName, orikaMapperFactory)
