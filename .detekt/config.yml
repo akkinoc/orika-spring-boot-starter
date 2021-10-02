@@ -5,6 +5,11 @@ comments:
     active: true
   UndocumentedPublicProperty:
     active: true
+complexity:
+  TooManyFunctions:
+    ignoreDeprecated: true
+    ignoreOverridden: true
+    ignorePrivate: true
 formatting:
   ImportOrdering:
     active: true
@@ -21,3 +26,5 @@ style:
     active: false
   NoTabs:
     active: true
+  SerialVersionUIDInSerializableClass:
+    active: false
