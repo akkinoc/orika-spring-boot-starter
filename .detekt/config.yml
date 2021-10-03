@@ -28,3 +28,5 @@ style:
     active: true
   SerialVersionUIDInSerializableClass:
     active: false
+  UnusedPrivateMember:
+    allowedNames: (readObject|readObjectNoData|readResolve|serialVersionUID|writeObject|writeReplace)
