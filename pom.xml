@@ -75,6 +75,15 @@
 
     <profiles>
         <profile>
+            <id>open-modules</id>
+            <activation>
+                <jdk>[9,)</jdk>
+            </activation>
+            <properties>
+                <argLine>--add-opens java.base/java.lang=ALL-UNNAMED</argLine>
+            </properties>
+        </profile>
+        <profile>
             <id>release</id>
             <properties>
                 <gpg.skip>false</gpg.skip>
