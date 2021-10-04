@@ -126,10 +126,10 @@
                 <configuration>
                     <rules>
                         <requireJavaVersion>
-                            <version>${java.version}</version>
+                            <version>[${java.version},)</version>
                         </requireJavaVersion>
                         <requireMavenVersion>
-                            <version>3.6</version>
+                            <version>[3.6,)</version>
                         </requireMavenVersion>
                     </rules>
                 </configuration>
