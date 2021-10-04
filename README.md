@@ -36,12 +36,22 @@
 
 Depends on:
 
-* Java 8, 11 or 15
+* Java 8, 11 or 17
 * Kotlin 1.5
 * Spring Boot 2.5
 * Orika 1.5
 
 Other versions may also work, but have not been tested.
+
+To run on Java 17+:
+
+The following JVM option is required ([orika-mapper/orika#377]).
+
+[orika-mapper/orika#377]: https://github.com/orika-mapper/orika/issues/377
+
+```console
+--add-opens java.base/java.lang=ALL-UNNAMED
+```
 
 ## Usage
 
