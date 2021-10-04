@@ -222,7 +222,7 @@
             <plugin>
                 <groupId>org.jetbrains.dokka</groupId>
                 <artifactId>dokka-maven-plugin</artifactId>
-                <version>1.5.30</version>
+                <version>1.5.31</version>
                 <configuration>
                     <includes>
                         <include>src/main/kotlin/dev/akkinoc/spring/boot/orika/module.md</include>
