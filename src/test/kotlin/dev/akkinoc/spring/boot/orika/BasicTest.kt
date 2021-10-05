@@ -1,6 +1,5 @@
 package dev.akkinoc.spring.boot.orika
 
-import io.kotest.matchers.nulls.shouldBeNull
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
 import ma.glasnost.orika.MapperFacade
@@ -19,14 +18,7 @@ class BasicTest {
 
     @Test
     fun `Provides the configuration properties for Orika`(@Autowired orikaProperties: OrikaProperties?) {
-        orikaProperties.shouldNotBeNull()
-        orikaProperties.enabled.shouldBe(true)
-        orikaProperties.useBuiltinConverters.shouldBeNull()
-        orikaProperties.useAutoMapping.shouldBeNull()
-        orikaProperties.mapNulls.shouldBeNull()
-        orikaProperties.dumpStateOnException.shouldBeNull()
-        orikaProperties.favorExtension.shouldBeNull()
-        orikaProperties.captureFieldContext.shouldBeNull()
+        orikaProperties.shouldBe(OrikaProperties())
     }
 
     @Test

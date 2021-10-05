@@ -24,17 +24,6 @@ import org.springframework.test.util.ReflectionTestUtils.getField
 class PropertiesConfigurationTest {
 
     @Test
-    fun `Configures the configuration properties for Orika`(@Autowired orikaProperties: OrikaProperties) {
-        orikaProperties.enabled.shouldBe(true)
-        orikaProperties.useBuiltinConverters.shouldBe(false)
-        orikaProperties.useAutoMapping.shouldBe(false)
-        orikaProperties.mapNulls.shouldBe(false)
-        orikaProperties.dumpStateOnException.shouldBe(true)
-        orikaProperties.favorExtension.shouldBe(true)
-        orikaProperties.captureFieldContext.shouldBe(true)
-    }
-
-    @Test
     fun `Configures the MapperFactoryBuilder`(@Autowired orikaMapperFactoryBuilder: MapperFactoryBuilder<*, *>) {
         getField(orikaMapperFactoryBuilder, "useBuiltinConverters").shouldBe(false)
         getField(orikaMapperFactoryBuilder, "useAutoMapping").shouldBe(false)
