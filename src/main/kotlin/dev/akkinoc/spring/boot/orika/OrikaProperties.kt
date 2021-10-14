@@ -37,7 +37,9 @@ import org.springframework.boot.context.properties.ConstructorBinding
  */
 @ConfigurationProperties("orika")
 @ConstructorBinding
-data class OrikaProperties(
+data class OrikaProperties
+@JvmOverloads
+constructor(
         val enabled: Boolean = true,
         val useBuiltinConverters: Boolean? = null,
         val useAutoMapping: Boolean? = null,
