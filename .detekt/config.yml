@@ -17,6 +17,9 @@ formatting:
     active: false
   ParameterListWrapping:
     indentSize: 8
+performance:
+  SpreadOperator:
+    active: false
 style:
   ClassOrdering:
     active: true
