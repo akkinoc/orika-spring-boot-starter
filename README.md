@@ -41,8 +41,6 @@ Depends on:
 * Spring Boot 2.5
 * Orika 1.5
 
-Other versions may also work, but have not been tested.
-
 To run on Java 17+:
 
 The following JVM option is required ([orika-mapper/orika#377]).
