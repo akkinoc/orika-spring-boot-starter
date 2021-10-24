@@ -154,7 +154,7 @@ See also the Orika User Guide:
 ## Configuration Properties
 
 Provides the following configuration properties.
-These can be configured by your "application.yml" / "application.properties".
+These can be configured by your "application.yml", "application.properties", etc.
 
 ```yaml
 # The configuration properties for Orika.
