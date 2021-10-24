@@ -53,7 +53,7 @@ The following JVM option is required ([orika-mapper/orika#377]).
 
 ## Usage
 
-### Adding the dependency
+### Adding the Dependency
 
 The artifact is published on [Maven Central Repository][maven central].
 If you are using Maven, add the following dependency.
@@ -82,7 +82,7 @@ import ma.glasnost.orika.MapperFacade;
 private MapperFacade orikaMapperFacade;
 ```
 
-### Mapping your beans
+### Mapping Your Beans
 
 Map your beans using the MapperFacade.
 
