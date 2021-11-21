@@ -37,8 +37,8 @@
 Depends on:
 
 * Java 8, 11 or 17
-* Kotlin 1.5
-* Spring Boot 2.5
+* Kotlin 1.6
+* Spring Boot 2.6
 * Orika 1.5
 
 To run on Java 17+:
