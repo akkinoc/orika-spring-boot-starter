@@ -17,9 +17,9 @@ class MapperFactoryConfigurationTest {
 
     @Test
     fun `Configures the MapperFactory`(
-            @Autowired orikaMapperFactory: MapperFactory,
-            @Autowired mockOrikaMapperFactoryConfigurer1: MockOrikaMapperFactoryConfigurer,
-            @Autowired mockOrikaMapperFactoryConfigurer2: MockOrikaMapperFactoryConfigurer,
+        @Autowired orikaMapperFactory: MapperFactory,
+        @Autowired mockOrikaMapperFactoryConfigurer1: MockOrikaMapperFactoryConfigurer,
+        @Autowired mockOrikaMapperFactoryConfigurer2: MockOrikaMapperFactoryConfigurer,
     ) {
         mockOrikaMapperFactoryConfigurer1.configured.shouldBeSameInstanceAs(orikaMapperFactory)
         mockOrikaMapperFactoryConfigurer2.configured.shouldBeSameInstanceAs(orikaMapperFactory)

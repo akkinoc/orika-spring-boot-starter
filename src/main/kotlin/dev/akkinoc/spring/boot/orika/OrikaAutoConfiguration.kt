@@ -30,8 +30,8 @@ class OrikaAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean
     fun orikaMapperFactoryBuilder(
-            orikaProperties: OrikaProperties,
-            orikaMapperFactoryBuilderConfigurers: List<OrikaMapperFactoryBuilderConfigurer>,
+        orikaProperties: OrikaProperties,
+        orikaMapperFactoryBuilderConfigurers: List<OrikaMapperFactoryBuilderConfigurer>,
     ): MapperFactoryBuilder<*, *> {
         val orikaMapperFactoryBuilder = DefaultMapperFactory.Builder()
         orikaProperties.useBuiltinConverters?.also { orikaMapperFactoryBuilder.useBuiltinConverters(it) }
@@ -55,8 +55,8 @@ class OrikaAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean
     fun orikaMapperFactory(
-            orikaMapperFactoryBuilder: MapperFactoryBuilder<*, *>,
-            orikaMapperFactoryConfigurers: List<OrikaMapperFactoryConfigurer>,
+        orikaMapperFactoryBuilder: MapperFactoryBuilder<*, *>,
+        orikaMapperFactoryConfigurers: List<OrikaMapperFactoryConfigurer>,
     ): MapperFactory {
         val orikaMapperFactory = orikaMapperFactoryBuilder.build()
         orikaMapperFactoryConfigurers.forEach { it.configure(orikaMapperFactory) }

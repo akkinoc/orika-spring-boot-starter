@@ -11,15 +11,15 @@ import org.springframework.test.util.ReflectionTestUtils.getField
  * Tests the case where the configuration properties are configured.
  */
 @SpringBootTest(
-        properties = [
-            "orika.enabled=true",
-            "orika.use-builtin-converters=false",
-            "orika.use-auto-mapping=false",
-            "orika.map-nulls=false",
-            "orika.dump-state-on-exception=true",
-            "orika.favor-extension=true",
-            "orika.capture-field-context=true",
-        ]
+    properties = [
+        "orika.enabled=true",
+        "orika.use-builtin-converters=false",
+        "orika.use-auto-mapping=false",
+        "orika.map-nulls=false",
+        "orika.dump-state-on-exception=true",
+        "orika.favor-extension=true",
+        "orika.capture-field-context=true",
+    ]
 )
 class PropertiesConfigurationTest {
 

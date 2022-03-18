@@ -40,11 +40,11 @@ import org.springframework.boot.context.properties.ConstructorBinding
 data class OrikaProperties
 @JvmOverloads
 constructor(
-        val enabled: Boolean = true,
-        val useBuiltinConverters: Boolean? = null,
-        val useAutoMapping: Boolean? = null,
-        val mapNulls: Boolean? = null,
-        val dumpStateOnException: Boolean? = null,
-        val favorExtension: Boolean? = null,
-        val captureFieldContext: Boolean? = null,
+    val enabled: Boolean = true,
+    val useBuiltinConverters: Boolean? = null,
+    val useAutoMapping: Boolean? = null,
+    val mapNulls: Boolean? = null,
+    val dumpStateOnException: Boolean? = null,
+    val favorExtension: Boolean? = null,
+    val captureFieldContext: Boolean? = null,
 )
