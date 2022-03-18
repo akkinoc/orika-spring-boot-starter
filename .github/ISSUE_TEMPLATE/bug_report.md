@@ -30,3 +30,4 @@ Please provide the following.
 
 * **Version of this library used**:
 * **Version of Java used**:
+* **Version of Spring Boot used**:
