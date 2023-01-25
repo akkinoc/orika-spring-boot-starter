@@ -8,7 +8,7 @@
 
     <groupId>dev.akkinoc.spring.boot</groupId>
     <artifactId>orika-spring-boot-starter</artifactId>
-    <version>2.4.4-SNAPSHOT</version>
+    <version>2.4.5-SNAPSHOT</version>
 
     <name>orika-spring-boot-starter</name>
     <description>Spring Boot Starter for Orika.</description>
@@ -17,7 +17,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.7</version>
+        <version>3.0.2</version>
     </parent>
 
     <organization>
@@ -71,6 +71,8 @@
     <properties>
         <gpg.skip>true</gpg.skip>
         <skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
+        <orika.version>1.5.4</orika.version>
+        <kotlin.version>1.7.22</kotlin.version>
     </properties>
 
     <profiles>
@@ -94,8 +96,13 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib-jdk8</artifactId>
+            <artifactId>kotlin-stdlib</artifactId>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
@@ -108,7 +115,7 @@
         <dependency>
             <groupId>ma.glasnost.orika</groupId>
             <artifactId>orika-core</artifactId>
-            <version>1.5.4</version>
+            <version>${orika.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -128,10 +135,15 @@
         <testSourceDirectory>src/test/kotlin</testSourceDirectory>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
+                <version>3.2.0</version>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.1.0</version>
+
                 <configuration>
                     <rules>
                         <requireJavaVersion>
@@ -171,7 +183,9 @@
                 </executions>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.0</version>
             </plugin>
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
@@ -182,15 +196,58 @@
                         <artifactId>kotlin-maven-allopen</artifactId>
                         <version>${kotlin.version}</version>
                     </dependency>
+                    <dependency>
+                        <groupId>org.jetbrains.kotlin</groupId>
+                        <artifactId>kotlin-maven-allopen</artifactId>
+                        <version>${kotlin.version}</version>
+                    </dependency>
                 </dependencies>
                 <configuration>
                     <compilerPlugins>
                         <compilerPlugin>spring</compilerPlugin>
+                        <compilerPlugin>all-open</compilerPlugin>
                     </compilerPlugins>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>kapt</id>
+                        <goals>
+                            <goal>kapt</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirs>
+                                <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
+                            </sourceDirs>
+                            <annotationProcessorPaths>
+                                <annotationProcessorPath>
+                                    <groupId>org.springframework.boot</groupId>
+                                    <artifactId>spring-boot-configuration-processor</artifactId>
+                                    <version>${project.parent.version}</version>
+                                </annotationProcessorPath>
+                            </annotationProcessorPaths>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>test-compile</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+
                 <executions>
                     <execution>
                         <id>default-compile</id>
@@ -203,10 +260,14 @@
                 </executions>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M8</version>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -218,7 +279,10 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+
                 <executions>
                     <execution>
                         <id>jar</id>
@@ -291,7 +355,9 @@
                 </executions>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
+                <version>3.1.0</version>
             </plugin>
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>

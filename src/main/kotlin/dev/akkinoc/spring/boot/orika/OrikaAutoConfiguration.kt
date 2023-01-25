@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 /**
- * The auto-configuration for Orika.
+ * The autoconfiguration for Orika.
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnProperty(prefix = "orika", name = ["enabled"], havingValue = "true", matchIfMissing = true)
