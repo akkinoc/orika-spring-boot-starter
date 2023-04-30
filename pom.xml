@@ -185,7 +185,7 @@
                 </dependencies>
                 <configuration>
                     <compilerPlugins>
-                        <compilerPlugin>spring</compilerPlugin>
+                        <plugin>spring</plugin>
                     </compilerPlugins>
                 </configuration>
             </plugin>
