@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 
 /**
- * Tests the case where autoconfiguration is disabled.
+ * Tests the case where auto-configuration is disabled.
  */
 @SpringBootTest(properties = ["orika.enabled=false"])
 class DisabledTest {
