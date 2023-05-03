@@ -2,7 +2,6 @@ package dev.akkinoc.spring.boot.orika
 
 import ma.glasnost.orika.impl.DefaultMapperFactory.MapperFactoryBuilder
 import org.springframework.boot.context.properties.ConfigurationProperties
-import org.springframework.boot.context.properties.ConstructorBinding
 
 /**
  * The configuration properties for Orika.
@@ -36,7 +35,6 @@ import org.springframework.boot.context.properties.ConstructorBinding
  *  By default, follows Orika's behavior.
  */
 @ConfigurationProperties("orika")
-@ConstructorBinding
 data class OrikaProperties
 @JvmOverloads
 constructor(

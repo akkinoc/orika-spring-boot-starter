@@ -39,12 +39,10 @@
 
 Depends on:
 
-* Java 8, 11 or 17
-* Kotlin 1.6
-* Spring Boot 2.7
+* Java 17
+* Kotlin 1.7
+* Spring Boot 3.0
 * Orika 1.5
-
-To run on Java 17+:
 
 The following JVM option is required ([orika-mapper/orika#377]).
 
