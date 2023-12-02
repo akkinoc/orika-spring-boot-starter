@@ -40,8 +40,8 @@
 Depends on:
 
 * Java 17
-* Kotlin 1.7
-* Spring Boot 3.0
+* Kotlin 1.8
+* Spring Boot 3.1
 * Orika 1.5
 
 The following JVM option is required ([orika-mapper/orika#377]).
