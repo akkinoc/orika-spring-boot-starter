@@ -28,6 +28,10 @@
 [Spring Boot]: https://spring.io/projects/spring-boot
 [Orika]: https://orika-mapper.github.io/orika-docs
 
+⚠️ This artifact depends on [Orika]. Please note that [Orika] has not been maintained for a long time ([orika-mapper/orika#372]).
+
+[orika-mapper/orika#372]: https://github.com/orika-mapper/orika/issues/372
+
 ## Features
 
 * Manages MapperFacade in the application context and makes it injectable into your code.
