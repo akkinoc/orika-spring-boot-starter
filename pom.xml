@@ -290,7 +290,6 @@
                 <configuration>
                     <publishingServerId>central</publishingServerId>
                     <autoPublish>true</autoPublish>
-                    <waitUntil>published</waitUntil>
                     <skipPublishing>${publishing.skip}</skipPublishing>
                 </configuration>
             </plugin>
