@@ -18,7 +18,7 @@
 To set up, run:
 
 ```console
-$ git clone git@github.com:akkinoc/orika-spring-boot-starter.git
+$ git clone https://github.com/akkinoc/orika-spring-boot-starter.git
 $ cd orika-spring-boot-starter
 ```
 
