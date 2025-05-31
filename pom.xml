@@ -59,7 +59,6 @@
 
     <properties>
         <gpg.skip>true</gpg.skip>
-        <publishing.skip>true</publishing.skip>
     </properties>
 
     <profiles>
@@ -70,13 +69,6 @@
             </activation>
             <properties>
                 <argLine>--add-opens java.base/java.lang=ALL-UNNAMED</argLine>
-            </properties>
-        </profile>
-        <profile>
-            <id>release</id>
-            <properties>
-                <gpg.skip>false</gpg.skip>
-                <publishing.skip>false</publishing.skip>
             </properties>
         </profile>
     </profiles>
@@ -292,7 +284,6 @@
                 <extensions>true</extensions>
                 <configuration>
                     <autoPublish>true</autoPublish>
-                    <skipPublishing>${publishing.skip}</skipPublishing>
                 </configuration>
             </plugin>
         </plugins>
