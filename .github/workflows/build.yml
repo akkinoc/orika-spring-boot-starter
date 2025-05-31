@@ -27,10 +27,10 @@ jobs:
       - name: Build the project
         run: mvn clean install
       - name: Build the "examples/simple-java" project
-        run: mvn -Dorika-spring-boot-starter.version=${{ env.PROJECT_VERSION }} clean install
+        run: mvn -Dorika-spring-boot-starter.version=$PROJECT_VERSION clean install
         working-directory: examples/simple-java
       - name: Build the "examples/simple-kotlin" project
-        run: mvn -Dorika-spring-boot-starter.version=${{ env.PROJECT_VERSION }} clean install
+        run: mvn -Dorika-spring-boot-starter.version=$PROJECT_VERSION clean install
         working-directory: examples/simple-kotlin
       - name: Upload the coverage report to Codecov
         uses: codecov/codecov-action@v5.4.3
