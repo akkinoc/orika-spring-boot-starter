@@ -41,7 +41,7 @@
     <scm>
         <url>https://github.com/akkinoc/orika-spring-boot-starter</url>
         <connection>scm:git:https://github.com/akkinoc/orika-spring-boot-starter.git</connection>
-        <developerConnection>${project.scm.connection}</developerConnection>
+        <developerConnection>scm:git:git@github.com:akkinoc/orika-spring-boot-starter.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
