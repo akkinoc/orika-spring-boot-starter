@@ -2,6 +2,7 @@ package example;
 
 import lombok.RequiredArgsConstructor;
 import ma.glasnost.orika.MapperFacade;
+import org.jspecify.annotations.NonNull;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,7 +15,7 @@ public class Application implements ApplicationRunner {
     private final MapperFacade orikaMapperFacade;
 
     @Override
-    public void run(ApplicationArguments args) {
+    public void run(@NonNull ApplicationArguments args) {
 
         // Maps from PersonSource to PersonDestination
         PersonSource src = new PersonSource("John", "Smith", 23);
