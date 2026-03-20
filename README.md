@@ -43,7 +43,7 @@
 
 Depends on:
 
-* Java 17 or 21
+* Java 17, 21, or 25
 * Kotlin 2.2
 * Spring Boot 4.0
 * Orika 1.5
