@@ -14,7 +14,7 @@
     </parent>
 
     <properties>
-        <orika-spring-boot-starter.version>[3.0.0,)</orika-spring-boot-starter.version>
+        <orika-spring-boot-starter.version>[4.0.0,)</orika-spring-boot-starter.version>
     </properties>
 
     <dependencies>
