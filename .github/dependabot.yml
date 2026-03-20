@@ -9,7 +9,7 @@ updates:
       - akkinoc
     labels:
       - type:dependencies
-    milestone: 3
+    milestone: 4
   - package-ecosystem: maven
     directories:
       - /
@@ -22,7 +22,7 @@ updates:
       - akkinoc
     labels:
       - type:dependencies
-    milestone: 3
+    milestone: 4
     groups:
       spring-boot:
         patterns:
