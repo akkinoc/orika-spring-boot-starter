@@ -19,7 +19,7 @@ import org.springframework.test.util.ReflectionTestUtils.getField
         "orika.dump-state-on-exception=true",
         "orika.favor-extension=true",
         "orika.capture-field-context=true",
-    ]
+    ],
 )
 class PropertiesConfigurationTest {
 
