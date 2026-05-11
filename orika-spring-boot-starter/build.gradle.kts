@@ -83,9 +83,6 @@ testing {
 
 tasks.check {
     dependsOn(tasks.withType<Test>())
-}
-
-tasks.withType<Test> {
     finalizedBy(tasks.jacocoTestReport)
 }
 
