@@ -11,7 +11,7 @@ dependencies {
     implementation(platform(SpringBootPlugin.BOM_COORDINATES))
     implementation(kotlin("reflect"))
     implementation("org.springframework.boot:spring-boot-starter")
-    implementation("dev.akkinoc.spring.boot:orika-spring-boot-starter")
+    implementation("dev.akkinoc.spring.boot:orika-spring-boot-starter:$version")
 }
 
 application {
