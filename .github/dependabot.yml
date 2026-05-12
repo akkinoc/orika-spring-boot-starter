@@ -10,11 +10,8 @@ updates:
     labels:
       - type:dependencies
     milestone: 4
-  - package-ecosystem: maven
-    directories:
-      - /
-      - /examples/simple-java
-      - /examples/simple-kotlin
+  - package-ecosystem: gradle
+    directory: /
     schedule:
       interval: cron
       cronjob: 0 12 * * *
@@ -23,7 +20,3 @@ updates:
     labels:
       - type:dependencies
     milestone: 4
-    groups:
-      spring-boot:
-        patterns:
-          - org.springframework.boot:*
