@@ -44,8 +44,8 @@
 Depends on:
 
 * Java 17, 21, or 25
-* Kotlin 2.2
-* Spring Boot 4.0
+* Kotlin 2.3
+* Spring Boot 4.1
 * Orika 1.5
 
 The following JVM option is required ([orika-mapper/orika#377]).
