@@ -52,7 +52,7 @@ The following JVM option is required ([orika-mapper/orika#377]).
 
 [orika-mapper/orika#377]: https://github.com/orika-mapper/orika/issues/377
 
-```console
+```text
 --add-opens=java.base/java.lang=ALL-UNNAMED
 ```
 

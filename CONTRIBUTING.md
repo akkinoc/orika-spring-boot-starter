@@ -17,17 +17,17 @@
 
 To set up, run:
 
-```console
-$ git clone https://github.com/akkinoc/orika-spring-boot-starter.git
-$ cd orika-spring-boot-starter
+```sh
+git clone https://github.com/akkinoc/orika-spring-boot-starter.git
+cd orika-spring-boot-starter
 ```
 
 ## Building and Testing
 
 To build and test, run:
 
-```console
-$ mvn clean install
+```sh
+mvn clean install
 ```
 
 ## License
