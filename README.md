@@ -161,7 +161,7 @@ See also the Orika User Guide:
 Provides the following configuration properties.
 These can be configured by your "application.yml", "application.properties", etc.
 
-```yaml
+```yml
 # The configuration properties for Orika.
 orika:
   # Whether to enable auto-configuration.
