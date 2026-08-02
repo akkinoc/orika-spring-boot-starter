@@ -34,19 +34,19 @@
 
 ## Features
 
-* Manages MapperFacade in the application context and makes it injectable into your code.
-* Provides an interface to configure MapperFactory.
-* Provides an interface to configure MapperFactoryBuilder.
-* Provides configuration properties to configure MapperFactoryBuilder.
+- Manages MapperFacade in the application context and makes it injectable into your code.
+- Provides an interface to configure MapperFactory.
+- Provides an interface to configure MapperFactoryBuilder.
+- Provides configuration properties to configure MapperFactoryBuilder.
 
 ## Dependencies
 
 Depends on:
 
-* Java 17, 21, or 25
-* Kotlin 2.3
-* Spring Boot 4.1
-* Orika 1.5
+- Java 17, 21, or 25
+- Kotlin 2.3
+- Spring Boot 4.1
+- Orika 1.5
 
 The following JVM option is required ([orika-mapper/orika#377]).
 
@@ -128,8 +128,8 @@ public class PersonMapping implements OrikaMapperFactoryConfigurer {
 
 See also the Orika User Guide:
 
-* [Declarative Mapping Configuration](https://orika-mapper.github.io/orika-docs/mappings-via-classmapbuilder.html)
-* [Advanced Mapping Configurations](https://orika-mapper.github.io/orika-docs/advanced-mappings.html)
+- [Declarative Mapping Configuration](https://orika-mapper.github.io/orika-docs/mappings-via-classmapbuilder.html)
+- [Advanced Mapping Configurations](https://orika-mapper.github.io/orika-docs/advanced-mappings.html)
 
 ## MapperFactoryBuilder Configuration
 
@@ -154,7 +154,7 @@ public class OrikaConfiguration implements OrikaMapperFactoryBuilderConfigurer {
 
 See also the Orika User Guide:
 
-* [MapperFactory Configuration](https://orika-mapper.github.io/orika-docs/mapper-factory.html)
+- [MapperFactory Configuration](https://orika-mapper.github.io/orika-docs/mapper-factory.html)
 
 ## Configuration Properties
 

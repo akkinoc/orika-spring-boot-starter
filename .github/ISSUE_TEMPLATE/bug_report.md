@@ -28,6 +28,6 @@ A clear and concise description of what you expected to happen.
 Please provide the following.
 -->
 
-* **Version of this library used**:
-* **Version of Java used**:
-* **Version of Spring Boot used**:
+- **Version of this library used**:
+- **Version of Java used**:
+- **Version of Spring Boot used**:
