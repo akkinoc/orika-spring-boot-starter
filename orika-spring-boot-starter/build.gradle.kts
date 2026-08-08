@@ -127,11 +127,9 @@ mavenPublishing {
             }
         }
         licenses {
-            licenses {
-                license {
-                    name = "Apache-2.0"
-                    url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
-                }
+            license {
+                name = "Apache-2.0"
+                url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
             }
         }
         scm {
